@@ -47,10 +47,10 @@ void initState() {
 
         }
     },
-    child: Icon(CupertinoIcons.back, color: Colors.white,),
+    child: const Icon(CupertinoIcons.back, color: Colors.white,),
     ),
     backgroundColor: Colors.blue,
-    title: Text('References',
+    title: const Text('References',
     style: TextStyle(color: Colors.white, fontSize: 25)),
     ),
     body:Padding(
@@ -61,9 +61,9 @@ void initState() {
         decoration:BoxDecoration(color: Colors.white,borderRadius: BorderRadius.circular(20)),
         child: Column(
           children: [
-            SizedBox(height: 20,),
-            Padding(
-              padding: const EdgeInsets.only(right:140),
+            const SizedBox(height: 20,),
+            const Padding(
+              padding: EdgeInsets.only(right:140),
               child: Text('Reference Name',style: TextStyle(color: Colors.blue,fontSize:20,fontWeight: FontWeight.bold
               ),),
             ),
@@ -74,18 +74,19 @@ void initState() {
                 validator: (value){
                   if(value!.isEmpty)
                   { return ' Enter Name ';}
+                  return null;
                 },
                 onSaved: (value){
                   Reference_name = value;
                 },
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   border: OutlineInputBorder(),
                   hintText: 'name',),
               ),
             ),
-            SizedBox(height: 20,),
-            Padding(
-              padding: const EdgeInsets.only(right:190),
+            const SizedBox(height: 20,),
+            const Padding(
+              padding: EdgeInsets.only(right:190),
               child: Text('Designation',style: TextStyle(color: Colors.blue,fontSize:20,fontWeight: FontWeight.bold
               ),),
             ),
@@ -96,18 +97,19 @@ void initState() {
                 validator: (value){
                   if(value!.isEmpty)
                   {return 'Marketing';}
+                  return null;
                 },
                 onSaved: (value){
                    Designation = value;
                 },
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   border: OutlineInputBorder(),
                   hintText: '5 - Programmers',),
               ),
             ),
-            SizedBox(height: 20,),
-            Padding(
-              padding: const EdgeInsets.only(right:190),
+            const SizedBox(height: 20,),
+            const Padding(
+              padding: EdgeInsets.only(right:190),
               child: Text('Designation',style: TextStyle(color: Colors.blue,fontSize:20,fontWeight: FontWeight.bold
               ),),
             ),
@@ -118,11 +120,12 @@ void initState() {
                 validator: (value){
                   if(value!.isEmpty)
                   {return 'organization name';}
+                  return null;
                 },
                 onSaved: (value){
                   Organization = value;
                 },
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   border: OutlineInputBorder(),
                   hintText: 'Organization',),
               ),

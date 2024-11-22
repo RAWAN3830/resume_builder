@@ -1,19 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:resume/Declaration.dart';
-import 'package:resume/Education.dart';
-import 'package:resume/Project.dart';
-import 'package:resume/References.dart';
-import 'package:resume/TechSkill.dart';
-import 'package:resume/carrier_objectibve.dart';
-import 'package:resume/contact_info.dart';
-import 'package:resume/model_screen.dart';
-import 'package:resume/model.dart';
-import 'package:resume/personal_details.dart';
-import 'package:resume/splash_screen.dart';
-import 'package:resume/Achievements.dart';
+import 'package:resume/presentation/Achievements.dart';
+import 'package:resume/presentation/Declaration.dart';
+import 'package:resume/presentation/References.dart';
+import 'package:resume/presentation/TechSkill.dart';
+import 'package:resume/presentation/personal_details.dart';
 
+import 'Education.dart';
 import 'Experiences.dart';
+import 'Project.dart';
+import 'carrier_objectibve.dart';
+import 'contact_info.dart';
+import 'model_screen.dart';
 
 
 void main() {
@@ -37,19 +35,19 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       routes: {
-        '/':(context)=>ResumeWork(),
-        'homepage':(context)=>MyHomePage(title: 'RESUMES'),
-        'resumework':(context)=>ResumeWork(),
+        '/':(context)=>const ResumeWork(),
+        'homepage':(context)=>const MyHomePage(title: 'RESUMES'),
+        'resumework':(context)=>const ResumeWork(),
         'contact':(context)=>ContactInfo(),
         'carrier':(context)=>CarrierObjective(),
         'personal':(context)=>PersonalDetails(),
         'education':(context)=>EducationInfo(),
-        'experiences':(context)=>ExperienceInfo(),
+        'experiences':(context)=>const ExperienceInfo(),
         'techskills':(context)=>TechSkills(),
         'project':(context)=>ProjectEmp(),
         'reference':(context)=>Reference(),
         'declaration':(context)=>declaration(),
-        'achievements':(context)=>Achievement(),
+        'achievements':(context)=>const Achievement(),
 
       },
       initialRoute: 'homepage',
@@ -84,14 +82,14 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
          toolbarHeight: 130,
         backgroundColor:Colors.blue,
-        title: Column(children: [
+        title: const Column(children: [
           Center(child: Text('Resume Builder',style: TextStyle(fontSize: 20,color: Colors.white,fontWeight: FontWeight.w500)),),
           SizedBox(height: 35,),
           Center(child: Text('RESUMES',style:TextStyle(fontSize: 20,color: Colors.white,fontWeight: FontWeight.w500)))
         ],),
 
       ),
-      body: Center(
+      body: const Center(
 
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

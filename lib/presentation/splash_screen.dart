@@ -1,8 +1,6 @@
 import 'dart:async';
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:resume/main.dart';
+
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -17,7 +15,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     // TODO: implement initState
-    Timer(Duration(seconds: 3), () {
+    Timer(const Duration(seconds: 3), () {
       Navigator.of(context).pushNamedAndRemoveUntil('homepage', (route) => false);
     });
     super.initState();
@@ -26,8 +24,8 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Splash Screen'),),
-      body: Center(child: Text('Welcome'),),
+      appBar: AppBar(title: const Text('Splash Screen'),),
+      body: const Center(child: Text('Welcome'),),
     );
   }
 }

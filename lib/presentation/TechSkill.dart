@@ -21,13 +21,13 @@ class _TechSkillsState extends State<TechSkills> {
           onTap: () {
             Navigator.of(context).pop();
           },
-          child: Icon(
+          child: const Icon(
             CupertinoIcons.back,
             color: Colors.white,
           ),
         ),
         backgroundColor: Colors.blue,
-        title: Text('Technical Skills',
+        title: const Text('Technical Skills',
             style: TextStyle(
                 color: Colors.white,
                 fontSize: 25,
@@ -42,7 +42,7 @@ class _TechSkillsState extends State<TechSkills> {
               itemBuilder: (context, index) {
                 return Row(
                   children: [
-                    Container(width: 340, child: textFieldList[index]),
+                    SizedBox(width: 340, child: textFieldList[index]),
                     IconButton(
                         onPressed: () {
                           setState(() {
@@ -58,7 +58,7 @@ class _TechSkillsState extends State<TechSkills> {
 
                           });
                         },
-                        icon: Icon(Icons.delete))
+                        icon: const Icon(Icons.delete))
                   ],
                 );
               },
@@ -67,14 +67,15 @@ class _TechSkillsState extends State<TechSkills> {
           ),
           ElevatedButton(
               onPressed: () {
-                textFieldList.forEach((element) =>
-                    controllerList.add(element.skillController.text));
+                for (var element in textFieldList) {
+                  controllerList.add(element.skillController.text);
+                }
                 setState(() {
 
                 });
                  print(controllerList);
               },
-              child: Text('Submit'))
+              child: const Text('Submit'))
         ],
       ),
       floatingActionButton: FloatingActionButton(
@@ -84,7 +85,7 @@ class _TechSkillsState extends State<TechSkills> {
             // controllerList.add(textFieldList.last.c)
           });
         },
-        child: Icon(Icons.add),
+        child: const Icon(Icons.add),
       ),
     );
   }
@@ -93,12 +94,14 @@ class _TechSkillsState extends State<TechSkills> {
 class DynamicTextField extends StatelessWidget {
   TextEditingController skillController = TextEditingController();
 
+  DynamicTextField({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Container(
       child: TextFormField(
         controller: skillController,
-        decoration: InputDecoration(
+        decoration: const InputDecoration(
           hintText: 'Enter',
         ),
       ),

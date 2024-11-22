@@ -1,6 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:resume/personal_details.dart';
+
 
 String? company;
 String? institute;
@@ -39,7 +38,7 @@ class _ExperienceInfoState extends State<ExperienceInfo> {
         appBar: AppBar(
           backgroundColor: Colors.blue,
           toolbarHeight: 100,
-          title: Text('Experiences',
+          title: const Text('Experiences',
               style: TextStyle(color: Colors.white, fontSize: 25)),
         ),
         body: SingleChildScrollView(
@@ -47,10 +46,10 @@ class _ExperienceInfoState extends State<ExperienceInfo> {
               key: formkey,
               child: Column(
                 children: [
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
-                  Text(
+                  const Text(
                     'Company Name',
                     style: TextStyle(
                         color: Colors.blue,
@@ -65,21 +64,22 @@ class _ExperienceInfoState extends State<ExperienceInfo> {
                         if (value!.isEmpty) {
                           return 'enter Company name';
                         }
+                        return null;
                       },
                       onSaved: (value) {
                         company = value;
                       },
                       decoration: InputDecoration(
-                          border: OutlineInputBorder(),
+                          border: const OutlineInputBorder(),
                           hintText: 'Infosys',
                           hintStyle: TextStyle(
                               fontSize: 20, color: Colors.grey.shade400)),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
-                  Text(
+                  const Text(
                     'Institute / Collage',
                     style: TextStyle(
                         color: Colors.blue,
@@ -94,21 +94,22 @@ class _ExperienceInfoState extends State<ExperienceInfo> {
                         if (value!.isEmpty) {
                           return 'entery Require';
                         }
+                        return null;
                       },
                       onSaved: (value) {
                         institute = value;
                       },
                       decoration: InputDecoration(
-                          border: OutlineInputBorder(),
+                          border: const OutlineInputBorder(),
                           hintText: 'Quality test Engineer',
                           hintStyle: TextStyle(
                               fontSize: 20, color: Colors.grey.shade400)),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
-                  Text(
+                  const Text(
                     'Roles (optional)',
                     style: TextStyle(
                         color: Colors.blue,
@@ -124,22 +125,23 @@ class _ExperienceInfoState extends State<ExperienceInfo> {
                         if (value!.isEmpty) {
                           return 'role in Company';
                         }
+                        return null;
                       },
                       onSaved: (value) {
                         roles = value;
                       },
                       decoration: InputDecoration(
-                          border: OutlineInputBorder(),
+                          border: const OutlineInputBorder(),
                           hintText:
                               'working with team members to come up with new concepts end product analysis',
                           hintStyle: TextStyle(
                               fontSize: 20, color: Colors.grey.shade400)),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
-                  Text(
+                  const Text(
                     'Merital Status',
                     style: TextStyle(
                         color: Colors.blue,
@@ -151,7 +153,7 @@ class _ExperienceInfoState extends State<ExperienceInfo> {
                     children: [
                   Row(
                     children: [
-                      Text("Previuos",style:TextStyle(fontSize:18,color:Colors.blue)),
+                      const Text("Previuos",style:TextStyle(fontSize:18,color:Colors.blue)),
                       Radio(value: EmpStatus.previously,
                           groupValue: m,
                           onChanged: (EmpStatus? value){
@@ -162,7 +164,7 @@ class _ExperienceInfoState extends State<ExperienceInfo> {
                     ]),
                   Row(
                     children: [
-                      Text("Currently",style:TextStyle(fontSize:18,color: Colors.blue)),
+                      const Text("Currently",style:TextStyle(fontSize:18,color: Colors.blue)),
                       Radio(value: EmpStatus.currently,
                           groupValue: m,
                           onChanged: (EmpStatus? value){
@@ -177,7 +179,7 @@ class _ExperienceInfoState extends State<ExperienceInfo> {
                       children: [
                         Column(
                             children: [
-                              Text("Date Joined",style:TextStyle(fontSize:18,color:Colors.blue)),
+                              const Text("Date Joined",style:TextStyle(fontSize:18,color:Colors.blue)),
                               Container(
                                 height: 30,
                                 width: 100,
@@ -203,7 +205,7 @@ class _ExperienceInfoState extends State<ExperienceInfo> {
                             ]),
                         Column(
                             children: [
-                              Text("Date Exit",style:TextStyle(fontSize:18,color: Colors.blue)),
+                              const Text("Date Exit",style:TextStyle(fontSize:18,color: Colors.blue)),
                               Container(
                                 height: 30,
                                 width: 100,
@@ -237,13 +239,13 @@ class _ExperienceInfoState extends State<ExperienceInfo> {
                             print('Submit');
                             formkey.currentState!.save();
 
-                            var snackbar = SnackBar(
+                            var snackbar = const SnackBar(
                                 content: Text('Contact Info Submitted sucessfully.'));
                             ScaffoldMessenger.of(context)
                                 .showSnackBar(snackbar);
                           }
                       },
-                      child: Text('Submit',style: TextStyle(fontSize: 18,color: Colors.white),)),
+                      child: const Text('Submit',style: TextStyle(fontSize: 18,color: Colors.white),)),
 
                 ],
               )),

@@ -23,13 +23,13 @@ class _AchievementState extends State<Achievement> {
           onTap: () {
             Navigator.of(context).pop();
           },
-          child: Icon(
+          child: const Icon(
             CupertinoIcons.back,
             color: Colors.white,
           ),
         ),
         backgroundColor: Colors.blue,
-        title: Text('Achievements',
+        title: const Text('Achievements',
             style: TextStyle(
                 color: Colors.white,
                 fontSize: 25,
@@ -46,7 +46,7 @@ class _AchievementState extends State<Achievement> {
                 itemBuilder: (context, index) {
                   return Row(
                     children: [
-                      Container(width: 314, child: Textlist[index]),
+                      SizedBox(width: 314, child: Textlist[index]),
                       IconButton(
                           onPressed: () {
                             Textlist.removeAt(index);
@@ -54,7 +54,7 @@ class _AchievementState extends State<Achievement> {
                               
                             });
                           },
-                          icon: Icon(CupertinoIcons.delete))
+                          icon: const Icon(CupertinoIcons.delete))
                     ],
                   );
                 },
@@ -64,11 +64,12 @@ class _AchievementState extends State<Achievement> {
           ),
           ElevatedButton(
               onPressed: () {
-                Textlist.forEach((element) =>
-                    controllList.add(element.achiveController.text));
+                for (var element in Textlist) {
+                  controllList.add(element.achiveController.text);
+                }
                 setState(() {});
               },
-              child: Text(
+              child: const Text(
                 'Sumbit'),),
           ElevatedButton(
               style: ButtonStyle(
@@ -80,7 +81,7 @@ class _AchievementState extends State<Achievement> {
                 });
 
               },
-              child: Icon(CupertinoIcons.plus,color: Colors.white,size: 40,))
+              child: const Icon(CupertinoIcons.plus,color: Colors.white,size: 40,))
 
           // Container(
           //   height: 70,
@@ -100,12 +101,14 @@ class _AchievementState extends State<Achievement> {
 class DynamicText extends StatelessWidget {
   TextEditingController achiveController = TextEditingController();
 
+  DynamicText({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Container(
       child: TextFormField(
         controller: achiveController,
-        decoration: InputDecoration(
+        decoration: const InputDecoration(
           hintText: 'increase sales 17% Avearage',
         ),
       ),

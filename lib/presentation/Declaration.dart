@@ -38,18 +38,18 @@ class _declarationState extends State<declaration> {
           onTap: () {
             Navigator.of(context).pop();
           },
-          child: Icon(
+          child: const Icon(
             CupertinoIcons.back,
             color: Colors.white,
           ),
         ),
         backgroundColor: Colors.blue,
-        title: Text('Declaration',
+        title: const Text('Declaration',
             style: TextStyle(color: Colors.white, fontSize: 25)),
       ),
       body: Column(
         children: [
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Container(
@@ -61,8 +61,8 @@ class _declarationState extends State<declaration> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.all(20.0),
+                  const Padding(
+                    padding: EdgeInsets.all(20.0),
                     child: Text(
                       'Declaration',
                       style:
@@ -90,9 +90,9 @@ class _declarationState extends State<declaration> {
                   borderRadius: BorderRadius.circular(20)),
               child: (Column(
                 children: [
-                  SizedBox(height: 20,),
-                  Padding(
-                    padding: const EdgeInsets.only(right:190),
+                  const SizedBox(height: 20,),
+                  const Padding(
+                    padding: EdgeInsets.only(right:190),
                     child: Text('Declaration',style: TextStyle(color: Colors.blue,fontSize:20,fontWeight: FontWeight.bold
                     ),),
                   ),
@@ -103,26 +103,27 @@ class _declarationState extends State<declaration> {
                       validator: (value){
                         if(value!.isEmpty)
                         {return 'Marketing';}
+                        return null;
                       },
                       onSaved: (value){
                         Declarations = value;
                       },
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         border: OutlineInputBorder(),
                         hintText: 'Description',),
                     ),
                   ),
-                  SizedBox(height: 20,),
-                  Divider(color: Colors.black,thickness: 1,height:20,endIndent: 10,indent: 10),
-                  SizedBox(height: 20,),
-                  Row(
+                  const SizedBox(height: 20,),
+                  const Divider(color: Colors.black,thickness: 1,height:20,endIndent: 10,indent: 10),
+                  const SizedBox(height: 20,),
+                  const Row(
                     children: [
                       Flexible(
                         child: Column(
                           children: [
                              Text('Date\n',style: TextStyle(color: Colors.blue,fontSize:20,fontWeight: FontWeight.bold),),
                             Padding(
-                              padding: const EdgeInsets.all(15.0),
+                              padding: EdgeInsets.all(15.0),
                               child: TextField(
 
                                 decoration: InputDecoration(
@@ -130,7 +131,6 @@ class _declarationState extends State<declaration> {
                                   hintText: 'DD/MM/YYYY',),
                               ),
                             ),
-
                           ],
                         ),
                       ),
@@ -140,7 +140,7 @@ class _declarationState extends State<declaration> {
                           children: [
                             Text('Place(interview venue/city',style: TextStyle(color: Colors.blue,fontSize:20,fontWeight: FontWeight.bold),),
                             Padding(
-                              padding: const EdgeInsets.all(15.0),
+                              padding: EdgeInsets.all(15.0),
                               child: TextField(
                                 style: TextStyle(fontSize: 16),
                                 decoration: InputDecoration(

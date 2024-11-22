@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:resume/model.dart';
-import 'package:resume/main.dart';
+
+import 'model.dart';
+
 
 class ResumeWork extends StatefulWidget {
   const ResumeWork({super.key});
@@ -28,8 +29,8 @@ class _ResumeWorkState extends State<ResumeWork> {
         onTap: (){
           Navigator.of(context).pop();
         },
-          child: Icon(CupertinoIcons.back,color: Colors.white,)),
-      title: Column(
+          child: const Icon(CupertinoIcons.back,color: Colors.white,)),
+      title: const Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
         Row(
@@ -46,15 +47,15 @@ class _ResumeWorkState extends State<ResumeWork> {
       child: Column(
         children:modelList.map((e) => Center(
           child: Container(
-            decoration: BoxDecoration(color: Colors.white),
+            decoration: const BoxDecoration(color: Colors.white),
             child: ListTile(
               leading:Image.asset(e.imageData,width:45),
-              title: Text(e.title,style: TextStyle(fontSize: 18)),
+              title: Text(e.title,style: const TextStyle(fontSize: 18)),
               trailing: InkWell(
                 onTap: (){
                   Navigator.of(context).pushNamed(e.route);
                 },
-                  child: Icon(CupertinoIcons.forward)),
+                  child: const Icon(CupertinoIcons.forward)),
             ),
           ),
         )).toList(),
