@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 
 class CommonLonglineTextfield extends StatelessWidget {
   final TextEditingController controller;
-  final String hinttext;
-  final String errortext;
-  const CommonLonglineTextfield({super.key, required this.controller, required this.hinttext, required this.errortext});
+  final String hintText;
+  final String errorText;
+  const CommonLonglineTextfield({super.key, required this.controller, required this.hintText, required this.errorText,});
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +25,7 @@ class CommonLonglineTextfield extends StatelessWidget {
         maxLines: 6,
         decoration:  InputDecoration(
           border: OutlineInputBorder(),
-          hintText:hinttext,
+          hintText:hintText,
         ),
       ),
     );

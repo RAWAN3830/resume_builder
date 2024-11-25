@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:resume/presentation/common_widgets/common_buttons/common_save_button.dart';
 import 'package:resume/presentation/common_widgets/common_textfields/common_longlinetextfield.dart';
 import 'package:resume/presentation/common_widgets/common_textfields/common_require_Textfield.dart';
-import 'package:resume/strings.dart';
+import 'package:resume/core/constant/strings.dart';
 
 String? career;
 String? designation;
@@ -64,7 +64,7 @@ class _CarrierObjectiveState extends State<CarrierObjective> {
                       fontSize: 20,
                       fontWeight: FontWeight.bold),
                 ),
-                CommonLonglineTextfield(controller: careerController, hinttext: 'Description', errortext:'Enter Career Obj'),
+                CommonLonglineTextfield(controller: careerController, hintText: 'Description', errorText:'Enter Career Obj'),
 
 
                 Text(

@@ -1,11 +1,10 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class CommonRequiredTextFields extends StatelessWidget {
   final TextEditingController controller;
-  final String hinttext;
-  final String errortext;
-  const CommonRequiredTextFields({super.key, required this.controller, required this.hinttext, required this.errortext});
+  final String labelText;
+  final String errorText;
+  const CommonRequiredTextFields({super.key, required this.controller, required this.labelText, required this.errorText});
 
   @override
   Widget build(BuildContext context) {
@@ -15,15 +14,18 @@ class CommonRequiredTextFields extends StatelessWidget {
         controller: controller,
         validator: (value){
           if ( controller.text.isEmpty)
-          {return hinttext;}
+          {return labelText;}
           return null;
         },
         onSaved: (value){
           controller.text = value ?? '';
         },
         decoration: InputDecoration(
-          border: OutlineInputBorder(),
-          hintText: hinttext,),
+          border: const OutlineInputBorder(),
+        labelText: labelText,
+          labelStyle: const  TextStyle(fontFamily: 'CustomFont'),
+          errorStyle: const  TextStyle(fontFamily: 'CustomFont'),
+        ),
       ),
     );
   }

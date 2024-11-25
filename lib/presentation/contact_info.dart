@@ -5,7 +5,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:resume/presentation/common_widgets/common_buttons/common_reset_button.dart';
 import 'package:resume/presentation/common_widgets/common_textfields/comman_textformfield.dart';
 import 'package:resume/presentation/common_widgets/common_textfields/common_longlinetextfield.dart';
-import 'package:resume/strings.dart';
+import 'package:resume/core/constant/strings.dart';
 
 import 'common_widgets/common_buttons/common_save_button.dart';
 
@@ -124,10 +124,10 @@ class _ContactInfoState extends State<ContactInfo> {
                       child: Column(
                         children: [
                           CommonTextformfield(
-                            hinttext: 'Name',
+                            hintText: 'Name',
                             icon: CupertinoIcons.person_alt_circle_fill,
                             controller: nameController,
-                            errortext: 'Enter valid name',
+                            errorText: 'Enter valid name',
                           ),
 
                           const SizedBox(
@@ -135,10 +135,10 @@ class _ContactInfoState extends State<ContactInfo> {
                           ),
 
                           CommonTextformfield(
-                            hinttext: "Email",
+                            hintText: "Email",
                             icon: Icons.email,
                             controller: emailController,
-                            errortext: 'Enter valid Mail',
+                            errorText: 'Enter valid Mail',
                           ),
 
                           const SizedBox(
@@ -146,18 +146,18 @@ class _ContactInfoState extends State<ContactInfo> {
                           ),
 
                           CommonTextformfield(
-                            hinttext: 'phone',
+                            hintText: 'phone',
                             icon: Icons.phone,
                             controller: phoneController,
-                            errortext: 'Enter Phone NO',
+                            errorText: 'Enter Phone NO',
                           ),
                           const SizedBox(
                             height: 30,
                           ),
                           CommonLonglineTextfield(
                               controller: addressController,
-                              hinttext: "Address (Street , Building NO)",
-                              errortext: 'Enter Address'),
+                              hintText: "Address (Street , Building NO)",
+                              errorText: 'Enter Address'),
                           const SizedBox(
                             height: 30,
                           ),
