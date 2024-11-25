@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class CommonLonglineTextfield extends StatelessWidget {
@@ -24,7 +23,7 @@ class CommonLonglineTextfield extends StatelessWidget {
         },
         maxLines: 6,
         decoration:  InputDecoration(
-          border: OutlineInputBorder(),
+          border: const OutlineInputBorder(),
           hintText:hintText,
         ),
       ),

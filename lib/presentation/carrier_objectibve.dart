@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:resume/presentation/common_widgets/common_buttons/common_save_button.dart';
 import 'package:resume/presentation/common_widgets/common_textfields/common_longlinetextfield.dart';
 import 'package:resume/presentation/common_widgets/common_textfields/common_require_Textfield.dart';
-import 'package:resume/core/constant/strings.dart';
 
 String? career;
 String? designation;
@@ -57,7 +56,7 @@ class _CarrierObjectiveState extends State<CarrierObjective> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
+                const Text(
                   'Career Objective',
                   style: TextStyle(
                       color: Colors.blue,
@@ -67,7 +66,7 @@ class _CarrierObjectiveState extends State<CarrierObjective> {
                 CommonLonglineTextfield(controller: careerController, hintText: 'Description', errorText:'Enter Career Obj'),
 
 
-                Text(
+                const Text(
                   'Current Designation (Experienced Candidate)',
                   style: TextStyle(
                       color: Colors.blue,
@@ -77,8 +76,8 @@ class _CarrierObjectiveState extends State<CarrierObjective> {
 
                 CommonRequiredTextFields(
                     controller: designationController,
-                    hinttext: 'Software Engineer',
-                    errortext: 'Designation require',
+                    labelText: 'Software Engineer',
+                    errorText: 'Designation require',
                    ),
                 const SizedBox(
                   height: 20,
