@@ -57,23 +57,23 @@ class _ProjectEmpState extends State<ProjectEmp> {
          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
 
-            Text('Project Title',style: TextStyle(color: Colors.blue,fontSize:20,fontWeight: FontWeight.bold
+            const Text('Project Title',style: TextStyle(color: Colors.blue,fontSize:20,fontWeight: FontWeight.bold
             ),),
-            CommonRequiredTextFields(controller: projectController, hinttext: 'Project Title', errortext: 'enter project title'),
+            CommonRequiredTextFields(controller: projectController, labelText: 'Project Title', errorText: 'enter project title'),
 
 
-            Text('Roles',style: TextStyle(color: Colors.blue,fontSize:20,fontWeight: FontWeight.bold
+            const Text('Roles',style: TextStyle(color: Colors.blue,fontSize:20,fontWeight: FontWeight.bold
             ),),
-            CommonRequiredTextFields(controller: roleController, hinttext: 'Manager , Analysist', errortext: 'Enter Role'),
+            CommonRequiredTextFields(controller: roleController, labelText: 'Manager , Analysist', errorText: 'Enter Role'),
 
-            Text('Technologies',style: TextStyle(color: Colors.blue,fontSize:20,fontWeight: FontWeight.bold
+            const Text('Technologies',style: TextStyle(color: Colors.blue,fontSize:20,fontWeight: FontWeight.bold
             ),),
-            CommonRequiredTextFields(controller: techController, hinttext: 'Max 5 Language', errortext: "Enter Technologies"),
+            CommonRequiredTextFields(controller: techController, labelText: 'Max 5 Language', errorText: "Enter Technologies"),
 
 
-            Text('Project Description',style: TextStyle(color: Colors.blue,fontSize:20,fontWeight: FontWeight.bold
+            const Text('Project Description',style: TextStyle(color: Colors.blue,fontSize:20,fontWeight: FontWeight.bold
             ),),
-            CommonRequiredTextFields(controller: descriptionController, hinttext: "Description", errortext: "Enter Description"),
+            CommonRequiredTextFields(controller: descriptionController, labelText: "Description", errorText: "Enter Description"),
 
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
