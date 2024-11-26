@@ -4,15 +4,15 @@ import 'package:flutter/material.dart';
 class CommonTextformfield extends StatelessWidget {
   // final String name;
   final TextEditingController controller;
-  final String hinttext;
-  final String errortext;
+  final String hintText;
+  final String errorText;
   final IconData icon;
   const CommonTextformfield(
       {super.key,
-      required this.hinttext,
+      required this.hintText,
       required this.icon,
       required this.controller,
-        required this.errortext});
+        required this.errorText});
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +30,7 @@ class CommonTextformfield extends StatelessWidget {
         keyboardType: TextInputType.name,
         maxLength: 10,
         decoration:  InputDecoration(
-          hintText: hinttext,
+          hintText: hintText,
             // hintText: 'Name',
             // prefixIcon: Icon(CupertinoIcons.person_alt_circle_fill, size: 30)
           prefixIcon: Icon(icon)
