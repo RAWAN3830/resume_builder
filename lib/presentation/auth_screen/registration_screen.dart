@@ -23,12 +23,14 @@ class RegistrationScreen extends StatelessWidget {
         child: Padding(
           padding:  EdgeInsets.all(context.height(context)*0.01).copyWith(top: context.height(context)*0.1),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const Text(
                 Strings.registration,
                 style: TextStyle(
                   fontFamily: 'CustomFont',
-                  fontSize: 30,
+                  fontSize: 32,
+                  fontWeight: FontWeight.bold
                 ),
               ),
               SizedBox(height: varHeight),

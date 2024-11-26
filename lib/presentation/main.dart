@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:resume/presentation/home_screen/home_screen.dart';
 import 'auth_screen/registration_screen.dart';
 
 void main() {
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
         useMaterial3: true,
       ),
-      home: const RegistrationScreen(),
+      home: const HomeScreen(),
     );
   }
 }

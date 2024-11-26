@@ -1,7 +1,7 @@
 class Strings{
   static const String save = 'Save & Continue';
   static const String reset = 'Reset';
-  static const String registration = 'Registration';
+  static const String registration = 'Registration .';
 
   // labelText
   static const String labelTextForUserName = 'UserName';
@@ -12,4 +12,8 @@ class Strings{
   static const String errorTextForPassword = 'Enter a Password';
   static const String errorTextForEmail = 'Enter a Email';
   static const String errorTextForUserName = 'Enter a UserName';
+
+  //HomeScreen
+  static const String homeScreenTitle = 'Resume Workspace .';
+
 }
