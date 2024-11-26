@@ -51,7 +51,7 @@ class _PersonalDetailsState extends State<PersonalDetails> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
+            const Text(
               'DOB',
               style: TextStyle(
                   color: Colors.blue,
@@ -69,7 +69,7 @@ class _PersonalDetailsState extends State<PersonalDetails> {
               ),
             ),
 
-            Text(
+            const Text(
               'Merital Status',
               style: TextStyle(
                   color: Colors.blue,
@@ -104,7 +104,7 @@ class _PersonalDetailsState extends State<PersonalDetails> {
             //     g = value!;
             //   });
             // },title:Text('Merried') ,),
-            Text(
+            const Text(
               'Languages Known',
               style: TextStyle(
                   color: Colors.blue,
@@ -145,7 +145,7 @@ class _PersonalDetailsState extends State<PersonalDetails> {
                   style: TextStyle(fontSize: 20),
                 )),
 
-            Text(
+            const Text(
               'Nationality',
               style: TextStyle(
                   color: Colors.blue,

@@ -5,7 +5,6 @@ import 'package:image_picker/image_picker.dart';
 import 'package:resume/presentation/common_widgets/common_buttons/common_reset_button.dart';
 import 'package:resume/presentation/common_widgets/common_textfields/comman_textformfield.dart';
 import 'package:resume/presentation/common_widgets/common_textfields/common_longlinetextfield.dart';
-import 'package:resume/core/constant/strings.dart';
 
 import 'common_widgets/common_buttons/common_save_button.dart';
 

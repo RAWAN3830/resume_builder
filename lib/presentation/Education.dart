@@ -61,19 +61,19 @@ class _EducationInfoState extends State<EducationInfo> {
                const SizedBox(height: 10,),
                 const Text('Course/Degree',style: TextStyle(color: Colors.blue,fontSize:20,fontWeight: FontWeight.bold
                  ),),
-              CommonRequiredTextFields(controller: courseController, hinttext: 'Degree Info', errortext:'enter degree info'),
+              CommonRequiredTextFields(controller: courseController, labelText: 'Degree Info', errorText:'enter degree info'),
                const SizedBox(height: 10,),
                const Text('School/Collage/institute',style: TextStyle(color: Colors.blue,fontSize:20,fontWeight: FontWeight.bold
                ),),
-              CommonRequiredTextFields(controller: collageController, hinttext: 'Collage Name', errortext: 'Enter Collage Name'),
+              CommonRequiredTextFields(controller: collageController, labelText: 'Collage Name', errorText: 'Enter Collage Name'),
                const SizedBox(height: 10,),
                const Text('CGPA / SGPA',style: TextStyle(color: Colors.blue,fontSize:20,fontWeight: FontWeight.bold
                ),),
-              CommonRequiredTextFields(controller: cgpaController, hinttext: '70 % (or) 7.0 CGPA', errortext: "Enter CGPA"),
+              CommonRequiredTextFields(controller: cgpaController, labelText: '70 % (or) 7.0 CGPA', errorText: "Enter CGPA"),
                const SizedBox(height: 10,),
                const Text('Year Of Pass',style: TextStyle(color: Colors.blue,fontSize:20,fontWeight: FontWeight.bold
                ),),
-               CommonRequiredTextFields(controller: passingyearController, hinttext: '2020', errortext: "Enter Year"),
+               CommonRequiredTextFields(controller: passingyearController, labelText: '2020', errorText: "Enter Year"),
                const SizedBox(height: 20,),
 
                Row(
