@@ -20,7 +20,7 @@ class SignUpButton extends StatelessWidget {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(5),
           border: Border.all(
-              width: context.width(context) * 0.003, color: ThemeColors.black),
+              width: context.width(context) * 0.001, color: ThemeColors.black),
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,

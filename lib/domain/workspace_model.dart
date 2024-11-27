@@ -1,5 +1,7 @@
 import 'package:flutter_svg/flutter_svg.dart';
 
+import '../core/constant/assets_svg_image.dart';
+
 class WorkSpaceModel{
   final SvgPicture icon;
   final String title;
@@ -7,17 +9,17 @@ class WorkSpaceModel{
   WorkSpaceModel({required this.icon, required this.title});
 }
 
-List<WorkSpaceModel> workSpaceModelList = <WorkSpaceModel>[
-  WorkSpaceModel(icon: SvgPicture.asset('assets/icons/contact_info.svg') , title: 'Contact_info'),
-  WorkSpaceModel(icon: SvgPicture.asset('assets/icons/carrier_objective.svg') , title: 'Carrier_objective'),
-  WorkSpaceModel(icon: SvgPicture.asset('assets/icons/personal_details.svg') , title: 'Personal_details'),
-  WorkSpaceModel(icon: SvgPicture.asset('assets/icons/education.svg') , title: 'Education'),
-  WorkSpaceModel(icon: SvgPicture.asset('assets/icons/experience.svg') , title: 'Experience'),
-  WorkSpaceModel(icon: SvgPicture.asset('assets/icons/technical_skill.svg') , title: 'Technical_skill'),
-  WorkSpaceModel(icon: SvgPicture.asset('assets/icons/hobbies.svg') , title: 'Hobbies'),
-  WorkSpaceModel(icon: SvgPicture.asset('assets/icons/projects.svg') , title: 'Projects'),
-  WorkSpaceModel(icon: SvgPicture.asset('assets/icons/achivements.svg') , title: 'Achivements'),
-  WorkSpaceModel(icon: SvgPicture.asset('assets/icons/references.svg') , title: 'References'),
-  WorkSpaceModel(icon: SvgPicture.asset('assets/icons/declaration.svg') , title: 'Declaration'),
+List<WorkSpaceModel> workSpaceModelList = [
+  WorkSpaceModel(icon: SvgPicture.asset(AssetsSvgImage.contactInfo) , title: 'Contact_info'),
+  WorkSpaceModel(icon: SvgPicture.asset(AssetsSvgImage.carrierObjective) , title: 'Carrier_objective'),
+  WorkSpaceModel(icon: SvgPicture.asset(AssetsSvgImage.personalDetails) , title: 'Personal_details'),
+  WorkSpaceModel(icon: SvgPicture.asset(AssetsSvgImage.education) , title: 'Education'),
+  WorkSpaceModel(icon: SvgPicture.asset(AssetsSvgImage.experience) , title: 'Experience'),
+  WorkSpaceModel(icon: SvgPicture.asset(AssetsSvgImage.technicalSkill) , title: 'Technical_skill'),
+  WorkSpaceModel(icon: SvgPicture.asset(AssetsSvgImage.hobbies) , title: 'Hobbies'),
+  WorkSpaceModel(icon: SvgPicture.asset(AssetsSvgImage.projects) , title: 'Projects'),
+  WorkSpaceModel(icon: SvgPicture.asset(AssetsSvgImage.achievement) , title: 'Achievements'),
+  WorkSpaceModel(icon: SvgPicture.asset(AssetsSvgImage.references) , title: 'References'),
+  WorkSpaceModel(icon: SvgPicture.asset(AssetsSvgImage.declaration) , title: 'Declaration'),
 
 ];
