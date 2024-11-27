@@ -4,6 +4,9 @@ import 'package:resume/core/constant/theme_colors.dart';
 import 'package:resume/domain/workspace_model.dart';
 import 'package:resume/presentation/common_widgets/common_richtext/common_richtext.dart';
 import 'package:resume/presentation/home_screen/details_card.dart';
+//TODO:create a Navigator for all screen
+// Solution : 1. create switch-case 2. create Navigator path in list
+// 3. give paht using if else
 
 import '../../core/constant/strings.dart';
 
@@ -45,8 +48,6 @@ class _HomeScreenState extends State<HomeScreen> {
           ],
         ),
       )
-          
-
     );
   }
 }
