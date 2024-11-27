@@ -17,7 +17,7 @@ class LoginScreen extends StatelessWidget {
     TextEditingController passwordController = TextEditingController();
 
     final formKey = GlobalKey<FormState>();
-    var varHeight = context.height(context) * 0.03;
+    var varHeight = context.height(context) * 0.02;
 
     return Scaffold(
       resizeToAvoidBottomInset: true,
