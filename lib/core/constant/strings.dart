@@ -1,7 +1,14 @@
 class Strings{
-  static const String save = 'Save & Continue';
+
+  //Fonts
+  static const String uberFont = 'UberFont';
+
+  //Button
   static const String reset = 'Reset';
-  static const String registration = 'Registration .';
+  static const String registration = 'Registration';
+  static const String login = 'Login';
+  static const String googleLogin = 'Continue With Google';
+  static const String or = 'OR';
 
   // labelText
   static const String labelTextForUserName = 'UserName';
@@ -13,7 +20,6 @@ class Strings{
   static const String errorTextForEmail = 'Enter a Email';
   static const String errorTextForUserName = 'Enter a UserName';
 
-  //HomeScreen
-  static const String homeScreenTitle = 'Resume Workspace .';
-
+  //Home screen
+  static const String homeScreenTitle = 'Resume WorkSpace';
 }

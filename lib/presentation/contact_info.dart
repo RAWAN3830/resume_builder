@@ -163,7 +163,7 @@ class _ContactInfoState extends State<ContactInfo> {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceAround,
                             children: [
-                             CommonSaveButton(formKey: formKey),
+                             CommonSaveButton(formKey: formKey, buttonTitle: '',),
                               CommonResetButton(formKey: formKey)
                             ],
                           ),

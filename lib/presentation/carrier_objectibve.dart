@@ -82,7 +82,7 @@ class _CarrierObjectiveState extends State<CarrierObjective> {
                 const SizedBox(
                   height: 20,
                 ),
-                CommonSaveButton(formKey: formKey)
+                CommonSaveButton(formKey: formKey, buttonTitle: '',)
               ],
             ),
           ),

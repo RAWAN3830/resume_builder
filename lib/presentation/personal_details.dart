@@ -163,7 +163,7 @@ class _PersonalDetailsState extends State<PersonalDetails> {
               ),
             ),
 
-              Center(child: CommonSaveButton(formKey:formKey,))
+              Center(child: CommonSaveButton(formKey:formKey, buttonTitle: '',))
 
             // Switch(value: true, onChanged: (value){
             //  })

@@ -9,7 +9,7 @@ class CommonSaveButton extends StatelessWidget {
 
   const CommonSaveButton({
     super.key,
-    required this.formKey,
+    required this.formKey, required String buttonTitle,
   });
 
 
