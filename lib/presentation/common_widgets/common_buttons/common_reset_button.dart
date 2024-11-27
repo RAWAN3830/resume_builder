@@ -6,14 +6,11 @@ class CommonResetButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Center(
-      child: ElevatedButton(
-          style: ButtonStyle(
-              backgroundColor:MaterialStateColor.resolveWith((states) => Colors.blue)),
-          onPressed: () {
-            formKey.currentState!.reset();
-          },
-          child: const Text('Reset',style: TextStyle(fontSize: 18,color: Colors.white))),
-    );
+    return  ElevatedButton(
+        style: ButtonStyle(
+        ),
+        // backgroundColor:WidgetStateColor.resolveWith((states) => Colors.blue)),
+        onPressed: () {  formKey.currentState!.reset(); },
+        child: const Text('Reset',style: TextStyle(fontSize: 18,color: Colors.white)));
   }
 }
