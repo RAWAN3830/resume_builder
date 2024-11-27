@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:resume/core/constant/assets_svg_image.dart';
 import 'package:resume/core/constant/extension.dart';
 import 'package:resume/core/constant/strings.dart';
+import 'package:resume/core/constant/theme_colors.dart';
 import 'package:resume/presentation/common_widgets/common_buttons/common_save_button.dart';
+import 'package:resume/presentation/common_widgets/common_buttons/sign_up_button.dart';
 import 'package:resume/presentation/common_widgets/common_textfields/common_require_Textfield.dart';
 
 class RegistrationScreen extends StatelessWidget {
@@ -14,26 +18,35 @@ class RegistrationScreen extends StatelessWidget {
     TextEditingController passwordController = TextEditingController();
 
     final formKey = GlobalKey<FormState>();
-    var varHeight = context.height(context)*0.025;
-
+    var varHeight = context.height(context) * 0.03;
 
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: Form(
         key: formKey,
         child: Padding(
-          padding:  EdgeInsets.all(context.height(context)*0.01).copyWith(top: context.height(context)*0.1),
+          padding: EdgeInsets.all(context.height(context) * 0.02)
+              .copyWith(top: context.height(context) * 0.085),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
+              Text(
                 Strings.registration,
                 style: TextStyle(
-                  fontFamily: 'CustomFont',
-                  fontSize: 32,
-                  fontWeight: FontWeight.bold
+                    fontFamily: Strings.uberFont,
+                    fontSize: context.width(context) * 0.1,
+                    fontWeight: FontWeight.w500),
+              ),
+              Center(
+                child: Padding(
+                  padding: EdgeInsets.all(context.height(context) * 0.015),
+                  child: SvgPicture.asset(
+                    AssetsSvgImage.registrationImage,
+                    height: context.height(context) * 0.25,
+                    fit: BoxFit.cover,
+                  ),
                 ),
               ),
-              SizedBox(height: varHeight),
               CommonRequiredTextFields(
                   controller: nameController,
                   labelText: Strings.labelTextForUserName,
@@ -48,22 +61,40 @@ class RegistrationScreen extends StatelessWidget {
                   controller: passwordController,
                   labelText: Strings.labelTextForPassword,
                   errorText: Strings.errorTextForPassword),
-              SizedBox(height: varHeight),
-              const Row(
-                children: [
-                  Expanded(child: Divider()),
-                  Text(
-                    'OR',
-                    style: TextStyle(
-                      fontFamily: 'CustomFont',
-                      fontSize: 16,
+              Padding(
+                padding: EdgeInsets.only(
+                    top: context.height(context) * 0.025,
+                    bottom: context.height(context) * 0.03),
+                child: Row(
+                  children: [
+                    Expanded(
+                        child: Divider(
+                            color: ThemeColors.black,
+                            endIndent: context.width(context) * 0.03)),
+                    Text(
+                      Strings.or,
+                      style: TextStyle(
+                        fontFamily: Strings.uberFont,
+                        fontSize: context.width(context) * 0.045,
+                      ),
                     ),
-                  ),
-                  Expanded(child: Divider())
-                ],
+                    Expanded(
+                        child: Divider(
+                      color: ThemeColors.black,
+                      indent: context.width(context) * 0.03,
+                    ))
+                  ],
+                ),
               ),
-              SizedBox(height: varHeight),
-              CommonSaveButton(formKey: formKey)
+              const SignUpButton(
+                buttonImage: AssetsSvgImage.googleImage,
+                buttonTitle: Strings.googleLogin,
+              ),
+              SizedBox(height: context.height(context) * 0.05),
+              CommonSaveButton(
+                formKey: formKey,
+                buttonTitle: Strings.registration,
+              )
             ],
           ),
         ),

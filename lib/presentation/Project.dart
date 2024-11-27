@@ -78,7 +78,7 @@ class _ProjectEmpState extends State<ProjectEmp> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                CommonSaveButton(formKey: formKey),
+                CommonSaveButton(formKey: formKey, buttonTitle: '',),
                 CommonResetButton(formKey: formKey)
               ],
             ),

@@ -37,6 +37,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   image_picker:
   neopop:
+  flutter_svg:
 
 
 dev_dependencies:
@@ -66,6 +67,7 @@ flutter:
   assets:
       - assets/icons/
       - assets/illustrator/
+      - assets/auth_images/
      #- images/pngwing.png
 
 
@@ -82,12 +84,12 @@ flutter:
   # example:
   fonts:
 
-     - family: CustomFont
-       fonts:
-         - asset: assets/fonts/UberMoveTextMedium.ttf
-         - asset: assets/fonts/UberMoveTextRegular.ttf
-         - asset: assets/fonts/UberMoveTextLight.ttf
-         - asset: assets/fonts/UberMoveTextBold.ttf
+    - family: UberFont
+      fonts:
+        - asset: assets/fonts/UberMoveTextMedium.ttf
+        - asset: assets/fonts/UberMoveTextRegular.ttf
+        - asset: assets/fonts/UberMoveTextLight.ttf
+        - asset: assets/fonts/UberMoveTextBold.ttf
   #         style: italic
   #   - family: Trajan Pro
   #     fonts:
