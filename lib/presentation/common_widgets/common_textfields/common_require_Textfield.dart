@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:resume/core/constant/strings.dart';
 
 class CommonRequiredTextFields extends StatelessWidget {
   final TextEditingController controller;
@@ -11,7 +12,8 @@ class CommonRequiredTextFields extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(15.0),
       child: TextFormField(
-        style: TextStyle(
+        style: const TextStyle(
+          fontFamily: Strings.uberFont,
           fontSize: 20,
           fontWeight: FontWeight.bold,
         ),
@@ -26,7 +28,7 @@ class CommonRequiredTextFields extends StatelessWidget {
           controller.text = value ?? '';
         },
         decoration: InputDecoration(
-          border: OutlineInputBorder(
+          border: const OutlineInputBorder(
             borderSide: BorderSide(
               color: Colors.black,
               width: 2.5,
@@ -38,24 +40,24 @@ class CommonRequiredTextFields extends StatelessWidget {
               width: 2.0,
             ),
           ),
-          focusedBorder: OutlineInputBorder(
+          focusedBorder: const OutlineInputBorder(
             borderSide: BorderSide(
               color: Colors.black,
               width: 2.5,
             ),
           ),
-          errorBorder: OutlineInputBorder(
+          errorBorder: const OutlineInputBorder(
             borderSide: BorderSide(
               color: Colors.red,
               width: 2.0,
             ),
           ),
           labelText: labelText,
-          labelStyle: TextStyle(
-            fontFamily: 'CustomFont',
+          labelStyle: const TextStyle(
+            fontFamily: Strings.uberFont,
           ),
-          errorStyle: TextStyle(
-            fontFamily: 'CustomFont',
+          errorStyle: const TextStyle(
+            fontFamily: Strings.uberFont,
           ),
         ),
       )

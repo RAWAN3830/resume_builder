@@ -18,84 +18,83 @@ class RegistrationScreen extends StatelessWidget {
     TextEditingController passwordController = TextEditingController();
 
     final formKey = GlobalKey<FormState>();
-    var varHeight = context.height(context) * 0.03;
+    var varHeight = context.height(context) * 0.02;
 
     return Scaffold(
-      resizeToAvoidBottomInset: false,
-      body: Form(
-        key: formKey,
-        child: Padding(
-          padding: EdgeInsets.all(context.height(context) * 0.02)
-              .copyWith(top: context.height(context) * 0.085),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                Strings.registration,
-                style: TextStyle(
-                    fontFamily: Strings.uberFont,
-                    fontSize: context.width(context) * 0.1,
-                    fontWeight: FontWeight.w500),
-              ),
-              Center(
-                child: Padding(
-                  padding: EdgeInsets.all(context.height(context) * 0.015),
-                  child: SvgPicture.asset(
-                    AssetsSvgImage.registrationImage,
-                    height: context.height(context) * 0.25,
-                    fit: BoxFit.cover,
+      resizeToAvoidBottomInset: true,
+      body: SingleChildScrollView(
+        child: Form(
+          key: formKey,
+          child: Padding(
+            padding: EdgeInsets.all(context.height(context) * 0.02)
+                .copyWith(top: context.height(context) * 0.085),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  Strings.registration,
+                  style: TextStyle(
+                      fontFamily: Strings.uberFont,
+                      fontSize: context.width(context) * 0.1,
+                      fontWeight: FontWeight.w600),
+                ),
+                Center(
+                  child: Padding(
+                    padding: EdgeInsets.all(context.height(context) * 0.015),
+                    child: SvgPicture.asset(
+                      AssetsSvgImage.registrationImage,
+                      height: context.height(context) * 0.25,
+                      fit: BoxFit.cover,
+                    ),
                   ),
                 ),
-              ),
-              CommonRequiredTextFields(
-                  controller: nameController,
-                  labelText: Strings.labelTextForUserName,
-                  errorText: Strings.errorTextForUserName),
-              SizedBox(height: varHeight),
-              CommonRequiredTextFields(
-                  controller: emailController,
-                  labelText: Strings.labelTextForEmail,
-                  errorText: Strings.errorTextForEmail),
-              SizedBox(height: varHeight),
-              CommonRequiredTextFields(
-                  controller: passwordController,
-                  labelText: Strings.labelTextForPassword,
-                  errorText: Strings.errorTextForPassword),
-              Padding(
-                padding: EdgeInsets.only(
-                    top: context.height(context) * 0.025,
-                    bottom: context.height(context) * 0.03),
-                child: Row(
-                  children: [
-                    Expanded(
-                        child: Divider(
-                            color: ThemeColors.black,
-                            endIndent: context.width(context) * 0.03)),
-                    Text(
-                      Strings.or,
-                      style: TextStyle(
-                        fontFamily: Strings.uberFont,
-                        fontSize: context.width(context) * 0.045,
+                CommonRequiredTextFields(
+                    controller: nameController,
+                    labelText: Strings.labelTextForUserName,
+                    errorText: Strings.errorTextForUserName),
+                SizedBox(height: varHeight),
+                CommonRequiredTextFields(
+                    controller: emailController,
+                    labelText: Strings.labelTextForEmail,
+                    errorText: Strings.errorTextForEmail),
+                SizedBox(height: varHeight),
+                CommonRequiredTextFields(
+                    controller: passwordController,
+                    labelText: Strings.labelTextForPassword,
+                    errorText: Strings.errorTextForPassword),
+                Padding(
+                  padding: EdgeInsets.only(
+                      top: context.height(context) * 0.025,
+                      bottom: context.height(context) * 0.03),
+                  child: Row(
+                    children: [
+                      Expanded(
+                          child: Divider(
+                              color: ThemeColors.black,
+                              endIndent: context.width(context) * 0.03)),
+                      Text(
+                        Strings.or,
+                        style: TextStyle(
+                          fontFamily: Strings.uberFont,
+                          fontSize: context.width(context) * 0.045,
+                        ),
                       ),
-                    ),
-                    Expanded(
-                        child: Divider(
-                      color: ThemeColors.black,
-                      indent: context.width(context) * 0.03,
-                    ))
-                  ],
+                      Expanded(
+                          child: Divider(
+                            color: ThemeColors.black,
+                            indent: context.width(context) * 0.03,
+                          ))
+                    ],
+                  ),
                 ),
-              ),
-              const SignUpButton(
-                buttonImage: AssetsSvgImage.googleImage,
-                buttonTitle: Strings.googleLogin,
-              ),
-              SizedBox(height: context.height(context) * 0.05),
-              CommonSaveButton(
-                formKey: formKey,
-                buttonTitle: Strings.registration,
-              )
-            ],
+                const SignUpButton(
+                  buttonImage: AssetsSvgImage.googleImage,
+                  buttonTitle: Strings.googleLogin,
+                ),
+                SizedBox(height: context.height(context) * 0.05),
+                CommonSaveButton(formKey: formKey, buttonTitle: Strings.login,)
+              ],
+            ),
           ),
         ),
       ),
