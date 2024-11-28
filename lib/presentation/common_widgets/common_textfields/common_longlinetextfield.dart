@@ -8,24 +8,31 @@ class CommonLonglineTextfield extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Padding(
-      padding: const EdgeInsets.all(15.0),
-      child: TextFormField(
-        controller: controller,
-        validator: (value) {
-          if (controller.text.isEmpty) {
-            return 'Enter Career Obj';
-          }
-          return null;
-        },
-        onSaved: (value) {
-          controller.text = value ?? '';
-        },
-        maxLines: 6,
-        decoration:  InputDecoration(
-          border: const OutlineInputBorder(),
-          hintText:hintText,
+    return  TextFormField(
+      controller: controller,
+      validator: (value) {
+        if (controller.text.isEmpty) {
+          return 'Enter Required Value';
+        }
+        return null;
+      },
+      onSaved: (value) {
+        controller.text = value ?? '';
+      },
+      maxLines: 6,
+      decoration: InputDecoration(
+        border: OutlineInputBorder(
+          borderSide: BorderSide(color: Colors.black, width: 2),
         ),
+        focusedBorder: OutlineInputBorder(
+          borderSide: BorderSide(color: Colors.black, width: 2),
+        ),
+        enabledBorder: OutlineInputBorder(
+          borderSide: BorderSide(color: Colors.black, width: 2),
+        ),
+        // hintText: hintText,
+        labelText:hintText,
+          labelStyle: TextStyle(color: Colors.black),
       ),
     );
   }

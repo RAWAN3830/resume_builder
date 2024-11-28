@@ -21,17 +21,17 @@ class CommonRequiredTextFields extends StatefulWidget {
 class _CommonRequiredTextFieldsState extends State<CommonRequiredTextFields> {
    FocusNode? _focusNode;
 
-  @override
-  void initState() {
-    super.initState();
-     _focusNode = FocusNode();
-  }
-
-  @override
-  void dispose() {
-    _focusNode?.dispose();
-    super.dispose();
-  }
+  // @override
+  // void initState() {
+  //   super.initState();
+  //    _focusNode = FocusNode();
+  // }
+  //
+  // @override
+  // void dispose() {
+  //   _focusNode?.dispose();
+  //   super.dispose();
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -67,12 +67,12 @@ class _CommonRequiredTextFieldsState extends State<CommonRequiredTextFields> {
               width: 2.0,
             ),
           ),
-          // focusedBorder: const OutlineInputBorder(
-          //   borderSide: BorderSide(
-          //     color: Colors.black,
-          //     width: 2.5,
-          //   ),
-          // ),
+          focusedBorder: const OutlineInputBorder(
+            borderSide: BorderSide(
+              color: Colors.black,
+              width: 2.5,
+            ),
+          ),
           errorBorder: const OutlineInputBorder(
             borderSide: BorderSide(
               color: Colors.red,

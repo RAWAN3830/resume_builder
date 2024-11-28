@@ -42,13 +42,13 @@ class CommonSaveButton extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 15),
         child: Center(
           child: SizedBox(
-            height: context.width(context) * 0.06,
+            height: context.width(context) * 0.07,
             width: context.width(context) * 0.6,
             child:  Center(
                 child: Text(Strings.registration,
                     style: TextStyle(
                         fontFamily: Strings.uberFont,
-                        fontSize: context.width(context) * 0.055,
+                        fontSize: context.width(context) * 0.050,
                         fontWeight: FontWeight.bold))),
           ),
         ),
