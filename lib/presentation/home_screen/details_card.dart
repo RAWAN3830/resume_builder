@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:resume/core/constant/extension.dart';
+import 'package:resume/core/constant/theme_colors.dart';
 import 'package:resume/domain/workspace_model.dart';
 
 import '../../core/constant/strings.dart';
@@ -96,7 +97,7 @@ class DetailsCard extends StatelessWidget {
             ),
           ],
           borderRadius: BorderRadius.circular(5),
-          color: Colors.black,
+          color: ThemeColors.black,
 
         ),
         child: Column(crossAxisAlignment: CrossAxisAlignment.center, children: [

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:resume/core/constant/extension.dart';
-import 'package:resume/core/constant/theme_colors.dart';
 import 'package:resume/domain/workspace_model.dart';
 import 'package:resume/presentation/common_widgets/common_richtext/common_richtext.dart';
 import 'package:resume/presentation/home_screen/details_card.dart';

@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:resume/core/constant/extension.dart';
+import 'package:resume/core/constant/theme_colors.dart';
 
 import '../../../core/constant/strings.dart';
 
@@ -12,10 +14,10 @@ class CommonRichText extends StatelessWidget {
     return RichText(
       text:  TextSpan(
         style:  TextStyle(
-            fontFamily: 'CustomFont',
-            fontSize: 32,
-            color: Colors.black,
-            fontWeight: FontWeight.w500
+            fontFamily: Strings.uberFont,
+            color: ThemeColors.black,
+            fontSize: context.width(context) * 0.08,
+            fontWeight: FontWeight.w600,
         ),
         children: <TextSpan>[
           TextSpan(text: title),
