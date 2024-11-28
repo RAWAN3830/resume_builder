@@ -7,14 +7,14 @@ String? title;
 String? roles;
 String? technologies;
 String? descripation;
-class ProjectEmp extends StatefulWidget {
-  const ProjectEmp({super.key});
+class ProjectInfo extends StatefulWidget {
+  const ProjectInfo({super.key});
 
   @override
-  State<ProjectEmp> createState() => _ProjectEmpState();
+  State<ProjectInfo> createState() => _ProjectInfoState();
 }
 
-class _ProjectEmpState extends State<ProjectEmp> {
+class _ProjectInfoState extends State<ProjectInfo> {
   TextEditingController projectController = TextEditingController();
   TextEditingController roleController = TextEditingController();
   TextEditingController techController = TextEditingController();

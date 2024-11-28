@@ -40,7 +40,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 itemCount: workSpaceModelList.length,
                 itemBuilder: (context, index) {
-                  return DetailsCard(workmodel: workSpaceModelList[index]);
+                  return DetailsCard(workmodel: workSpaceModelList[index], index: index,);
                 },
               ),
             ),
