@@ -5,6 +5,7 @@ import 'package:resume/core/constant/extension.dart';
 import 'package:resume/core/constant/strings.dart';
 import 'package:resume/presentation/common_widgets/common_buttons/common_save_button.dart';
 import 'package:resume/presentation/common_widgets/common_buttons/sign_up_button.dart';
+import 'package:resume/presentation/common_widgets/common_richtext/common_richtext.dart';
 import 'package:resume/presentation/common_widgets/common_textfields/common_require_Textfield.dart';
 import '../../core/constant/theme_colors.dart';
 
@@ -30,13 +31,12 @@ class LoginScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  Strings.login,
-                  style: TextStyle(
-                      fontFamily: Strings.uberFont,
-                      fontSize: context.width(context) * 0.1,
-                      fontWeight: FontWeight.w600),
-                ),
+                CommonRichText(title: Strings.login),
+                // Text(
+                //   Strings.login,
+                //   style: TextStyle(
+
+                // ),
                 Center(
                   child: Padding(
                     padding: EdgeInsets.all(context.height(context) * 0.015),

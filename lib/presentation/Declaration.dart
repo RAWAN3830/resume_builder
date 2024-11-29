@@ -1,18 +1,18 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-String? Declarations;
+// String? Declarations;
 // String? date1;
 // String? place;
-class declaration extends StatefulWidget {
-  const declaration({super.key});
+class Declaration extends StatefulWidget {
+  const Declaration({super.key});
 
   @override
-  State<declaration> createState() => _declarationState();
+  State<Declaration> createState() => _DeclarationState();
 }
 
-class _declarationState extends State<declaration> {
-  TextEditingController declarationController = TextEditingController();
+class _DeclarationState extends State<Declaration> {
+  TextEditingController DeclarationController = TextEditingController();
   // TextEditingController dateController = TextEditingController();
   // TextEditingController placeController = TextEditingController();
  final formKey = GlobalKey<FormState>();
@@ -22,7 +22,7 @@ class _declarationState extends State<declaration> {
   @override
   void initState() {
     // TODO: implement initState
-    declarationController.text = Declarations!;
+    // DeclarationController.text = Declarations!;
     // dateController.text = date1!;
     // placeController.text = place!;
     super.initState();
@@ -99,14 +99,14 @@ class _declarationState extends State<declaration> {
                   Padding(
                     padding: const EdgeInsets.only(top:10,left: 30,right: 30),
                     child: TextFormField(
-                      controller: declarationController,
+                      controller: DeclarationController,
                       validator: (value){
                         if(value!.isEmpty)
                         {return 'Marketing';}
                         return null;
                       },
                       onSaved: (value){
-                        Declarations = value;
+                        // Declarations = value;
                       },
                       decoration: const InputDecoration(
                         border: OutlineInputBorder(),

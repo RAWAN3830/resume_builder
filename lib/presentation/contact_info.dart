@@ -124,7 +124,7 @@ class _ContactInfoState extends State<ContactInfo> {
                         children: [
                           CommonTextformfield(
                             hintText: 'Name',
-                            icon: CupertinoIcons.person_alt_circle_fill,
+                            // icon: CupertinoIcons.person_alt_circle_fill,
                             controller: nameController,
                             errorText: 'Enter valid name',
                           ),
@@ -135,7 +135,7 @@ class _ContactInfoState extends State<ContactInfo> {
 
                           CommonTextformfield(
                             hintText: "Email",
-                            icon: Icons.email,
+                            //icon: Icons.email,
                             controller: emailController,
                             errorText: 'Enter valid Mail',
                           ),
@@ -146,7 +146,7 @@ class _ContactInfoState extends State<ContactInfo> {
 
                           CommonTextformfield(
                             hintText: 'phone',
-                            icon: Icons.phone,
+                            // icon: Icons.phone,
                             controller: phoneController,
                             errorText: 'Enter Phone NO',
                           ),

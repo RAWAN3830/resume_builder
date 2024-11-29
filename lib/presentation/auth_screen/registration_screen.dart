@@ -6,6 +6,7 @@ import 'package:resume/core/constant/strings.dart';
 import 'package:resume/core/constant/theme_colors.dart';
 import 'package:resume/presentation/common_widgets/common_buttons/common_save_button.dart';
 import 'package:resume/presentation/common_widgets/common_buttons/sign_up_button.dart';
+import 'package:resume/presentation/common_widgets/common_richtext/common_richtext.dart';
 import 'package:resume/presentation/common_widgets/common_textfields/common_require_Textfield.dart';
 
 class RegistrationScreen extends StatelessWidget {
@@ -31,13 +32,8 @@ class RegistrationScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  Strings.registration,
-                  style: TextStyle(
-                      fontFamily: Strings.uberFont,
-                      fontSize: context.width(context) * 0.1,
-                      fontWeight: FontWeight.w600),
-                ),
+                const CommonRichText(title: Strings.registration),
+
                 Center(
                   child: Padding(
                     padding: EdgeInsets.all(context.height(context) * 0.015),
@@ -64,7 +60,7 @@ class RegistrationScreen extends StatelessWidget {
                     errorText: Strings.errorTextForPassword),
                 Padding(
                   padding: EdgeInsets.only(
-                      top: context.height(context) * 0.025,
+                      top: context.height(context) * 0.01,
                       bottom: context.height(context) * 0.03),
                   child: Row(
                     children: [
@@ -76,13 +72,13 @@ class RegistrationScreen extends StatelessWidget {
                         Strings.or,
                         style: TextStyle(
                           fontFamily: Strings.uberFont,
-                          fontSize: context.width(context) * 0.045,
+                          fontSize: context.width(context) * 0.035,
                         ),
                       ),
                       Expanded(
                           child: Divider(
                             color: ThemeColors.black,
-                            indent: context.width(context) * 0.03,
+                            indent: context.width(context) * 0.02,
                           ))
                     ],
                   ),
@@ -91,8 +87,11 @@ class RegistrationScreen extends StatelessWidget {
                   buttonImage: AssetsSvgImage.googleImage,
                   buttonTitle: Strings.googleLogin,
                 ),
-                SizedBox(height: context.height(context) * 0.05),
-                CommonSaveButton(formKey: formKey, buttonTitle: Strings.login,)
+                SizedBox(height: context.height(context) * 0.03),
+                Padding(
+                  padding: const EdgeInsets.all(0).copyWith(left: 15,right:15),
+                  child: CommonSaveButton(formKey: formKey, buttonTitle: Strings.login,),
+                )
               ],
             ),
           ),
