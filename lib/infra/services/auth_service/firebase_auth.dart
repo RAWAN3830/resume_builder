@@ -3,7 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:resume/core/constant/strings.dart';
 
 class FirebaseAuthService {
-  // static final fireStore = FirebaseFirestore.instance;
+   // static final fireStore = FirebaseFirestore.instance;
   //-----------------------------------  FIREBASE AUTH FOR REGISTRATION --------------------------------------------------
 
   static Future<UserCredential> registerUser(

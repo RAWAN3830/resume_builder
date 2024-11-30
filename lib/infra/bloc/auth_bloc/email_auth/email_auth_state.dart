@@ -26,12 +26,14 @@ abstract class RegistrationState {
   // List<Object> get props => [];
 }
 
-class RegistrationInitial extends RegistrationState {}
+class RegistrationInitial extends RegistrationState {
+}
 
 class RegistrationLoading extends RegistrationState {}
 
 class RegistrationSuccess extends RegistrationState {
   final String userId;
+
 
   const RegistrationSuccess(this.userId);
 

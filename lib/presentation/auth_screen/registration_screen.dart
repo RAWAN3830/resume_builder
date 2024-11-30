@@ -46,15 +46,15 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
             );
           }
         },
-        builder: ( context, state) {
+        builder: (context, state) {
           if (state is RegistrationLoading) {
             return Center(child: CircularProgressIndicator());
           }
 
           return SingleChildScrollView(
             padding: EdgeInsets.symmetric(
-              horizontal: 16,
-              vertical: MediaQuery.of(context).size.height * 0.1,
+              horizontal: MediaQuery.of(context).size.height * 0.011,
+              vertical: MediaQuery.of(context).size.height * 0.01,
             ),
             child: Form(
               key: formKey,
