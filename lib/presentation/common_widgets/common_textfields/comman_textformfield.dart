@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 class CommonTextformfield extends StatelessWidget {
   // final String name;
   final TextEditingController controller;
-  final String hintText;
+  final String labelText;
   final String errorText;
   // final IconData icon;
   const CommonTextformfield(
       {super.key,
-      required this.hintText,
+      required this.labelText,
       // required this.icon,
       required this.controller,
       required this.errorText});
@@ -28,8 +28,8 @@ class CommonTextformfield extends StatelessWidget {
       },
       keyboardType: TextInputType.name,
       decoration: InputDecoration(
-        labelText: hintText,
-        labelStyle: TextStyle(color: Colors.black),
+        labelText: labelText,
+        labelStyle: TextStyle(color: Colors.grey),
         border: OutlineInputBorder(
           borderSide: BorderSide(color: Colors.black, width: 2),
         ),

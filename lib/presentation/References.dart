@@ -1,5 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:resume/core/constant/extension.dart';
+import 'package:resume/presentation/auth_screen/registration_screen.dart';
+import 'package:resume/presentation/common_widgets/common_text/common_heading.dart';
+import 'package:resume/presentation/common_widgets/common_textfields/comman_textformfield.dart';
 
 String? Reference_name;
 String? Designation;
@@ -13,38 +17,33 @@ class Reference extends StatefulWidget {
 }
 
 class _ReferenceState extends State<Reference> {
-TextEditingController RefrenceController = TextEditingController();
-TextEditingController DesignationController = TextEditingController();
-TextEditingController OrganizationController = TextEditingController();
+TextEditingController refrenceController = TextEditingController();
+TextEditingController designationController = TextEditingController();
+TextEditingController organizationController = TextEditingController();
 final formkey = GlobalKey<FormState>();
 @override
 void initState() {
     // TODO: implement initState
    if(Reference_name != null && Designation != null && Organization != null) {
-    RefrenceController.text = Reference_name!;
-    DesignationController.text = Designation!;
-    OrganizationController.text = Organization!;
+    refrenceController.text = Reference_name!;
+    designationController.text = Designation!;
+    organizationController.text = Organization!;
    }
     super.initState();
   }
 @override
   Widget build(BuildContext context) {
+  var height = context.height(context) * .02;
     return  Scaffold(
       backgroundColor: Colors.grey.shade300,
         appBar: AppBar(
-        toolbarHeight: 90,
+
         leading: InkWell(
         onTap: () {
           Navigator.of(context).pop();
       if(formkey.currentState!.validate())
         {
           Navigator.of(context).pop();
-          // formkey.currentState!.save();
-          //
-          // var snakebar = SnackBar(content: Text(
-          //   'Saved Successfully'));
-          // ScaffoldMessenger.of(context).showSnackBar(snakebar);
-
         }
     },
     child: const Icon(CupertinoIcons.back, color: Colors.white,),
@@ -56,81 +55,27 @@ void initState() {
     body:Padding(
       padding: const EdgeInsets.all(20.0),
       child: Container(
-        height: 500,
-        width: 500,
+        height: context.height(context) * .45,
+        width: double.infinity,
         decoration:BoxDecoration(color: Colors.white,borderRadius: BorderRadius.circular(20)),
-        child: Column(
-          children: [
-            const SizedBox(height: 20,),
-            const Padding(
-              padding: EdgeInsets.only(right:140),
-              child: Text('Reference Name',style: TextStyle(color: Colors.blue,fontSize:20,fontWeight: FontWeight.bold
-              ),),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top:10,left: 30,right: 30),
-              child: TextFormField(
-                controller: RefrenceController,
-                validator: (value){
-                  if(value!.isEmpty)
-                  { return ' Enter Name ';}
-                  return null;
-                },
-                onSaved: (value){
-                  Reference_name = value;
-                },
-                decoration: const InputDecoration(
-                  border: OutlineInputBorder(),
-                  hintText: 'name',),
-              ),
-            ),
-            const SizedBox(height: 20,),
-            const Padding(
-              padding: EdgeInsets.only(right:190),
-              child: Text('Designation',style: TextStyle(color: Colors.blue,fontSize:20,fontWeight: FontWeight.bold
-              ),),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top:10,left: 30,right: 30),
-              child: TextFormField(
-                controller: DesignationController,
-                validator: (value){
-                  if(value!.isEmpty)
-                  {return 'Marketing';}
-                  return null;
-                },
-                onSaved: (value){
-                   Designation = value;
-                },
-                decoration: const InputDecoration(
-                  border: OutlineInputBorder(),
-                  hintText: '5 - Programmers',),
-              ),
-            ),
-            const SizedBox(height: 20,),
-            const Padding(
-              padding: EdgeInsets.only(right:190),
-              child: Text('Designation',style: TextStyle(color: Colors.blue,fontSize:20,fontWeight: FontWeight.bold
-              ),),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top:10,left: 30,right: 30),
-              child: TextFormField(
-                controller: OrganizationController,
-                validator: (value){
-                  if(value!.isEmpty)
-                  {return 'organization name';}
-                  return null;
-                },
-                onSaved: (value){
-                  Organization = value;
-                },
-                decoration: const InputDecoration(
-                  border: OutlineInputBorder(),
-                  hintText: 'Organization',),
-              ),
-            ),
-          ],
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(height: height,),
+             const CommonHeading(title: 'Reference Name'),
+              CommonTextformfield(labelText: 'name', controller: nameController, errorText: 'enter String'),
+              SizedBox(height: height,),
+              const CommonHeading(title: 'Designation'),
+              CommonTextformfield(labelText: 'Marketing', controller: designationController, errorText: 'enter Designation'),
+              SizedBox(height: height,),
+              const CommonHeading(title: 'Company/Institute'),
+              CommonTextformfield(labelText: 'organization', controller: organizationController, errorText: "enter valid company"),
+
+            ],
+          ),
         ),
       ),
     ),);

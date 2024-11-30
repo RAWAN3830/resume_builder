@@ -1,8 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:resume/core/constant/extension.dart';
 import 'package:resume/presentation/common_widgets/common_buttons/common_save_button.dart';
+import 'package:resume/presentation/common_widgets/common_text/common_heading.dart';
 import 'package:resume/presentation/common_widgets/common_textfields/common_longlinetextfield.dart';
-import 'package:resume/presentation/common_widgets/common_textfields/common_require_Textfield.dart';
+
+import 'common_widgets/common_textfields/comman_textformfield.dart';
 
 String? career;
 String? designation;
@@ -34,7 +37,6 @@ class _CarrierObjectiveState extends State<CarrierObjective> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        toolbarHeight: 90,
         leading: InkWell(
           onTap: () {
             Navigator.of(context).pop();
@@ -56,33 +58,32 @@ class _CarrierObjectiveState extends State<CarrierObjective> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text(
-                  'Career Objective',
-                  style: TextStyle(
-                      color: Colors.blue,
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold),
-                ),
-                CommonLonglineTextfield(controller: careerController, hintText: 'Description', errorText:'Enter Career Obj'),
+                CommonHeading(title:'Career Objective'),
+                CommonLonglineTextfield(
+                    controller: careerController,
+                    hintText: 'Career Objective',
+                    errorText: 'Enter Career Obj'),
 
-
-                const Text(
-                  'Current Designation (Experienced Candidate)',
-                  style: TextStyle(
-                      color: Colors.blue,
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold),
+                // const Text(
+                //   'Current Designation (Experienced Candidate)',
+                //   style: TextStyle(
+                //       color: Colors.blue,
+                //       fontSize: 20,
+                //       fontWeight: FontWeight.bold),
+                // ),
+                SizedBox(height: context.height(context) * 0.05,),
+                CommonHeading(title:'Designation'),
+                CommonTextformfield(
+                  controller: designationController,
+                  labelText: 'Software Engineer',
+                  errorText: 'Designation require',
                 ),
+                SizedBox(height: context.height(context) * 0.05,),
 
-                CommonRequiredTextFields(
-                    controller: designationController,
-                    labelText: 'Software Engineer',
-                    errorText: 'Designation require',
-                   ),
-                const SizedBox(
-                  height: 20,
-                ),
-                CommonSaveButton(formKey: formKey, buttonTitle: '',)
+                CommonSaveButton(
+                  formKey: formKey,
+                  buttonTitle: '',
+                )
               ],
             ),
           ),

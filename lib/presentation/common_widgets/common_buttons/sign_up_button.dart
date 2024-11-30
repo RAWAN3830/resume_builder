@@ -15,17 +15,18 @@ class SignUpButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Container(
-        height: context.height(context) * 0.06,
-        width: context.width(context) * 0.84,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(5),
-          border: Border.all(
-              width: context.width(context) * 0.001, color: ThemeColors.black),
+        height: context.height(context) * 0.07,
+        width: double.infinity,
+        decoration: BoxDecoration(color: Colors.black12,
+          borderRadius: BorderRadius.circular(10),
+          // border: Border.all(
+          //     width: context.width(context) * 0.003, color: ThemeColors.black),
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             CircleAvatar(
+              backgroundColor: Colors.transparent,
               child: SvgPicture.asset(
                 buttonImage,
                 fit: BoxFit.fill,
@@ -35,7 +36,7 @@ class SignUpButton extends StatelessWidget {
               buttonTitle,
               style: TextStyle(
                   fontFamily: Strings.uberFont,
-                   fontSize: context.width(context) * 0.05,
+                   fontSize: context.width(context) * 0.045,
                   fontWeight: FontWeight.w600),
             ),
           ],

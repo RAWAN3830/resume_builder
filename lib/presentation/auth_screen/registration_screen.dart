@@ -4,23 +4,30 @@ import 'package:resume/core/constant/assets_svg_image.dart';
 import 'package:resume/core/constant/extension.dart';
 import 'package:resume/core/constant/strings.dart';
 import 'package:resume/core/constant/theme_colors.dart';
+import 'package:resume/presentation/auth_screen/login_screen.dart';
 import 'package:resume/presentation/common_widgets/common_buttons/common_save_button.dart';
 import 'package:resume/presentation/common_widgets/common_buttons/sign_up_button.dart';
-import 'package:resume/presentation/common_widgets/common_richtext/common_richtext.dart';
-import 'package:resume/presentation/common_widgets/common_textfields/common_require_Textfield.dart';
 
-class RegistrationScreen extends StatelessWidget {
+import '../common_widgets/common_buttons/common_button.dart';
+import '../common_widgets/common_text/common_richtext.dart';
+import '../common_widgets/common_textfields/comman_textformfield.dart';
+class RegistrationScreen extends StatefulWidget {
   const RegistrationScreen({super.key});
 
   @override
+  State<RegistrationScreen> createState() => _RegistrationScreenState();
+}
+TextEditingController nameController = TextEditingController();
+TextEditingController emailController = TextEditingController();
+TextEditingController passwordController = TextEditingController();
+
+final formKey = GlobalKey<FormState>();
+
+
+class _RegistrationScreenState extends State<RegistrationScreen> {
+  @override
   Widget build(BuildContext context) {
-    TextEditingController nameController = TextEditingController();
-    TextEditingController emailController = TextEditingController();
-    TextEditingController passwordController = TextEditingController();
-
-    final formKey = GlobalKey<FormState>();
     var varHeight = context.height(context) * 0.02;
-
     return Scaffold(
       resizeToAvoidBottomInset: true,
       body: SingleChildScrollView(
@@ -44,17 +51,17 @@ class RegistrationScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-                CommonRequiredTextFields(
+                CommonTextformfield(
                     controller: nameController,
                     labelText: Strings.labelTextForUserName,
                     errorText: Strings.errorTextForUserName),
                 SizedBox(height: varHeight),
-                CommonRequiredTextFields(
+                CommonTextformfield(
                     controller: emailController,
                     labelText: Strings.labelTextForEmail,
                     errorText: Strings.errorTextForEmail),
                 SizedBox(height: varHeight),
-                CommonRequiredTextFields(
+                CommonTextformfield(
                     controller: passwordController,
                     labelText: Strings.labelTextForPassword,
                     errorText: Strings.errorTextForPassword),
@@ -88,6 +95,9 @@ class RegistrationScreen extends StatelessWidget {
                   buttonTitle: Strings.googleLogin,
                 ),
                 SizedBox(height: context.height(context) * 0.03),
+                // CommonButton(onTap: (){
+                //   context.push(context, target: const LoginScreen());
+                // },title: 'continue',)
                 Padding(
                   padding: const EdgeInsets.all(0).copyWith(left: 15,right:15),
                   child: CommonSaveButton(formKey: formKey, buttonTitle: Strings.login,),
@@ -100,3 +110,4 @@ class RegistrationScreen extends StatelessWidget {
     );
   }
 }
+

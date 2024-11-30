@@ -48,7 +48,7 @@ class _TechSkillsState extends State<TechSkills> {
                           setState(() {
                             textFieldList.removeAt(index);
 
-                             //textFieldList.forEach((element) => controllerList.remove(element.skillController.text));
+                             textFieldList.forEach((element) => controllerList.remove(element.skillController.text));
                             setState(() {
                            //   textFieldList.forEach((element) => controllerList.remove(element.skillController.text));
 

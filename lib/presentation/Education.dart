@@ -1,9 +1,10 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:resume/core/constant/extension.dart';
 import 'package:resume/presentation/common_widgets/common_buttons/common_reset_button.dart';
 import 'package:resume/presentation/common_widgets/common_buttons/common_save_button.dart';
-import 'package:resume/presentation/common_widgets/common_textfields/common_require_Textfield.dart';
+import 'package:resume/presentation/common_widgets/common_text/common_heading.dart';
+import 'common_widgets/common_textfields/comman_textformfield.dart';
 
 String? course;
 String? collage;
@@ -18,7 +19,7 @@ class EducationInfo extends StatefulWidget {
 }
 
 class _EducationInfoState extends State<EducationInfo> {
- // int indexCount = 0;
+  // int indexCount = 0;
   TextEditingController courseController = TextEditingController();
   TextEditingController collageController = TextEditingController();
   TextEditingController cgpaController = TextEditingController();
@@ -28,17 +29,21 @@ class _EducationInfoState extends State<EducationInfo> {
   @override
   void initState() {
     // TODO: implement initState
-    if(course != null && collage != null && cgpa != null && passingYear != null)
-      {
-        courseController.text = course!;
-        collageController.text = collage!;
-        cgpaController.text = cgpa!;
-        passingyearController.text = passingYear!;
-      }
+    if (course != null &&
+        collage != null &&
+        cgpa != null &&
+        passingYear != null) {
+      courseController.text = course!;
+      collageController.text = collage!;
+      cgpaController.text = cgpa!;
+      passingyearController.text = passingYear!;
+    }
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
+    var height = context.height(context) * 0.02;
     return Scaffold(
       appBar: AppBar(
         toolbarHeight: 90,
@@ -46,44 +51,71 @@ class _EducationInfoState extends State<EducationInfo> {
           onTap: () {
             Navigator.of(context).pop();
           },
-          child: const Icon(CupertinoIcons.back, color: Colors.white,),
+          child: const Icon(
+            CupertinoIcons.back,
+            color: Colors.white,
+          ),
         ),
         backgroundColor: Colors.blue,
         title: const Text('Education',
-            style: TextStyle(color: Colors.white, fontSize: 25,fontWeight: FontWeight.bold)),
+            style: TextStyle(
+                color: Colors.white,
+                fontSize: 25,
+                fontWeight: FontWeight.bold)),
       ),
-      body:
-      SingleChildScrollView(
-        child: Form(
-          key: formKey,
-          child: Column(
-             children: [
-               const SizedBox(height: 10,),
-                const Text('Course/Degree',style: TextStyle(color: Colors.blue,fontSize:20,fontWeight: FontWeight.bold
-                 ),),
-              CommonRequiredTextFields(controller: courseController, labelText: 'Degree Info', errorText:'enter degree info'),
-               const SizedBox(height: 10,),
-               const Text('School/Collage/institute',style: TextStyle(color: Colors.blue,fontSize:20,fontWeight: FontWeight.bold
-               ),),
-              CommonRequiredTextFields(controller: collageController, labelText: 'Collage Name', errorText: 'Enter Collage Name'),
-               const SizedBox(height: 10,),
-               const Text('CGPA / SGPA',style: TextStyle(color: Colors.blue,fontSize:20,fontWeight: FontWeight.bold
-               ),),
-              CommonRequiredTextFields(controller: cgpaController, labelText: '70 % (or) 7.0 CGPA', errorText: "Enter CGPA"),
-               const SizedBox(height: 10,),
-               const Text('Year Of Pass',style: TextStyle(color: Colors.blue,fontSize:20,fontWeight: FontWeight.bold
-               ),),
-               CommonRequiredTextFields(controller: passingyearController, labelText: '2020', errorText: "Enter Year"),
-               const SizedBox(height: 20,),
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: SingleChildScrollView(
+          child: Form(
+            key: formKey,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
 
-               Row(
-                 mainAxisAlignment: MainAxisAlignment.spaceAround,
-                 children: [
-                   CommonSaveButton(formKey: formKey, buttonTitle: '',),
-                   CommonResetButton(formKey: formKey)
-                 ],
-               ),
-                ],
+                CommonHeading(title: 'Course/Degree'),
+                CommonTextformfield(
+                    controller: courseController,
+                    labelText: 'Degree Info',
+                    errorText: 'enter degree info'),
+                SizedBox(height:height),
+
+
+                CommonHeading(title: 'School/Collage/institute'),
+                CommonTextformfield(
+                    controller: collageController,
+                    labelText: 'Collage Name',
+                    errorText: 'Enter Collage Name'),
+                SizedBox(height:height),
+
+
+                CommonHeading(title: 'CGPA / SGPA'),
+                CommonTextformfield(
+                    controller: cgpaController,
+                    labelText: '70 % (or) 7.0 CGPA',
+                    errorText: "Enter CGPA"),
+                SizedBox(height:height),
+
+                CommonHeading(title: 'Year Of Pass'),
+                CommonTextformfield(
+                    controller: passingyearController,
+                    labelText: '2020',
+                    errorText: "Enter Year"),
+                SizedBox(height:height),
+                SizedBox(height:height),
+
+
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    CommonSaveButton(
+                      formKey: formKey,
+                      buttonTitle: '',
+                    ),
+                    CommonResetButton(formKey: formKey)
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
       ),
