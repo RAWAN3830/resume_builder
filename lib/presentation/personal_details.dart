@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:resume/presentation/common_widgets/common_buttons/common_save_button.dart';
+import 'package:resume/presentation/common_widgets/common_text/common_heading.dart';
 
 class PersonalDetails extends StatefulWidget {
   const PersonalDetails({super.key});
@@ -51,13 +52,7 @@ class _PersonalDetailsState extends State<PersonalDetails> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text(
-              'DOB',
-              style: TextStyle(
-                  color: Colors.blue,
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold),
-            ),
+            CommonHeading(title: 'DOB'),
             Padding(
               padding: const EdgeInsets.all(10.0),
               child: TextFormField(
@@ -69,13 +64,7 @@ class _PersonalDetailsState extends State<PersonalDetails> {
               ),
             ),
 
-            const Text(
-              'Merital Status',
-              style: TextStyle(
-                  color: Colors.blue,
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold),
-            ),
+            CommonHeading(title: 'Marital Status'),
             ListTile(
               leading: Radio(
                   value: merital.Single,
@@ -98,19 +87,7 @@ class _PersonalDetailsState extends State<PersonalDetails> {
                   }),
               title: const Text('Merried'),
             ),
-
-            // RadioListTile(value: merital.Single, groupValue: g, onChanged:(merital? value){
-            //   setState(() {
-            //     g = value!;
-            //   });
-            // },title:Text('Merried') ,),
-            const Text(
-              'Languages Known',
-              style: TextStyle(
-                  color: Colors.blue,
-                  fontSize: 22,
-                  fontWeight: FontWeight.bold),
-            ),
+            CommonHeading(title: 'Languages'),
             CheckboxListTile(
                 value: isEnglish,
                 onChanged: (value) {
@@ -145,13 +122,7 @@ class _PersonalDetailsState extends State<PersonalDetails> {
                   style: TextStyle(fontSize: 20),
                 )),
 
-            const Text(
-              'Nationality',
-              style: TextStyle(
-                  color: Colors.blue,
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold),
-            ),
+            CommonHeading(title: 'Nationality'),
             Padding(
               padding: const EdgeInsets.all(10.0),
               child: TextFormField(

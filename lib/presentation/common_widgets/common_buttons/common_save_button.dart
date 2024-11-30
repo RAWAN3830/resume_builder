@@ -45,7 +45,7 @@ class CommonSaveButton extends StatelessWidget {
             height: context.width(context) * 0.07,
             width: context.width(context) * 0.6,
             child:  Center(
-                child: Text(Strings.registration,
+                child: Text(Strings.saveContinue,
                     style: TextStyle(
                         fontFamily: Strings.uberFont,
                         fontSize: context.width(context) * 0.050,

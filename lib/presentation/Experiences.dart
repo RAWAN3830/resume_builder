@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
-
+import 'package:resume/core/constant/extension.dart';
+import 'package:resume/presentation/common_widgets/common_buttons/common_button.dart';
+import 'package:resume/presentation/common_widgets/common_buttons/common_save_button.dart';
+import 'package:resume/presentation/common_widgets/common_text/common_heading.dart';
+import 'package:resume/presentation/common_widgets/common_textfields/comman_textformfield.dart';
+import 'package:resume/presentation/common_widgets/common_textfields/common_longlinetextfield.dart';
 
 String? company;
 String? institute;
@@ -34,223 +39,75 @@ class _ExperienceInfoState extends State<ExperienceInfo> {
 
   @override
   Widget build(BuildContext context) {
+    var height = context.height(context) * 0.02;
+
     return Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.blue,
-          toolbarHeight: 100,
-          title: const Text('Experiences',
-              style: TextStyle(color: Colors.white, fontSize: 25)),
-        ),
-        body: SingleChildScrollView(
-          child: Form(
-              key: formkey,
+      appBar: AppBar(
+        backgroundColor: Colors.blue,
+        title: const Text('Experiences',
+            style: TextStyle(color: Colors.white, fontSize: 25)),
+      ),
+      body: SingleChildScrollView(
+        child: Form(
+            key: formkey,
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  const Text(
-                    'Company Name',
-                    style: TextStyle(
-                        color: Colors.blue,
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 10, left: 30, right: 30),
-                    child: TextFormField(
+                  SizedBox(height: height),
+                  CommonHeading(title: 'Company Name'),
+                  CommonTextformfield(
+                      labelText: 'Infosys',
                       controller: companyController,
-                      validator: (value) {
-                        if (value!.isEmpty) {
-                          return 'enter Company name';
-                        }
-                        return null;
-                      },
-                      onSaved: (value) {
-                        company = value;
-                      },
-                      decoration: InputDecoration(
-                          border: const OutlineInputBorder(),
-                          hintText: 'Infosys',
-                          hintStyle: TextStyle(
-                              fontSize: 20, color: Colors.grey.shade400)),
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  const Text(
-                    'Institute / Collage',
-                    style: TextStyle(
-                        color: Colors.blue,
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 10, left: 30, right: 30),
-                    child: TextFormField(
+                      errorText: 'enter value'),
+                  SizedBox(height: height),
+                  CommonHeading(title: 'Institute / Collage'),
+                  CommonTextformfield(
+                      labelText: 'Mobile Devloper',
                       controller: instituteController,
-                      validator: (value) {
-                        if (value!.isEmpty) {
-                          return 'entery Require';
-                        }
-                        return null;
-                      },
-                      onSaved: (value) {
-                        institute = value;
-                      },
-                      decoration: InputDecoration(
-                          border: const OutlineInputBorder(),
-                          hintText: 'Quality test Engineer',
-                          hintStyle: TextStyle(
-                              fontSize: 20, color: Colors.grey.shade400)),
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  const Text(
-                    'Roles (optional)',
-                    style: TextStyle(
-                        color: Colors.blue,
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 10, left: 30, right: 30),
-                    child: TextFormField(
+                      errorText: 'enter valid value'),
+                  SizedBox(height: height),
+                  CommonHeading(title: 'Roles (optional)'),
+                  CommonLonglineTextfield(
                       controller: roleController,
-                      maxLines: 4,
-                      validator: (value) {
-                        if (value!.isEmpty) {
-                          return 'role in Company';
-                        }
-                        return null;
-                      },
-                      onSaved: (value) {
-                        roles = value;
-                      },
-                      decoration: InputDecoration(
-                          border: const OutlineInputBorder(),
-                          hintText:
-                              'working with team members to come up with new concepts end product analysis',
-                          hintStyle: TextStyle(
-                              fontSize: 20, color: Colors.grey.shade400)),
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  const Text(
-                    'Merital Status',
-                    style: TextStyle(
-                        color: Colors.blue,
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold),
-                  ),
+                      hintText:
+                          'working with team members to come up with new concepts end product analysis',
+                      errorText: 'role in Company'),
+                  SizedBox(height: height),
+                  CommonHeading(title: 'Employed Status'),
+                  Row(children: [
+                    const CommonHeading(title: 'Previously Employed'),
+                    Radio(
+                        value: EmpStatus.previously,
+                        groupValue: m,
+                        onChanged: (EmpStatus? value) {
+                          setState(() {
+                            m = value!;
+                          });
+                        }),
+                  ]),
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                  Row(
-                    children: [
-                      const Text("Previuos",style:TextStyle(fontSize:18,color:Colors.blue)),
-                      Radio(value: EmpStatus.previously,
-                          groupValue: m,
-                          onChanged: (EmpStatus? value){
-                        setState(() {
-                          m = value!;
-                        });
-                          }),
-                    ]),
-                  Row(
-                    children: [
-                      const Text("Currently",style:TextStyle(fontSize:18,color: Colors.blue)),
-                      Radio(value: EmpStatus.currently,
-                          groupValue: m,
-                          onChanged: (EmpStatus? value){
-                            setState(() {
-                              m = value!;
-                            });
-                          }),
-                    ])
-                      ]),
-                  Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        Column(
-                            children: [
-                              const Text("Date Joined",style:TextStyle(fontSize:18,color:Colors.blue)),
-                              Container(
-                                height: 30,
-                                width: 100,
-                                color: Colors.orange,
-                              )
-                              // TextField(
-                              //
-                              //  // controller: companyController,
-                              //  //  validator: (value) {
-                              //  //    if (value!.isEmpty) {
-                              //  //      return 'enter Company name';
-                              //  //    }
-                              //  //  },
-                              //  //  onSaved: (value) {
-                              //  //    company = value;
-                              //  //  },
-                              //   decoration: InputDecoration(
-                              //       //border: OutlineInputBorder(),
-                              //       hintText: 'Infosys',
-                              //       hintStyle: TextStyle(
-                              //           fontSize: 20, color: Colors.grey.shade400)),
-                              // ),
-                            ]),
-                        Column(
-                            children: [
-                              const Text("Date Exit",style:TextStyle(fontSize:18,color: Colors.blue)),
-                              Container(
-                                height: 30,
-                                width: 100,
-                                color: Colors.orange,
-                              )
-                              // TextField(
-                              //   // controller: companyController,
-                              //   // validator: (value) {
-                              //   //   if (value!.isEmpty) {
-                              //   //     return 'enter Company name';
-                              //   //   }
-                              //   // },
-                              //   // onSaved: (value) {
-                              //   //   company = value;
-                              //   // },
-                              //
-                              //   decoration: InputDecoration(
-                              //       border: OutlineInputBorder(),
-                              //       hintText: 'Infosys',
-                              //       hintStyle: TextStyle(
-                              //           fontSize: 20, color: Colors.grey.shade400)),
-                              // ),
-                            ])
-                      ]),
-                  ElevatedButton(
-                      style:ButtonStyle(
-                        // backgroundColor:WidgetStateColor.resolveWith((states) => Colors.blue),
-                      ),
-                      onPressed: () {
-                          if (formkey.currentState!.validate()) {
-                            print('Submit');
-                            formkey.currentState!.save();
+                       children: [
 
-                            var snackbar = const SnackBar(
-                                content: Text('Contact Info Submitted sucessfully.'));
-                            ScaffoldMessenger.of(context)
-                                .showSnackBar(snackbar);
-                          }
-                      },
-                      child: const Text('Submit',style: TextStyle(fontSize: 18,color: Colors.white),)),
-
+                        Row(children: [
+                          const CommonHeading(title: 'Currently Employed'),
+                          Radio(
+                              value: EmpStatus.currently,
+                              groupValue: m,
+                              onChanged: (EmpStatus? value) {
+                                setState(() {
+                                  m = value!;
+                                });
+                              }),
+                        ])
+                      ]),
+                  // CommonButton(onTap: (){}, title: 'Submit')
+                 CommonSaveButton(formKey: formkey, buttonTitle: 'Submit')
                 ],
-              )),
-        ),
-
+              ),
+            )),
+      ),
     );
   }
 }

@@ -1,23 +1,31 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:resume/core/constant/assets_svg_image.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:resume/core/constant/extension.dart';
-import 'package:resume/core/constant/strings.dart';
-import 'package:resume/presentation/common_widgets/common_buttons/common_save_button.dart';
-import 'package:resume/presentation/common_widgets/common_buttons/sign_up_button.dart';
-import 'package:resume/presentation/common_widgets/common_richtext/common_richtext.dart';
-import 'package:resume/presentation/common_widgets/common_textfields/common_require_Textfield.dart';
-import '../../core/constant/theme_colors.dart';
 
-class LoginScreen extends StatelessWidget {
+import '../../core/constant/assets_svg_image.dart';
+import '../../core/constant/strings.dart';
+import '../../core/constant/theme_colors.dart';
+import '../common_widgets/common_buttons/common_save_button.dart';
+import '../common_widgets/common_buttons/sign_up_button.dart';
+import '../common_widgets/common_text/common_richtext.dart';
+import '../common_widgets/common_textfields/comman_textformfield.dart';
+
+class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    TextEditingController emailController = TextEditingController();
-    TextEditingController passwordController = TextEditingController();
+  State<LoginScreen> createState() => _LoginScreenState();
+}
 
-    final formKey = GlobalKey<FormState>();
+class _LoginScreenState extends State<LoginScreen> {
+
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+  final formKey = GlobalKey<FormState>();
+
+  @override
+  Widget build(BuildContext context) {
     var varHeight = context.height(context) * 0.02;
 
     return Scaffold(
@@ -47,12 +55,12 @@ class LoginScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-                CommonRequiredTextFields(
+                CommonTextformfield(
                     controller: emailController,
                     labelText: Strings.labelTextForEmail,
                     errorText: Strings.errorTextForEmail),
                 SizedBox(height: varHeight),
-                CommonRequiredTextFields(
+                CommonTextformfield(
                     controller: passwordController,
                     labelText: Strings.labelTextForPassword,
                     errorText: Strings.errorTextForPassword),

@@ -5,6 +5,7 @@ class Strings{
 
   //Button
   static const String reset = 'Reset';
+  static const String saveContinue = 'Save & Continue';
   static const String registration = 'Registration';
   static const String login = 'Login';
   static const String googleLogin = 'Continue With Google';
@@ -34,4 +35,10 @@ class Strings{
   static const String achievement = 'achievement';
   static const String references = 'references';
   static const String declaration = 'declarationo';
+
+  //contact info
+
+//firebase_all_strings
+  static const String fireStoreUser = 'users';
+  static const String fireStoreGoogleUser = 'GoogleUsers';
 }
