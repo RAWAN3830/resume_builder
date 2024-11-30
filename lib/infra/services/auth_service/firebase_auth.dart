@@ -3,7 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:resume/core/constant/strings.dart';
 
 class FirebaseAuthService {
-  static final fireStore = FirebaseFirestore.instance;
+  // static final fireStore = FirebaseFirestore.instance;
   //-----------------------------------  FIREBASE AUTH FOR REGISTRATION --------------------------------------------------
 
   static Future<UserCredential> registerUser(
@@ -14,17 +14,17 @@ class FirebaseAuthService {
     final userCredentials = await firebase.createUserWithEmailAndPassword(
         email: email, password: password);
 
-    final userData = {
-      'email': userCredentials.user?.email,
-      'password': password,
-      'uid': userCredentials.user?.uid,
-      'name': name
-    };
-
-    await fireStore
-        .collection(Strings.fireStoreUser)
-        .doc(userCredentials.user?.uid)
-        .set(userData);
+    // final userData = {
+    //   'email': userCredentials.user?.email,
+    //   'password': password,
+    //   'uid': userCredentials.user?.uid,
+    //   'name': name
+    // };
+    //
+    // await fireStore
+    //     .collection(Strings.fireStoreUser)
+    //     .doc(userCredentials.user?.uid)
+    //     .set(userData);
 
     return userCredentials;
   }

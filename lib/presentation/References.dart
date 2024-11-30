@@ -66,7 +66,7 @@ void initState() {
             children: [
               SizedBox(height: height,),
              const CommonHeading(title: 'Reference Name'),
-              CommonTextformfield(labelText: 'name', controller: nameController, errorText: 'enter String'),
+              // CommonTextformfield(labelText: 'name', controller: nameController, errorText: 'enter String'),
               SizedBox(height: height,),
               const CommonHeading(title: 'Designation'),
               CommonTextformfield(labelText: 'Marketing', controller: designationController, errorText: 'enter Designation'),

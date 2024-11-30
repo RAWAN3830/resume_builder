@@ -18,12 +18,12 @@ class CommonSaveButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return NeoPopButton(
-      color: Colors.transparent,
+      color: Color(0xffe8fccf),
       buttonPosition: Position.bottomRight,
       bottomShadowColor:
-          ColorUtils.getVerticalShadow(ThemeColors.mainGreenColor).toColor(),
+          ColorUtils.getVerticalShadow(Color(0xff7cb518)).toColor(),
       rightShadowColor:
-          ColorUtils.getHorizontalShadow(ThemeColors.mainGreenColor).toColor(),
+          ColorUtils.getHorizontalShadow(Color(0xff7cb518)).toColor(),
       animationDuration: const Duration(milliseconds: 20),
       depth: kButtonDepth,
       onTapUp: () {
@@ -36,7 +36,7 @@ class CommonSaveButton extends StatelessWidget {
           ScaffoldMessenger.of(context).showSnackBar(snackBar);
         }
       },
-      border: Border.all(color: ThemeColors.mainGreenColor, width: 1.4),
+      border: Border.all(color: Colors.lightGreen, width: 1.4),
       // border: Border.all(color: const Color(0xff74E900), width: 1.4),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 15),
@@ -47,6 +47,7 @@ class CommonSaveButton extends StatelessWidget {
             child:  Center(
                 child: Text(Strings.saveContinue,
                     style: TextStyle(
+                      color: Color(0xff41521f),
                         fontFamily: Strings.uberFont,
                         fontSize: context.width(context) * 0.050,
                         fontWeight: FontWeight.bold))),

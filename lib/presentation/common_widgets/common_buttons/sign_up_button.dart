@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:resume/core/constant/extension.dart';
 import 'package:resume/core/constant/strings.dart';
-import 'package:resume/core/constant/theme_colors.dart';
 
 class SignUpButton extends StatelessWidget {
   const SignUpButton(
