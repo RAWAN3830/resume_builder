@@ -7,12 +7,9 @@ import 'package:resume/core/constant/strings.dart';
 import 'package:resume/core/constant/theme_colors.dart';
 import 'package:resume/infra/bloc/auth_bloc/email_auth/email_auth_bloc.dart';
 import 'package:resume/infra/bloc/auth_bloc/email_auth/email_auth_state.dart';
-import 'package:resume/presentation/auth_screen/login_screen.dart';
 import 'package:resume/presentation/common_widgets/common_buttons/common_save_button.dart';
 import 'package:resume/presentation/common_widgets/common_buttons/sign_up_button.dart';
-
 import '../../infra/bloc/auth_bloc/email_auth/email_auth_event.dart';
-import '../common_widgets/common_buttons/common_button.dart';
 import '../common_widgets/common_text/common_richtext.dart';
 import '../common_widgets/common_textfields/comman_textformfield.dart';
 class RegistrationScreen extends StatefulWidget {
@@ -128,24 +125,30 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                       buttonImage: AssetsSvgImage.googleImage,
                       buttonTitle: Strings.googleLogin,
                     ),
-                    SizedBox(height: context.height(context) * 0.03),
+                    CommonSaveButton(formKey: formKey, onTap: (){
+
+                    }, name: Strings.saveContinue),
+                    // SizedBox(height: context.height(context) * 0.03),
                     // CommonButton(onTap: (){
                     //   context.push(context, target: const LoginScreen());
-                    // },title: 'continue',)
-                    // CommonSaveButton(formKey: formKey, buttonTitle: Strings.login,)
+                    // },title: 'continue',),
+                    // CommonSaveButton(formKey: formKey, buttonTitle: Strings.login,),
+                    CommonSaveButton(formKey: formKey, onTap: (){
+                      if (formKey.currentState?.validate() ?? false) {
+                        context.read<RegistrationBloc>().add(
+                          RegisterUserEvent(
+                            email: emailController.text,
+                            password: passwordController.text,
+                            name: nameController.text,
+                          ),
+                        );
+                      }
+                    }, name: 'name'),
                     SizedBox(
                       width: double.infinity,
                       child: ElevatedButton(
                         onPressed: () {
-                          if (formKey.currentState?.validate() ?? false) {
-                            context.read<RegistrationBloc>().add(
-                              RegisterUserEvent(
-                                email: emailController.text,
-                                password: passwordController.text,
-                                name: nameController.text,
-                              ),
-                            );
-                          }
+
                         },
                         child: const Text(Strings.registration),
                       ),

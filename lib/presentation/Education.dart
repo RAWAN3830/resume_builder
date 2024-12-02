@@ -4,6 +4,7 @@ import 'package:resume/core/constant/extension.dart';
 import 'package:resume/presentation/common_widgets/common_buttons/common_reset_button.dart';
 import 'package:resume/presentation/common_widgets/common_buttons/common_save_button.dart';
 import 'package:resume/presentation/common_widgets/common_text/common_heading.dart';
+import '../core/constant/strings.dart';
 import 'common_widgets/common_textfields/comman_textformfield.dart';
 
 String? course;
@@ -109,7 +110,8 @@ class _EducationInfoState extends State<EducationInfo> {
                   children: [
                     CommonSaveButton(
                       formKey: formKey,
-                      buttonTitle: '',
+                      onTap: (){},
+                      name: Strings.saveContinue,
                     ),
                     CommonResetButton(formKey: formKey)
                   ],

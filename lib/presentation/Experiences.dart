@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:resume/core/constant/extension.dart';
-import 'package:resume/presentation/common_widgets/common_buttons/common_button.dart';
 import 'package:resume/presentation/common_widgets/common_buttons/common_save_button.dart';
 import 'package:resume/presentation/common_widgets/common_text/common_heading.dart';
 import 'package:resume/presentation/common_widgets/common_textfields/comman_textformfield.dart';
 import 'package:resume/presentation/common_widgets/common_textfields/common_longlinetextfield.dart';
+
+import '../core/constant/strings.dart';
 
 String? company;
 String? institute;
@@ -87,23 +88,24 @@ class _ExperienceInfoState extends State<ExperienceInfo> {
                           });
                         }),
                   ]),
-                  Row(
-                       children: [
-
-                        Row(children: [
-                          const CommonHeading(title: 'Currently Employed'),
-                          Radio(
-                              value: EmpStatus.currently,
-                              groupValue: m,
-                              onChanged: (EmpStatus? value) {
-                                setState(() {
-                                  m = value!;
-                                });
-                              }),
-                        ])
-                      ]),
+                  Row(children: [
+                    Row(children: [
+                      const CommonHeading(title: 'Currently Employed'),
+                      Radio(
+                          value: EmpStatus.currently,
+                          groupValue: m,
+                          onChanged: (EmpStatus? value) {
+                            setState(() {
+                              m = value!;
+                            });
+                          }),
+                    ])
+                  ]),
                   // CommonButton(onTap: (){}, title: 'Submit')
-                 CommonSaveButton(formKey: formkey, buttonTitle: 'Submit')
+                  CommonSaveButton(
+                      formKey: formkey,
+                    onTap: (){},
+                    name: Strings.saveContinue,)
                 ],
               ),
             )),

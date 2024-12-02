@@ -4,15 +4,17 @@ import 'package:neopop/utils/constants.dart';
 import 'package:neopop/widgets/buttons/neopop_button/neopop_button.dart';
 import 'package:resume/core/constant/extension.dart';
 import 'package:resume/core/constant/strings.dart';
-import 'package:resume/core/constant/theme_colors.dart';
 
 class CommonSaveButton extends StatelessWidget {
+  final Function onTap;
+  final String name;
   final GlobalKey<FormState> formKey;
 
   const CommonSaveButton({
     super.key,
     required this.formKey,
-    required String buttonTitle,
+    required this.onTap,
+    required this.name,
   });
 
   @override
@@ -27,14 +29,15 @@ class CommonSaveButton extends StatelessWidget {
       animationDuration: const Duration(milliseconds: 20),
       depth: kButtonDepth,
       onTapUp: () {
-        if (formKey.currentState!.validate()) {
-          print('Submit');
-          formKey.currentState!.save();
-
-          var snackBar =
-              const SnackBar(content: Text('Submitted successfully.'));
-          ScaffoldMessenger.of(context).showSnackBar(snackBar);
-        }
+        onTap;
+        // if (formKey.currentState!.validate()) {
+        //   print('Submit');
+        //   formKey.currentState!.save();
+        //
+        //   var snackBar =
+        //       const SnackBar(content: Text('Submitted successfully.'));
+        //   ScaffoldMessenger.of(context).showSnackBar(snackBar);
+        // }
       },
       border: Border.all(color: Colors.lightGreen, width: 1.4),
       // border: Border.all(color: const Color(0xff74E900), width: 1.4),
@@ -45,7 +48,7 @@ class CommonSaveButton extends StatelessWidget {
             height: context.width(context) * 0.07,
             width: context.width(context) * 0.6,
             child:  Center(
-                child: Text(Strings.saveContinue,
+                child: Text(name,
                     style: TextStyle(
                       color: Color(0xff41521f),
                         fontFamily: Strings.uberFont,

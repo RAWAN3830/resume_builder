@@ -40,5 +40,6 @@ class Strings{
 
 //firebase_all_strings
   static const String fireStoreUser = 'users';
+  static const String fireStoreLogin = 'login_users';
   static const String fireStoreGoogleUser = 'GoogleUsers';
 }

@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:resume/core/constant/extension.dart';
+import 'package:resume/core/constant/strings.dart';
 import 'package:resume/presentation/common_widgets/common_buttons/common_reset_button.dart';
 import 'package:resume/presentation/common_widgets/common_textfields/comman_textformfield.dart';
 import 'package:resume/presentation/common_widgets/common_textfields/common_longlinetextfield.dart';
@@ -153,7 +154,7 @@ class _ContactInfoState extends State<ContactInfo> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
-                         CommonSaveButton(formKey: formKey, buttonTitle: '',),
+                         CommonSaveButton(formKey: formKey, onTap: (){}, name:Strings.saveContinue,),
                           CommonResetButton(formKey: formKey)
                         ],
                       ),
