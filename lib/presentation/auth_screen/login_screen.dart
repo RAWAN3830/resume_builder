@@ -187,7 +187,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         padding:
                             EdgeInsets.all(context.height(context) * 0.015),
                         child: SvgPicture.asset(
-                          AssetsSvgImage.loginImage4,
+                          AssetsSvgImage.loginImage,
                           height: context.height(context) * 0.25,
                           fit: BoxFit.cover,
                         ),

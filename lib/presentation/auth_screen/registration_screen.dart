@@ -57,12 +57,11 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
               key: formKey,
               child: Padding(
                 padding: EdgeInsets.all(context.height(context) * 0.02)
-                    .copyWith(top: context.height(context) * 0.085),
+                    .copyWith(top: context.height(context) * 0.010),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const CommonRichText(title: Strings.registration),
-
                     Center(
                       child: Padding(
                         padding: EdgeInsets.all(context.height(context) * 0.015),
@@ -133,22 +132,20 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                     //   context.push(context, target: const LoginScreen());
                     // },title: 'continue',),
                     // CommonSaveButton(formKey: formKey, buttonTitle: Strings.login,),
-                    CommonSaveButton(formKey: formKey, onTap: (){
-                      if (formKey.currentState?.validate() ?? false) {
-                        context.read<RegistrationBloc>().add(
-                          RegisterUserEvent(
-                            email: emailController.text,
-                            password: passwordController.text,
-                            name: nameController.text,
-                          ),
-                        );
-                      }
-                    }, name: 'name'),
+
                     SizedBox(
                       width: double.infinity,
                       child: ElevatedButton(
                         onPressed: () {
-
+                          if (formKey.currentState?.validate() ?? false) {
+                            context.read<RegistrationBloc>().add(
+                              RegisterUserEvent(
+                                email: emailController.text,
+                                password: passwordController.text,
+                                name: nameController.text,
+                              ),
+                            );
+                          }
                         },
                         child: const Text(Strings.registration),
                       ),

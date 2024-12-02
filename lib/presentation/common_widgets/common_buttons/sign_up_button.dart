@@ -49,8 +49,7 @@ class SignUpButton extends StatelessWidget {
                   children: [
                     CircleAvatar(
                       backgroundColor: Colors.transparent,
-                      child: SvgPicture.asset(
-                        buttonImage,
+                      child: SvgPicture.asset(buttonImage,
                         fit: BoxFit.fill,
                       ),
                     ),
