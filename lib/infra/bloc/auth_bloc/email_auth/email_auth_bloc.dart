@@ -8,6 +8,7 @@
 //   }
 // }
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../services/auth_service/firebase_auth.dart';
 import 'email_auth_event.dart';
@@ -30,8 +31,10 @@ class RegistrationBloc extends Bloc<RegistrationEvent, RegistrationState> {
       );
 
       emit(RegistrationSuccess(userCredential.user!.uid));
-    } catch (error) {
-      emit(RegistrationFailure(error.toString()));
+    } on FirebaseAuthException catch (authError) {
+      emit(RegistrationFailure('Authentication Error: ${authError.message}'));
+    } catch (fireStoreError) {
+      emit(RegistrationFailure('Database Error: ${fireStoreError.toString()}'));
     }
   }
 }

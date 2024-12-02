@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:resume/presentation/common_widgets/common_buttons/common_save_button.dart';
 import 'package:resume/presentation/common_widgets/common_text/common_heading.dart';
 
+import '../core/constant/strings.dart';
+
 class PersonalDetails extends StatefulWidget {
   const PersonalDetails({super.key});
 
@@ -134,7 +136,8 @@ class _PersonalDetailsState extends State<PersonalDetails> {
               ),
             ),
 
-              Center(child: CommonSaveButton(formKey:formKey, buttonTitle: '',))
+              Center(child: CommonSaveButton(formKey:formKey,onTap: (){},
+                name: Strings.saveContinue,))
 
             // Switch(value: true, onChanged: (value){
             //  })

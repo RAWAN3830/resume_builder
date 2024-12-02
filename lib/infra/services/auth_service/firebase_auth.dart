@@ -3,7 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:resume/core/constant/strings.dart';
 
 class FirebaseAuthService {
-  // static final fireStore = FirebaseFirestore.instance;
+    static final fireStore = FirebaseFirestore.instance;
   //-----------------------------------  FIREBASE AUTH FOR REGISTRATION --------------------------------------------------
 
   static Future<UserCredential> registerUser(
@@ -14,17 +14,18 @@ class FirebaseAuthService {
     final userCredentials = await firebase.createUserWithEmailAndPassword(
         email: email, password: password);
 
-    // final userData = {
-    //   'email': userCredentials.user?.email,
-    //   'password': password,
-    //   'uid': userCredentials.user?.uid,
-    //   'name': name
-    // };
-    //
-    // await fireStore
-    //     .collection(Strings.fireStoreUser)
-    //     .doc(userCredentials.user?.uid)
-    //     .set(userData);
+    final userData = {
+      'email': userCredentials.user?.email,
+      'password': password,
+      'uid': userCredentials.user?.uid,
+      'name': name
+    };
+
+
+    await fireStore
+        .collection(Strings.fireStoreUser)
+        .doc(userCredentials.user?.uid)
+        .set(userData);
 
     return userCredentials;
   }
@@ -36,6 +37,19 @@ class FirebaseAuthService {
     final firebase = FirebaseAuth.instance;
     final userCredential = await firebase.signInWithEmailAndPassword(
         email: email, password: password);
+
+    final userData = {
+      'email': userCredential.user?.email,
+      'password': password,
+      'uid': userCredential.user?.uid,
+    };
+
+    await fireStore
+        .collection(Strings.fireStoreLogin)
+        .doc(userCredential.user?.uid)
+        .set(userData);
+
+
     return userCredential;
   }
 }

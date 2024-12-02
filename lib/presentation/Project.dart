@@ -6,6 +6,7 @@ import 'package:resume/presentation/common_widgets/common_buttons/common_save_bu
 import 'package:resume/presentation/common_widgets/common_text/common_heading.dart';
 import 'package:resume/presentation/common_widgets/common_textfields/common_longlinetextfield.dart';
 
+import '../core/constant/strings.dart';
 import 'common_widgets/common_textfields/comman_textformfield.dart';
 
 String? title;
@@ -109,7 +110,8 @@ class _ProjectInfoState extends State<ProjectInfo> {
                   children: [
                     CommonSaveButton(
                       formKey: formKey,
-                      buttonTitle: '',
+                      onTap: (){},
+                      name: Strings.saveContinue,
                     ),
                     CommonResetButton(formKey: formKey)
                   ],

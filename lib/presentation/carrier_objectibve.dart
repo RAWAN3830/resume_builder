@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:resume/core/constant/extension.dart';
+import 'package:resume/core/constant/strings.dart';
 import 'package:resume/presentation/common_widgets/common_buttons/common_save_button.dart';
 import 'package:resume/presentation/common_widgets/common_text/common_heading.dart';
 import 'package:resume/presentation/common_widgets/common_textfields/common_longlinetextfield.dart';
@@ -82,7 +83,9 @@ class _CarrierObjectiveState extends State<CarrierObjective> {
 
                 CommonSaveButton(
                   formKey: formKey,
-                  buttonTitle: '',
+                  onTap: (){},
+                  name: Strings.saveContinue,
+
                 )
               ],
             ),
