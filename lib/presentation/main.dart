@@ -38,8 +38,8 @@ class MyApp extends StatelessWidget {
           useMaterial3: true,
         ),
         // home: const HomeScreen(),
-         // home: const LoginScreen(),
-        home: const RegistrationScreen(),
+         home: const LoginScreen(),
+        // home: const RegistrationScreen(),
       ),
     );
   }

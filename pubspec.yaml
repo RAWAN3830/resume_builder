@@ -78,7 +78,6 @@ flutter:
   assets:
       - assets/icons/
       - assets/illustrator/
-      - assets/auth_images/
      #- images/pngwing.png
 
 
