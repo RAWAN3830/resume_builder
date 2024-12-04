@@ -1,14 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class TechSkills extends StatefulWidget {
-  const TechSkills({super.key});
+class SkillSets extends StatefulWidget {
+  const SkillSets({super.key});
 
   @override
-  State<TechSkills> createState() => _TechSkillsState();
+  State<SkillSets> createState() => _SkillSetsState();
 }
 
-class _TechSkillsState extends State<TechSkills> {
+class _SkillSetsState extends State<SkillSets> {
   List<DynamicTextField> textFieldList = [];
   List<String> controllerList = [];
 

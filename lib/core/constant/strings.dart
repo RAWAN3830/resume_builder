@@ -24,17 +24,17 @@ class Strings{
   //Home screen
   static const String homeScreenTitle = 'Resume WorkSpace';
   // workSpace List name :
-  static const String contactInfo = 'contact info';
+  static const String personalInfo = 'Personal Info';
   static const String carrierObjective = 'carrier objective';
   static const String personalDetails = 'personal details';
   static const String education = 'education';
-  static const String experience = 'experience';
-  static const String technicalSkill = 'technical skill';
+  static const String experience = 'Experience';
+  static const String skillsets = 'Skillsets';
   static const String hobbies = 'hobbies';
   static const String projects = 'projects';
   static const String achievement = 'achievement';
   static const String references = 'references';
-  static const String declaration = 'declarationo';
+  static const String declaration = 'declaration';
 
   //contact info
 

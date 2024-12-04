@@ -28,27 +28,33 @@ class DetailsCard extends StatelessWidget {
         onTap: () {
           switch (index) {
             case 0:
-              context.push(context, target: const ContactInfo());
+              context.push(context, target: const Personal_info());
             case 1:
-              context.push(context, target: const CarrierObjective());
-            case 2:
-              context.push(context, target: const PersonalDetails());
-            case 3:
               context.push(context, target: const EducationInfo());
-            case 4:
+              // context.push(context, target: const CarrierObjective());
+            case 2:
               context.push(context, target: const ExperienceInfo());
-            case 5:
-              context.push(context, target: const TechSkills());
-            // case 6:
-            //   context.push(context, target:Hobboies());
-            case 7:
+              // context.push(context, target: const PersonalDetails());
+            case 3:
+              context.push(context, target: const SkillSets());
+              // context.push(context, target: const EducationInfo());
+            case 4:
               context.push(context, target: const ProjectInfo());
-            case 8:
+              // context.push(context, target: const ExperienceInfo());
+            case 5:
               context.push(context, target: const Achievement());
-            case 9:
-              context.push(context, target: const Reference());
-            case 10:
+              // context.push(context, target: const TechSkills());
+            case 6:
               context.push(context, target: const Declaration());
+            //   context.push(context, target:Hobboies());
+            // case 7:
+              // context.push(context, target: const ProjectInfo());
+            // case 8:
+            //   context.push(context, target: const Achievement());
+            // case 9:
+            //   context.push(context, target: const Reference());
+            // case 10:
+            //   context.push(context, target: const Declaration());
           }
         },
         child: Container(

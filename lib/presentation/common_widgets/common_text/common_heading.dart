@@ -15,7 +15,7 @@ class CommonHeading extends StatelessWidget {
         style:  TextStyle(
           fontFamily: Strings.uberFont,
           color: ThemeColors.black,
-          fontSize: context.width(context) * 0.040,
+          fontSize: context.width(context) * 0.045,
           fontWeight: FontWeight.w600,
         ),
         children: <TextSpan>[

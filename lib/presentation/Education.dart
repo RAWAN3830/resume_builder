@@ -4,6 +4,7 @@ import 'package:resume/core/constant/extension.dart';
 import 'package:resume/presentation/common_widgets/common_buttons/common_reset_button.dart';
 import 'package:resume/presentation/common_widgets/common_buttons/common_save_button.dart';
 import 'package:resume/presentation/common_widgets/common_text/common_heading.dart';
+import 'package:resume/presentation/common_widgets/common_textfields/common_years_textfield.dart';
 import '../core/constant/strings.dart';
 import 'common_widgets/common_textfields/comman_textformfield.dart';
 
@@ -11,6 +12,8 @@ String? course;
 String? collage;
 String? cgpa;
 String? passingYear;
+String? startDate;
+String? endDate;
 
 class EducationInfo extends StatefulWidget {
   const EducationInfo({super.key});
@@ -25,6 +28,9 @@ class _EducationInfoState extends State<EducationInfo> {
   TextEditingController collageController = TextEditingController();
   TextEditingController cgpaController = TextEditingController();
   TextEditingController passingyearController = TextEditingController();
+  TextEditingController startDateController = TextEditingController();
+  TextEditingController endDateController = TextEditingController();
+
   final formKey = GlobalKey<FormState>();
 
   @override
@@ -102,39 +108,7 @@ class _EducationInfoState extends State<EducationInfo> {
                     labelText: 'Computer Science',
                     errorText: "Enter field"),
                 SizedBox(height:height),
-
-                Row(
-                  children: [
-
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const CommonHeading(title: 'Start Year'),
-                          CommonTextformfield(
-                            labelText: 'Your Link Here',
-                            controller: collageController,
-                            errorText: 'Enter valid Link',
-                          ),
-                        ],
-                      ),
-                    ),
-                    SizedBox(width: context.width(context) * 0.05),
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const CommonHeading(title: 'End Year'),
-                          CommonTextformfield(
-                            labelText: 'select..',
-                            controller: cgpaController,
-                            errorText: 'Enter valid value',
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
+                CommonYearsTextfield(startDateController: startDateController, endDateController: endDateController),
                 SizedBox(height:height),
 
 

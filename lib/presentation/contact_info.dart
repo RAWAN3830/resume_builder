@@ -16,14 +16,14 @@ String? email;
 String? phone;
 String? address;
 
-class ContactInfo extends StatefulWidget {
-  const ContactInfo({super.key});
+class Personal_info extends StatefulWidget {
+  const Personal_info({super.key});
 
   @override
-  State<ContactInfo> createState() => _ContactInfoState();
+  State<Personal_info> createState() => _Personal_infoState();
 }
 
-class _ContactInfoState extends State<ContactInfo> {
+class _Personal_infoState extends State<Personal_info> {
   int indexCount = 0;
 
   TextEditingController firstNameController = TextEditingController();
@@ -343,14 +343,14 @@ class _ContactInfoState extends State<ContactInfo> {
 // String? phone;
 // String? address;
 //
-// class ContactInfo extends StatefulWidget {
-//   const ContactInfo({super.key});
+// class Personal_info extends StatefulWidget {
+//   const Personal_info({super.key});
 //
 //   @override
-//   State<ContactInfo> createState() => _ContactInfoState();
+//   State<Personal_info> createState() => _Personal_infoState();
 // }
 //
-// class _ContactInfoState extends State<ContactInfo> {
+// class _Personal_infoState extends State<Personal_info> {
 //   int indexCount = 0;
 //
 //   TextEditingController firstNameController = TextEditingController();
