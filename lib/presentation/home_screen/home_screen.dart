@@ -22,7 +22,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       appBar: AppBar(
         toolbarHeight: context.height(context) * 0.12,
-        title:CommonRichText(title: Strings.homeScreenTitle,)
+        title:const CommonRichText(title: Strings.homeScreenTitle,)
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -31,7 +31,7 @@ class _HomeScreenState extends State<HomeScreen> {
               padding: const EdgeInsets.all(8.0),
               // child: Container(),
               child: GridView.builder(
-                physics: NeverScrollableScrollPhysics(),
+                physics: const NeverScrollableScrollPhysics(),
                 shrinkWrap: true,
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2, // Number of columns in the grid

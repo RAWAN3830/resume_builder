@@ -20,24 +20,24 @@ class CommonSaveButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return NeoPopButton(
-      color: Color(0xffe8fccf),
+      color: const Color(0xffe8fccf),
       buttonPosition: Position.bottomRight,
       bottomShadowColor:
-          ColorUtils.getVerticalShadow(Color(0xff7cb518)).toColor(),
+          ColorUtils.getVerticalShadow(const Color(0xff7cb518)).toColor(),
       rightShadowColor:
-          ColorUtils.getHorizontalShadow(Color(0xff7cb518)).toColor(),
+          ColorUtils.getHorizontalShadow(const Color(0xff7cb518)).toColor(),
       animationDuration: const Duration(milliseconds: 20),
       depth: kButtonDepth,
       onTapUp: () {
         onTap;
-        // if (formKey.currentState!.validate()) {
-        //   print('Submit');
-        //   formKey.currentState!.save();
-        //
-        //   var snackBar =
-        //       const SnackBar(content: Text('Submitted successfully.'));
-        //   ScaffoldMessenger.of(context).showSnackBar(snackBar);
-        // }
+        if (formKey.currentState!.validate()) {
+          print('Submit');
+          formKey.currentState!.save();
+
+          var snackBar =
+              const SnackBar(content: Text('Submitted successfully.'));
+          ScaffoldMessenger.of(context).showSnackBar(snackBar);
+        }
       },
       border: Border.all(color: Colors.lightGreen, width: 1.4),
       // border: Border.all(color: const Color(0xff74E900), width: 1.4),
@@ -50,7 +50,7 @@ class CommonSaveButton extends StatelessWidget {
             child:  Center(
                 child: Text(name,
                     style: TextStyle(
-                      color: Color(0xff41521f),
+                      color: const Color(0xff41521f),
                         fontFamily: Strings.uberFont,
                         fontSize: context.width(context) * 0.050,
                         fontWeight: FontWeight.bold))),

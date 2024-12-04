@@ -29,14 +29,14 @@ class CommonTextformfield extends StatelessWidget {
       keyboardType: TextInputType.name,
       decoration: InputDecoration(
         labelText: labelText,
-        labelStyle: TextStyle(color: Colors.grey),
-        border: OutlineInputBorder(
+        labelStyle: const TextStyle(color: Colors.grey),
+        border: const OutlineInputBorder(
           borderSide: BorderSide(color: Colors.black, width: 2),
         ),
-        focusedBorder: OutlineInputBorder(
+        focusedBorder: const OutlineInputBorder(
           borderSide: BorderSide(color: Colors.black, width: 2),
         ),
-        enabledBorder: OutlineInputBorder(
+        enabledBorder: const OutlineInputBorder(
           borderSide: BorderSide(color: Colors.black, width: 2),
         ),
       ),

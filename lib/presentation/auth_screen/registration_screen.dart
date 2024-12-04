@@ -45,7 +45,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
         },
         builder: (context, state) {
           if (state is RegistrationLoading) {
-            return Center(child: CircularProgressIndicator());
+            return const Center(child: CircularProgressIndicator());
           }
 
           return SingleChildScrollView(

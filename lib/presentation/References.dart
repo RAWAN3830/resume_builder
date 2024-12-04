@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:resume/core/constant/extension.dart';
-import 'package:resume/presentation/auth_screen/registration_screen.dart';
 import 'package:resume/presentation/common_widgets/common_text/common_heading.dart';
 import 'package:resume/presentation/common_widgets/common_textfields/comman_textformfield.dart';
 

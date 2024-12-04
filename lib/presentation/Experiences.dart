@@ -57,26 +57,26 @@ class _ExperienceInfoState extends State<ExperienceInfo> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SizedBox(height: height),
-                  CommonHeading(title: 'Company Name'),
+                  const CommonHeading(title: 'Company Name'),
                   CommonTextformfield(
                       labelText: 'Infosys',
                       controller: companyController,
                       errorText: 'enter value'),
                   SizedBox(height: height),
-                  CommonHeading(title: 'Institute / Collage'),
+                  const CommonHeading(title: 'Institute / Collage'),
                   CommonTextformfield(
                       labelText: 'Mobile Devloper',
                       controller: instituteController,
                       errorText: 'enter valid value'),
                   SizedBox(height: height),
-                  CommonHeading(title: 'Roles (optional)'),
+                  const CommonHeading(title: 'Roles (optional)'),
                   CommonLonglineTextfield(
                       controller: roleController,
                       hintText:
                           'working with team members to come up with new concepts end product analysis',
                       errorText: 'role in Company'),
                   SizedBox(height: height),
-                  CommonHeading(title: 'Employed Status'),
+                  const CommonHeading(title: 'Employed Status'),
                   Row(children: [
                     const CommonHeading(title: 'Previously Employed'),
                     Radio(

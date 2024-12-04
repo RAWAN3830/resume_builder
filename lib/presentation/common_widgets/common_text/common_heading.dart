@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:resume/core/constant/extension.dart';
 
@@ -21,7 +20,7 @@ class CommonHeading extends StatelessWidget {
         ),
         children: <TextSpan>[
           TextSpan(text: title),
-          TextSpan(text: '.', style: new TextStyle(fontFamily: 'CustomFont',
+          const TextSpan(text: '.', style: TextStyle(fontFamily: 'CustomFont',
               // fontSize: context.height(context) * 0.03,
               fontSize:35,
               color: Colors.lightGreen,
