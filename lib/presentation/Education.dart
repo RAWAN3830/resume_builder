@@ -73,35 +73,68 @@ class _EducationInfoState extends State<EducationInfo> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
 
-                CommonHeading(title: 'Course/Degree'),
+                const CommonHeading(title: 'Institution'),
                 CommonTextformfield(
                     controller: courseController,
-                    labelText: 'Degree Info',
+                    labelText: 'xyz University',
                     errorText: 'enter degree info'),
                 SizedBox(height:height),
 
 
-                CommonHeading(title: 'School/Collage/institute'),
+                const CommonHeading(title: 'Location'),
                 CommonTextformfield(
                     controller: collageController,
-                    labelText: 'Collage Name',
-                    errorText: 'Enter Collage Name'),
+                    labelText: 'Gujarat, india',
+                    errorText: 'Enter Location'),
                 SizedBox(height:height),
 
 
-                CommonHeading(title: 'CGPA / SGPA'),
+                const CommonHeading(title: 'Degree Type'),
                 CommonTextformfield(
                     controller: cgpaController,
-                    labelText: '70 % (or) 7.0 CGPA',
-                    errorText: "Enter CGPA"),
+                    labelText: 'Bachelors/Master',
+                    errorText: "Enter Degree"),
                 SizedBox(height:height),
 
-                CommonHeading(title: 'Year Of Pass'),
+                const CommonHeading(title: 'Field of Study'),
                 CommonTextformfield(
                     controller: passingyearController,
-                    labelText: '2020',
-                    errorText: "Enter Year"),
+                    labelText: 'Computer Science',
+                    errorText: "Enter field"),
                 SizedBox(height:height),
+
+                Row(
+                  children: [
+
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const CommonHeading(title: 'Start Year'),
+                          CommonTextformfield(
+                            labelText: 'Your Link Here',
+                            controller: collageController,
+                            errorText: 'Enter valid Link',
+                          ),
+                        ],
+                      ),
+                    ),
+                    SizedBox(width: context.width(context) * 0.05),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const CommonHeading(title: 'End Year'),
+                          CommonTextformfield(
+                            labelText: 'select..',
+                            controller: cgpaController,
+                            errorText: 'Enter valid value',
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
                 SizedBox(height:height),
 
 

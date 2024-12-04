@@ -66,7 +66,7 @@ class SignUpButton extends StatelessWidget {
             ),
           );
         } else if (state is AuthLoading) {
-          return Center(child: CircularProgressIndicator());
+          return const Center(child: CircularProgressIndicator());
         }
         else if (state is AuthSuccess) {
           return Center(
@@ -82,7 +82,7 @@ class SignUpButton extends StatelessWidget {
         } else if (state is AuthFailure) {
           return Center(child: Text("Error: ${state.errorMessage}"));
         }
-        return SizedBox.shrink();
+        return const SizedBox.shrink();
       },
     );
 

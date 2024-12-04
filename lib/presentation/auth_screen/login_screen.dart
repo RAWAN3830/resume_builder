@@ -1,19 +1,13 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:neopop/utils/color_utils.dart';
-import 'package:neopop/utils/constants.dart';
-import 'package:neopop/widgets/buttons/neopop_button/neopop_button.dart';
 import 'package:resume/core/constant/extension.dart';
-import 'package:resume/presentation/home_screen/home_screen.dart';
 import '../../core/constant/assets_svg_image.dart';
 import '../../core/constant/strings.dart';
 import '../../core/constant/theme_colors.dart';
 import '../../infra/bloc/auth_bloc/email_login/login_bloc.dart';
 import '../../infra/bloc/auth_bloc/email_login/login_event.dart';
 import '../../infra/bloc/auth_bloc/email_login/login_state.dart';
-import '../common_widgets/common_buttons/common_save_button.dart';
 import '../common_widgets/common_buttons/sign_up_button.dart';
 import '../common_widgets/common_text/common_richtext.dart';
 import '../common_widgets/common_textfields/comman_textformfield.dart';
@@ -49,13 +43,13 @@ class _LoginScreenState extends State<LoginScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     if (state is LoginLoading)
-                      Center(child: CircularProgressIndicator()),
+                      const Center(child: CircularProgressIndicator()),
                     if (state is LoginFailure)
                       Text(
                         "Error: ${state.error}",
-                        style: TextStyle(color: Colors.red),
+                        style: const TextStyle(color: Colors.red),
                       ),
-                    CommonRichText(title: Strings.login),
+                    const CommonRichText(title: Strings.login),
                     Center(
                       child: Padding(
                         padding:
@@ -115,7 +109,7 @@ class _LoginScreenState extends State<LoginScreen> {
                          // context.push(context, target: HomeScreen());
                        }
 
-                     }, child: Text('Login'))
+                     }, child: const Text('Login'))
 
                   ],
                 );

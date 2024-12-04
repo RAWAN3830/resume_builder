@@ -59,7 +59,7 @@ class DetailsCard extends StatelessWidget {
               BoxShadow(
                 color: Colors.black.withOpacity(0.4),
                 blurRadius: 10,
-                offset: Offset(7, 7),
+                offset: const Offset(7, 7),
               ),
             ],
             borderRadius: BorderRadius.circular(5),

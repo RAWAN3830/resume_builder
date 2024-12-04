@@ -70,7 +70,7 @@ class _ProjectInfoState extends State<ProjectInfo> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
 
-                CommonHeading(title: 'Project Title'),
+                const CommonHeading(title: 'Project Title'),
                 CommonTextformfield(
                     controller: projectController,
                     labelText: 'Project Title',
@@ -78,7 +78,7 @@ class _ProjectInfoState extends State<ProjectInfo> {
                 SizedBox(
                   height: height,
                 ),
-                CommonHeading(title: 'Roles'),
+                const CommonHeading(title: 'Roles'),
                 CommonTextformfield(
                     controller: roleController,
                     labelText: 'Manager , Analysist',
@@ -86,7 +86,7 @@ class _ProjectInfoState extends State<ProjectInfo> {
                 SizedBox(
                   height: height,
                 ),
-                CommonHeading(title: 'Technologies'),
+                const CommonHeading(title: 'Technologies'),
                 CommonTextformfield(
                     controller: techController,
                     labelText: 'Max 5 Language',
@@ -94,7 +94,7 @@ class _ProjectInfoState extends State<ProjectInfo> {
                 SizedBox(
                   height: height,
                 ),
-                CommonHeading(title: 'Project Description'),
+                const CommonHeading(title: 'Project Description'),
                 CommonLonglineTextfield(
                     controller: descriptionController,
                     hintText: 'Description',

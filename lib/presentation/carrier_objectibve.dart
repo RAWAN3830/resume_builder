@@ -59,7 +59,7 @@ class _CarrierObjectiveState extends State<CarrierObjective> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                CommonHeading(title:'Career Objective'),
+                const CommonHeading(title:'Career Objective'),
                 CommonLonglineTextfield(
                     controller: careerController,
                     hintText: 'Career Objective',
@@ -73,7 +73,7 @@ class _CarrierObjectiveState extends State<CarrierObjective> {
                 //       fontWeight: FontWeight.bold),
                 // ),
                 SizedBox(height: context.height(context) * 0.05,),
-                CommonHeading(title:'Designation'),
+                const CommonHeading(title:'Designation'),
                 CommonTextformfield(
                   controller: designationController,
                   labelText: 'Software Engineer',

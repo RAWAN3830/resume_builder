@@ -21,18 +21,18 @@ class CommonLonglineTextfield extends StatelessWidget {
       },
       maxLines: 6,
       decoration: InputDecoration(
-        border: OutlineInputBorder(
+        border: const OutlineInputBorder(
           borderSide: BorderSide(color: Colors.black, width: 2),
         ),
-        focusedBorder: OutlineInputBorder(
+        focusedBorder: const OutlineInputBorder(
           borderSide: BorderSide(color: Colors.black, width: 2),
         ),
-        enabledBorder: OutlineInputBorder(
+        enabledBorder: const OutlineInputBorder(
           borderSide: BorderSide(color: Colors.black, width: 2),
         ),
         // hintText: hintText,
         labelText:hintText,
-          labelStyle: TextStyle(color: Colors.black),
+          labelStyle: const TextStyle(color: Colors.black),
       ),
     );
   }

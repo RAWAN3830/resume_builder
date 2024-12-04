@@ -54,7 +54,7 @@ class _PersonalDetailsState extends State<PersonalDetails> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            CommonHeading(title: 'DOB'),
+            const CommonHeading(title: 'DOB'),
             Padding(
               padding: const EdgeInsets.all(10.0),
               child: TextFormField(
@@ -66,7 +66,7 @@ class _PersonalDetailsState extends State<PersonalDetails> {
               ),
             ),
 
-            CommonHeading(title: 'Marital Status'),
+            const CommonHeading(title: 'Marital Status'),
             ListTile(
               leading: Radio(
                   value: merital.Single,
@@ -89,7 +89,7 @@ class _PersonalDetailsState extends State<PersonalDetails> {
                   }),
               title: const Text('Merried'),
             ),
-            CommonHeading(title: 'Languages'),
+            const CommonHeading(title: 'Languages'),
             CheckboxListTile(
                 value: isEnglish,
                 onChanged: (value) {
@@ -124,7 +124,7 @@ class _PersonalDetailsState extends State<PersonalDetails> {
                   style: TextStyle(fontSize: 20),
                 )),
 
-            CommonHeading(title: 'Nationality'),
+            const CommonHeading(title: 'Nationality'),
             Padding(
               padding: const EdgeInsets.all(10.0),
               child: TextFormField(
