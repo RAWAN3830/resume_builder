@@ -129,12 +129,12 @@ class ExperienceInfo extends StatefulWidget {
   @override
   State<ExperienceInfo> createState() => _ExperienceInfoState();
 }
-late final String? employer;
-late final String? jobTitle;
-late final String? startDate;
-late final String? endDate;
-late final String? location;
-late final String? description;
+  String? employer;
+  String? jobTitle;
+  String? startDate;
+  String? endDate;
+  String? location;
+  String? description;
 
 class _ExperienceInfoState extends State<ExperienceInfo> {
   final _formKey = GlobalKey<FormState>();
@@ -149,12 +149,12 @@ class _ExperienceInfoState extends State<ExperienceInfo> {
   @override
   void initState() {
     super.initState();
-    // if (employer != null) _employerController.text = employer ?? "employer error";
-    // if (jobTitle != null) _jobTitleController.text = jobTitle ?? "job title error";
-    // if (location != null) _locationController.text = location ?? "location error";
-    // if (startDate != null) _startDateController.text = startDate ?? "StartDate error";
-    // if (endDate != null) _endDateController.text = endDate ?? "endDate error";
-    // if (description != null) _descriptionController.text = description ?? "description error";
+    if (employer != null) _employerController.text = employer ?? "employer error";
+    if (jobTitle != null) _jobTitleController.text = jobTitle ?? "job title error";
+    if (location != null) _locationController.text = location ?? "location error";
+    if (startDate != null) _startDateController.text = startDate ?? "StartDate error";
+    if (endDate != null) _endDateController.text = endDate ?? "endDate error";
+    if (description != null) _descriptionController.text = description ?? "description error";
 
   }
 
