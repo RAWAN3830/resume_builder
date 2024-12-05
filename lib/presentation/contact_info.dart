@@ -176,7 +176,7 @@ class _Personal_infoState extends State<Personal_info> {
                                 padding: const EdgeInsets.all(8.0),
                                 child: Column(
                                   children: [
-                                    CommonTextformfield(labelText: 'Linki', controller: fieldControllers[index]['link'] as TextEditingController, errorText: 'addData'),
+                                    CommonTextformfield(labelText: 'Link', controller: fieldControllers[index]['link'] as TextEditingController, errorText: 'addData'),
                                     CommonTextformfield(labelText: 'LinkName', controller: fieldControllers[index]['name'] as TextEditingController, errorText: 'addData'),
                                     // TextField(
                                     //   controller: fieldControllers[index]['link'],

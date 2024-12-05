@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:resume/infra/bloc/auth_bloc/email_login/login_bloc.dart';
 import 'package:resume/presentation/home_screen/home_screen.dart';
+import 'package:resume/presentation/skill_sets_screen.dart';
+import '../core/constant/strings.dart';
 import '../firebase_options.dart';
 import '../infra/bloc/auth_bloc/email_auth/email_auth_bloc.dart';
 import '../infra/bloc/auth_bloc/google_auth/google_auth_bloc.dart';
@@ -34,10 +36,13 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
+          fontFamily: Strings.uberFont,
+
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.lightGreen),
           useMaterial3: true,
         ),
-         home: const HomeScreen(),
+         home: const SkillSetsScreen(),
+         //home: const HomeScreen(),
          // home:  DynamicTextFields(),
         // home: const LoginScreen(),
         // home: const RegistrationScreen(),
