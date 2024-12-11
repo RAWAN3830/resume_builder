@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:resume/core/constant/extension.dart';
@@ -8,13 +9,16 @@ import 'package:resume/presentation/common_widgets/common_buttons/common_reset_b
 import 'package:resume/presentation/common_widgets/common_text/common_heading.dart';
 import 'package:resume/presentation/common_widgets/common_textfields/comman_textformfield.dart';
 import 'package:resume/presentation/common_widgets/common_textfields/common_longlinetextfield.dart';
+import 'common_widgets/common_appbar/custome_appbar.dart';
 import 'common_widgets/common_buttons/common_save_button.dart';
 
 String? firstname;
 String? lastname;
 String? email;
 String? phone;
+String? jobTitle;
 String? address;
+
 
 class Personal_info extends StatefulWidget {
   const Personal_info({super.key});
@@ -30,6 +34,7 @@ class _Personal_infoState extends State<Personal_info> {
   TextEditingController lastNameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController phoneController = TextEditingController();
+  TextEditingController jobTitleController = TextEditingController();
   TextEditingController addressController = TextEditingController();
   final formKey = GlobalKey<FormState>();
   List<Map<String, TextEditingController>> fieldControllers = [];
@@ -42,11 +47,13 @@ class _Personal_infoState extends State<Personal_info> {
         lastname != null &&
         email != null &&
         phone != null &&
+        jobTitle != null &&
         address != null) {
       firstNameController.text = firstname!;
       lastNameController.text = lastname!;
       emailController.text = email!;
       phoneController.text = phone!;
+      jobTitleController.text = jobTitle!;
       addressController.text = address!;
     }
   }
@@ -86,11 +93,17 @@ class _Personal_infoState extends State<Personal_info> {
         FocusManager.instance.primaryFocus?.unfocus();
       },
       child: Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.blue,
-          title:
-              const Text('Contact Info', style: TextStyle(color: Colors.white)),
+        appBar: const CustomAppBar(title: 'Contact info',
+          // actions: [
+          //   IconButton(
+          //     icon: Icon(Icons.search),
+          //     onPressed: () {
+          //       // Add your search action
+          //     },
+          //   ),
+          // ],
         ),
+
         body: SingleChildScrollView(
           child: Column(
             children: [
@@ -151,7 +164,7 @@ class _Personal_infoState extends State<Personal_info> {
                       const CommonHeading(title: "Job Title"),
                       CommonTextformfield(
                         labelText: 'Full Stack Devloper',
-                        controller: phoneController,
+                        controller: jobTitleController,
                         errorText: 'Enter Job Title',
                       ),
                       SizedBox(height: height),
@@ -176,39 +189,9 @@ class _Personal_infoState extends State<Personal_info> {
                                 padding: const EdgeInsets.all(8.0),
                                 child: Column(
                                   children: [
-                                    CommonTextformfield(labelText: 'Linki', controller: fieldControllers[index]['link'] as TextEditingController, errorText: 'addData'),
-                                    CommonTextformfield(labelText: 'LinkName', controller: fieldControllers[index]['name'] as TextEditingController, errorText: 'addData'),
-                                    // TextField(
-                                    //   controller: fieldControllers[index]['link'],
-                                    //   decoration: InputDecoration(
-                                    //     labelText: 'Link',
-                                    //     border: OutlineInputBorder(
-                                    //       borderSide: BorderSide(color: ThemeColors.black, width: 1),
-                                    //     ),
-                                    //     enabledBorder: OutlineInputBorder(
-                                    //       borderSide: BorderSide(color: ThemeColors.black, width: 1),
-                                    //     ),
-                                    //     focusedBorder: OutlineInputBorder(
-                                    //       borderSide: BorderSide(color:  ThemeColors.black, width: 1),
-                                    //     ),
-                                    //   ),
-                                    // ),
+                                    CommonTextformfield(labelText: 'Link', controller: fieldControllers[index]['link'] as TextEditingController, errorText: 'addData'),
                                     const SizedBox(height: 8),
-                                    // TextField(
-                                    //   controller:fieldControllers[index]['name'],
-                                    //   decoration: InputDecoration(
-                                    //     labelText: 'Link Name',
-                                    //     border: OutlineInputBorder(
-                                    //       borderSide: BorderSide(color: ThemeColors.black, width: 1),
-                                    //     ),
-                                    //     enabledBorder: OutlineInputBorder(
-                                    //       borderSide: BorderSide(color: ThemeColors.black, width: 1),
-                                    //     ),
-                                    //     focusedBorder: const OutlineInputBorder(
-                                    //       borderSide: BorderSide(color: Colors.green, width: 1),
-                                    //     ),
-                                    //   ),
-                                    // ),
+                                    CommonTextformfield(labelText: 'LinkName', controller: fieldControllers[index]['name'] as TextEditingController, errorText: 'addData'),
                                     const SizedBox(height: 8),
                                     Align(
                                       alignment: Alignment.centerRight,
@@ -229,52 +212,26 @@ class _Personal_infoState extends State<Personal_info> {
                         child: const Text('Add Fields'),
                       ),
 
-
-
-                      // Row(
-                      //   children: [
-                      //     Expanded(
-                      //       child: Column(
-                      //         crossAxisAlignment: CrossAxisAlignment.start,
-                      //         children: [
-                      //           CommonTextformfield(
-                      //             labelText: 'Your Link Here',
-                      //             controller: firstNameController,
-                      //             errorText: 'Enter valid Link',
-                      //           ),
-                      //         ],
-                      //       ),
-                      //     ),
-                      //     SizedBox(width: width * 0.05),
-                      //     Expanded(
-                      //       child: Column(
-                      //         crossAxisAlignment: CrossAxisAlignment.start,
-                      //         children: [
-                      //           CommonTextformfield(
-                      //             labelText: 'select..',
-                      //             controller: lastNameController,
-                      //             errorText: 'Enter valid value',
-                      //           ),
-                      //         ],
-                      //       ),
-                      //     ),
-                      //   ],
-                      // ),
                       SizedBox(height: height),
-                      // Container(
-                      //   height: context.height(context) * 0.05,
-                      //   width: double.infinity,
-                      //   decoration: BoxDecoration(
-                      //       borderRadius: BorderRadius.circular(5),
-                      //       border: Border.all(color: Colors.black, width: 2)),
-                      //   child: Center(child: Row(
-                      //     mainAxisAlignment: MainAxisAlignment.center,
-                      //     children: [
-                      //       Icon(CupertinoIcons.plus,color: Colors.black,size: 30),
-                      //       Text('ADD LINK',style: TextStyle(fontWeight: FontWeight.w500,fontSize: 18),)
-                      //     ],
-                      //   ),),
-                      // ),
+                      GestureDetector(
+                         onTap: (){
+
+                         },
+                        child: Container(
+                          height: context.height(context) * 0.05,
+                          width: double.infinity,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(5),
+                              border: Border.all(color: Colors.black, width: 2)),
+                          child: Center(child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Icon(CupertinoIcons.plus,color: Colors.black,size: 30),
+                              // Text('ADD LINK',style: TextStyle(fontWeight: FontWeight.w500,fontSize: 18),)
+                            ],
+                          ),),
+                        ),
+                      ),
                       SizedBox(height: height),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
