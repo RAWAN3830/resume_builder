@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import 'common_widgets/common_appbar/custome_appbar.dart';
+
 
 class Achievement extends StatefulWidget {
   const Achievement({super.key});
@@ -17,24 +19,7 @@ class _AchievementState extends State<Achievement> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        toolbarHeight: 90,
-        leading: InkWell(
-          onTap: () {
-            Navigator.of(context).pop();
-          },
-          child: const Icon(
-            CupertinoIcons.back,
-            color: Colors.white,
-          ),
-        ),
-        backgroundColor: Colors.blue,
-        title: const Text('Achievements',
-            style: TextStyle(
-                color: Colors.white,
-                fontSize: 25,
-                fontWeight: FontWeight.bold)),
-      ),
+      appBar: const CustomAppBar(title:'Achievements'),
       body: Column(
         children: [
           Flexible(

@@ -122,6 +122,7 @@ import 'package:resume/presentation/common_widgets/common_textfields/comman_text
 import 'package:resume/presentation/common_widgets/common_textfields/common_longlinetextfield.dart';
 import 'package:resume/presentation/common_widgets/common_textfields/common_years_textfield.dart';
 import '../core/constant/strings.dart';
+import 'common_widgets/common_appbar/custome_appbar.dart';
 
 class ExperienceInfo extends StatefulWidget {
   const ExperienceInfo({super.key});
@@ -175,13 +176,8 @@ class _ExperienceInfoState extends State<ExperienceInfo> {
     final height = context.height(context) * 0.02;
 
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.blue,
-        title: const Text(
-          'Experiences',
-          style: TextStyle(color: Colors.white, fontSize: 25),
-        ),
-      ),
+
+      appBar: const CustomAppBar(title:'Experiences'),
       body: SingleChildScrollView(
         child: Form(
           key: _formKey,

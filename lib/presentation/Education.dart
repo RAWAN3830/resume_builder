@@ -1,11 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:resume/core/constant/extension.dart';
+import 'package:resume/presentation/Project.dart';
 import 'package:resume/presentation/common_widgets/common_buttons/common_reset_button.dart';
 import 'package:resume/presentation/common_widgets/common_buttons/common_save_button.dart';
 import 'package:resume/presentation/common_widgets/common_text/common_heading.dart';
 import 'package:resume/presentation/common_widgets/common_textfields/common_years_textfield.dart';
 import '../core/constant/strings.dart';
+import 'common_widgets/common_appbar/custome_appbar.dart';
 import 'common_widgets/common_textfields/comman_textformfield.dart';
 
 String? course;
@@ -52,24 +54,7 @@ class _EducationInfoState extends State<EducationInfo> {
   Widget build(BuildContext context) {
     var height = context.height(context) * 0.02;
     return Scaffold(
-      appBar: AppBar(
-        toolbarHeight: 90,
-        leading: InkWell(
-          onTap: () {
-            Navigator.of(context).pop();
-          },
-          child: const Icon(
-            CupertinoIcons.back,
-            color: Colors.white,
-          ),
-        ),
-        backgroundColor: Colors.blue,
-        title: const Text('Education',
-            style: TextStyle(
-                color: Colors.white,
-                fontSize: 25,
-                fontWeight: FontWeight.bold)),
-      ),
+      appBar: const CustomAppBar(title:'Education'),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: SingleChildScrollView(

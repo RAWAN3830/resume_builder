@@ -9,6 +9,7 @@ import 'package:resume/presentation/common_widgets/common_buttons/common_reset_b
 import 'package:resume/presentation/common_widgets/common_text/common_heading.dart';
 import 'package:resume/presentation/common_widgets/common_textfields/comman_textformfield.dart';
 import 'package:resume/presentation/common_widgets/common_textfields/common_longlinetextfield.dart';
+import 'common_widgets/common_appbar/custome_appbar.dart';
 import 'common_widgets/common_buttons/common_save_button.dart';
 
 String? firstname;
@@ -92,11 +93,17 @@ class _Personal_infoState extends State<Personal_info> {
         FocusManager.instance.primaryFocus?.unfocus();
       },
       child: Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.blue,
-          title:
-              const Text('Contact Info', style: TextStyle(color: Colors.white)),
+        appBar: const CustomAppBar(title: 'Contact info',
+          // actions: [
+          //   IconButton(
+          //     icon: Icon(Icons.search),
+          //     onPressed: () {
+          //       // Add your search action
+          //     },
+          //   ),
+          // ],
         ),
+
         body: SingleChildScrollView(
           child: Column(
             children: [

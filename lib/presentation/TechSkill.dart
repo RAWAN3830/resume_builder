@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import 'common_widgets/common_appbar/custome_appbar.dart';
+
 class SkillSets extends StatefulWidget {
   const SkillSets({super.key});
 
@@ -15,24 +17,7 @@ class _SkillSetsState extends State<SkillSets> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        toolbarHeight: 90,
-        leading: InkWell(
-          onTap: () {
-            Navigator.of(context).pop();
-          },
-          child: const Icon(
-            CupertinoIcons.back,
-            color: Colors.white,
-          ),
-        ),
-        backgroundColor: Colors.blue,
-        title: const Text('Technical Skills',
-            style: TextStyle(
-                color: Colors.white,
-                fontSize: 25,
-                fontWeight: FontWeight.bold)),
-      ),
+      appBar: const CustomAppBar(title: 'Skilled'),
       body: Column(
         children: [
           Flexible(
@@ -48,16 +33,15 @@ class _SkillSetsState extends State<SkillSets> {
                           setState(() {
                             textFieldList.removeAt(index);
 
-                             for (var element in textFieldList) {
-                               controllerList.remove(element.skillController.text);
-                             }
+                            for (var element in textFieldList) {
+                              controllerList
+                                  .remove(element.skillController.text);
+                            }
                             setState(() {
-                           //   textFieldList.forEach((element) => controllerList.remove(element.skillController.text));
-
+                              //   textFieldList.forEach((element) => controllerList.remove(element.skillController.text));
                             });
-                          //  print(controllerList);
+                            //  print(controllerList);
                             //textFieldList.DynamicTextField());
-
                           });
                         },
                         icon: const Icon(Icons.delete))
@@ -72,10 +56,8 @@ class _SkillSetsState extends State<SkillSets> {
                 for (var element in textFieldList) {
                   controllerList.add(element.skillController.text);
                 }
-                setState(() {
-
-                });
-                 print(controllerList);
+                setState(() {});
+                print(controllerList);
               },
               child: const Text('Submit'))
         ],
@@ -100,12 +82,10 @@ class DynamicTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: TextFormField(
-        controller: skillController,
-        decoration: const InputDecoration(
-          hintText: 'Enter',
-        ),
+    return TextFormField(
+      controller: skillController,
+      decoration: const InputDecoration(
+        hintText: 'Enter',
       ),
     );
   }

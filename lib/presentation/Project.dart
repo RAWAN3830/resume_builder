@@ -7,6 +7,7 @@ import 'package:resume/presentation/common_widgets/common_text/common_heading.da
 import 'package:resume/presentation/common_widgets/common_textfields/common_longlinetextfield.dart';
 
 import '../core/constant/strings.dart';
+import 'common_widgets/common_appbar/custome_appbar.dart';
 import 'common_widgets/common_textfields/comman_textformfield.dart';
 
 String? title;
@@ -47,20 +48,8 @@ class _ProjectInfoState extends State<ProjectInfo> {
   Widget build(BuildContext context) {
     var height = context.height(context) * 0.03;
     return Scaffold(
-      appBar: AppBar(
-        leading: InkWell(
-          onTap: () {
-            Navigator.of(context).pop();
-          },
-          child: const Icon(
-            CupertinoIcons.back,
-            color: Colors.white,
-          ),
-        ),
-        backgroundColor: Colors.blue,
-        title: const Text('Projects',
-            style: TextStyle(color: Colors.white, fontSize: 25)),
-      ),
+      appBar: const CustomAppBar(title:'Projects'),
+
       body: SingleChildScrollView(
         child: Form(
           key: formKey,
