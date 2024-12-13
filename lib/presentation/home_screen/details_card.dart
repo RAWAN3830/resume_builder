@@ -6,7 +6,7 @@ import 'package:resume/presentation/Declaration.dart';
 import 'package:resume/presentation/Education.dart';
 import 'package:resume/presentation/Experiences.dart';
 import 'package:resume/presentation/Project.dart';
-import 'package:resume/presentation/TechSkill.dart';
+import 'package:resume/presentation/skill_sets_screen.dart';
 import 'package:resume/presentation/carrier_objectibve.dart';
 import 'package:resume/presentation/personal_details.dart';
 
@@ -36,7 +36,7 @@ class DetailsCard extends StatelessWidget {
               context.push(context, target: const ExperienceInfo());
               // context.push(context, target: const PersonalDetails());
             case 3:
-              context.push(context, target: const SkillSets());
+              context.push(context, target: const SkillSetsScreen());
               // context.push(context, target: const EducationInfo());
             case 4:
               context.push(context, target: const ProjectInfo());
