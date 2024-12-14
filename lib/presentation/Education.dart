@@ -6,12 +6,13 @@ import 'package:resume/presentation/common_widgets/common_buttons/common_save_bu
 import 'package:resume/presentation/common_widgets/common_text/common_heading.dart';
 import 'package:resume/presentation/common_widgets/common_textfields/common_years_textfield.dart';
 import '../core/constant/strings.dart';
+import 'common_widgets/common_appbar/custome_appbar.dart';
 import 'common_widgets/common_textfields/comman_textformfield.dart';
 
-String? course;
-String? collage;
-String? cgpa;
-String? passingYear;
+String? institution;
+String? location;
+String? degreeType;
+String? fieldOfStudy;
 String? startDate;
 String? endDate;
 
@@ -24,10 +25,10 @@ class EducationInfo extends StatefulWidget {
 
 class _EducationInfoState extends State<EducationInfo> {
   // int indexCount = 0;
-  TextEditingController courseController = TextEditingController();
-  TextEditingController collageController = TextEditingController();
-  TextEditingController cgpaController = TextEditingController();
-  TextEditingController passingyearController = TextEditingController();
+  TextEditingController institutionController = TextEditingController();
+  TextEditingController locationController = TextEditingController();
+  TextEditingController degreeTypeController = TextEditingController();
+  TextEditingController fieldOfStudyController = TextEditingController();
   TextEditingController startDateController = TextEditingController();
   TextEditingController endDateController = TextEditingController();
 
@@ -36,14 +37,14 @@ class _EducationInfoState extends State<EducationInfo> {
   @override
   void initState() {
     // TODO: implement initState
-    if (course != null &&
-        collage != null &&
-        cgpa != null &&
-        passingYear != null) {
-      courseController.text = course!;
-      collageController.text = collage!;
-      cgpaController.text = cgpa!;
-      passingyearController.text = passingYear!;
+    if (institution != null &&
+        location != null &&
+        degreeType != null &&
+        fieldOfStudy != null) {
+      institutionController.text = institution ?? '';
+      locationController.text = location ?? '';
+      degreeTypeController.text = degreeType ?? '';
+      fieldOfStudyController.text = fieldOfStudy ?? '';
     }
     super.initState();
   }
@@ -52,24 +53,7 @@ class _EducationInfoState extends State<EducationInfo> {
   Widget build(BuildContext context) {
     var height = context.height(context) * 0.02;
     return Scaffold(
-      appBar: AppBar(
-        toolbarHeight: 90,
-        leading: InkWell(
-          onTap: () {
-            Navigator.of(context).pop();
-          },
-          child: const Icon(
-            CupertinoIcons.back,
-            color: Colors.white,
-          ),
-        ),
-        backgroundColor: Colors.blue,
-        title: const Text('Education',
-            style: TextStyle(
-                color: Colors.white,
-                fontSize: 25,
-                fontWeight: FontWeight.bold)),
-      ),
+      appBar: const CustomAppBar(title:'Education'),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: SingleChildScrollView(
@@ -81,7 +65,7 @@ class _EducationInfoState extends State<EducationInfo> {
 
                 const CommonHeading(title: 'Institution'),
                 CommonTextformfield(
-                    controller: courseController,
+                    controller: institutionController,
                     labelText: 'xyz University',
                     errorText: 'enter degree info'),
                 SizedBox(height:height),
@@ -89,7 +73,7 @@ class _EducationInfoState extends State<EducationInfo> {
 
                 const CommonHeading(title: 'Location'),
                 CommonTextformfield(
-                    controller: collageController,
+                    controller: locationController,
                     labelText: 'Gujarat, india',
                     errorText: 'Enter Location'),
                 SizedBox(height:height),
@@ -97,14 +81,14 @@ class _EducationInfoState extends State<EducationInfo> {
 
                 const CommonHeading(title: 'Degree Type'),
                 CommonTextformfield(
-                    controller: cgpaController,
+                    controller: degreeTypeController,
                     labelText: 'Bachelors/Master',
                     errorText: "Enter Degree"),
                 SizedBox(height:height),
 
                 const CommonHeading(title: 'Field of Study'),
                 CommonTextformfield(
-                    controller: passingyearController,
+                    controller: fieldOfStudyController,
                     labelText: 'Computer Science',
                     errorText: "Enter field"),
                 SizedBox(height:height),

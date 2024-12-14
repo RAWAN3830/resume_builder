@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import 'common_widgets/common_appbar/custome_appbar.dart';
+
 // String? Declarations;
 // String? date1;
 // String? place;
@@ -32,21 +34,8 @@ class _DeclarationState extends State<Declaration> {
     return Scaffold(
       key: formKey,
       backgroundColor: Colors.grey.shade300,
-      appBar: AppBar(
-        toolbarHeight: 90,
-        leading: InkWell(
-          onTap: () {
-            Navigator.of(context).pop();
-          },
-          child: const Icon(
-            CupertinoIcons.back,
-            color: Colors.white,
-          ),
-        ),
-        backgroundColor: Colors.blue,
-        title: const Text('Declaration',
-            style: TextStyle(color: Colors.white, fontSize: 25)),
-      ),
+      appBar: const CustomAppBar(title:'Declaration'),
+
       body: Column(
         children: [
           const SizedBox(height: 10),
