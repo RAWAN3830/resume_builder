@@ -1,4 +1,4 @@
-class Personal_info {
+class PersonalInfoModel {
   final String? firstname;
   final String? lastname;
   final String? email;
@@ -6,7 +6,7 @@ class Personal_info {
   final String? jobTitle;
   final String? address;
   final List<Links> links;
-  Personal_info(
+  PersonalInfoModel(
       {required this.firstname,
       required this.lastname,
       required this.email,

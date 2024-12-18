@@ -28,7 +28,7 @@ class DetailsCard extends StatelessWidget {
         onTap: () {
           switch (index) {
             case 0:
-              context.push(context, target: const Personal_info());
+              context.push(context, target: const PersonalInfo());
             case 1:
               context.push(context, target: const EducationInfo());
               // context.push(context, target: const CarrierObjective());

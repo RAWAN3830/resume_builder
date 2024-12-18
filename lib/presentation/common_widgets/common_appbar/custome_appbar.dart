@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:resume/core/constant/extension.dart';
 import 'package:resume/core/constant/strings.dart';
 import 'package:resume/core/constant/theme_colors.dart';
 
@@ -14,7 +13,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      toolbarHeight: 90,
+      // toolbarHeight: 90,
       title: Text(title,
           style:  TextStyle(
               color: ThemeColors.black,
