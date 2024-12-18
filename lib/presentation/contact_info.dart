@@ -9,6 +9,7 @@ import 'package:resume/presentation/common_widgets/common_buttons/common_reset_b
 import 'package:resume/presentation/common_widgets/common_text/common_heading.dart';
 import 'package:resume/presentation/common_widgets/common_textfields/comman_textformfield.dart';
 import 'package:resume/presentation/common_widgets/common_textfields/common_longlinetextfield.dart';
+import '../domain/personal_info.dart';
 import 'common_widgets/common_appbar/custome_appbar.dart';
 import 'common_widgets/common_buttons/common_save_button.dart';
 
@@ -20,14 +21,14 @@ String? jobTitle;
 String? address;
 
 
-class Personal_info extends StatefulWidget {
-  const Personal_info({super.key});
+class PersonalInfo extends StatefulWidget {
+  const PersonalInfo({super.key});
 
   @override
-  State<Personal_info> createState() => _Personal_infoState();
+  State<PersonalInfo> createState() => _PersonalInfoState();
 }
 
-class _Personal_infoState extends State<Personal_info> {
+class _PersonalInfoState extends State<PersonalInfo> {
   int indexCount = 0;
 
   TextEditingController firstNameController = TextEditingController();
@@ -49,7 +50,7 @@ class _Personal_infoState extends State<Personal_info> {
         phone != null &&
         jobTitle != null &&
         address != null) {
-      firstNameController.text = firstname!;
+      firstNameController.text = firstname ?? '';
       lastNameController.text = lastname!;
       emailController.text = email!;
       phoneController.text = phone!;
@@ -67,7 +68,7 @@ class _Personal_infoState extends State<Personal_info> {
     }
   }
 
-  void _addFields() {
+  void addFields() {
     setState(() {
       fieldControllers.add({
         'link': TextEditingController(),
@@ -76,7 +77,7 @@ class _Personal_infoState extends State<Personal_info> {
     });
   }
 
-  void _removeFields(int index) {
+  void removeFields(int index) {
     setState(() {
       fieldControllers.removeAt(index);
     });
@@ -94,14 +95,7 @@ class _Personal_infoState extends State<Personal_info> {
       },
       child: Scaffold(
         appBar: const CustomAppBar(title: 'Contact info',
-          // actions: [
-          //   IconButton(
-          //     icon: Icon(Icons.search),
-          //     onPressed: () {
-          //       // Add your search action
-          //     },
-          //   ),
-          // ],
+
         ),
 
         body: SingleChildScrollView(
@@ -197,7 +191,7 @@ class _Personal_infoState extends State<Personal_info> {
                                       alignment: Alignment.centerRight,
                                       child: IconButton(
                                         icon: const Icon(Icons.delete, color: Colors.red),
-                                        onPressed: () => _removeFields(index),
+                                        onPressed: () => removeFields(index),
                                       ),
                                     ),
                                   ],
@@ -208,14 +202,39 @@ class _Personal_infoState extends State<Personal_info> {
                         ),
                       ),
                       ElevatedButton(
-                        onPressed: _addFields,
+                        onPressed: addFields,
                         child: const Text('Add Fields'),
                       ),
 
                       SizedBox(height: height),
                       GestureDetector(
                          onTap: (){
+                           if (formKey.currentState!.validate()) {
+// Extract links from fieldControllers
+                             List<Links> allLinks = fieldControllers.map((field) {
+                               return Links(
+                                 name: field['name']?.text ?? 'error',
+                                 link: field['link']?.text ?? 'error',
+                               );
+                             }).toList();
 
+// Create the PersonalInfo object
+                             PersonalInfoModel personalInfo = PersonalInfoModel(
+                               firstname: firstNameController.text,
+                               lastname: lastNameController.text,
+                               email: emailController.text,
+                               phone: phoneController.text,
+                               jobTitle: jobTitleController.text,
+                               address: addressController.text,
+                               links: allLinks,
+                             );
+
+// For demonstration purposes, print the PersonalInfo object
+                             print("Personal Info Saved: ${personalInfo.firstname}");
+                             print("Links: ${personalInfo.links.map((e) => '${e.name}: ${e.link}').join(", ")}");
+
+// Here you can handle further actions, like saving to database or navigation
+                           }
                          },
                         child: Container(
                           height: context.height(context) * 0.05,
@@ -223,7 +242,7 @@ class _Personal_infoState extends State<Personal_info> {
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(5),
                               border: Border.all(color: Colors.black, width: 2)),
-                          child: Center(child: Row(
+                          child: const Center(child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Icon(CupertinoIcons.plus,color: Colors.black,size: 30),
@@ -238,7 +257,12 @@ class _Personal_infoState extends State<Personal_info> {
                         children: [
                           CommonSaveButton(
                             formKey: formKey,
-                            onTap: () {},
+                            onTap: () {
+                              List<Links> allLinks = [];
+                              for(int i=0;i<fieldControllers.length;i++){
+                                 // allLinks.add(Links(name: name, link: link));
+                              }
+                            },
                             name: Strings.saveContinue,
                           ),
                           CommonResetButton(formKey: formKey)
@@ -280,137 +304,35 @@ class _Personal_infoState extends State<Personal_info> {
 // }
 //
 
-
-// import 'dart:io';
-// import 'package:flutter/cupertino.dart';
-// import 'package:flutter/material.dart';
-// import 'package:image_picker/image_picker.dart';
-// import 'package:resume/core/constant/extension.dart';
-// import 'package:resume/core/constant/strings.dart';
-// import 'package:resume/presentation/common_widgets/common_buttons/common_reset_button.dart';
-// import 'package:resume/presentation/common_widgets/common_text/common_heading.dart';
-// import 'package:resume/presentation/common_widgets/common_textfields/comman_textformfield.dart';
-// import 'package:resume/presentation/common_widgets/common_textfields/common_longlinetextfield.dart';
+// CommonSaveButton(
+// formKey: formKey,
+// onTap: () {
+// if (formKey.currentState!.validate()) {
+// // Extract links from fieldControllers
+// List<Links> allLinks = fieldControllers.map((field) {
+// return Links(
+// name: field['name']!.text,
+// link: field['link']!.text,
+// );
+// }).toList();
 //
-// import 'common_widgets/common_buttons/common_save_button.dart';
+// // Create the PersonalInfo object
+// PersonalInfo personalInfo = PersonalInfo(
+// firstname: firstNameController.text,
+// lastname: lastNameController.text,
+// email: emailController.text,
+// phone: phoneController.text,
+// jobTitle: jobTitleController.text,
+// address: addressController.text,
+// links: allLinks,
+// );
 //
-// String? firstname;
-// String? lastname;
-// String? email;
-// String? phone;
-// String? address;
+// // For demonstration purposes, print the PersonalInfo object
+// print("Personal Info Saved: ${personalInfo.firstname}");
+// print("Links: ${personalInfo.links.map((e) => '${e.name}: ${e.link}').join(", ")}");
 //
-// class Personal_info extends StatefulWidget {
-//   const Personal_info({super.key});
-//
-//   @override
-//   State<Personal_info> createState() => _Personal_infoState();
+// // Here you can handle further actions, like saving to database or navigation
 // }
-//
-// class _Personal_infoState extends State<Personal_info> {
-//   int indexCount = 0;
-//
-//   TextEditingController firstNameController = TextEditingController();
-//   TextEditingController lastNameController = TextEditingController();
-//   TextEditingController emailController = TextEditingController();
-//   TextEditingController phoneController = TextEditingController();
-//   TextEditingController addressController = TextEditingController();
-//   final formKey = GlobalKey<FormState>();
-//   File? image;
-//   @override
-//   void initState() {
-//     // TODO: implement initState
-//     if (firstname != null && lastname != null && email != null && phone != null && address != null) {
-//       firstNameController.text = firstname!;
-//       emailController.text = email!;
-//       phoneController.text = phone!;
-//       addressController.text = address!;
-//     }
-//     super.initState();
-//   }
-//
-//   pickImageFromCamera() async {
-//     var imageFile = await ImagePicker().pickImage(source: ImageSource.camera);
-//     if (imageFile != null) {
-//       setState(() {
-//         image = File(imageFile.path);
-//       });
-//     }
-//   }
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     var height = context.height(context) * 0.02;
-//     return GestureDetector(
-//       onTap: () {
-//         FocusManager.instance.primaryFocus?.unfocus();
-//       },
-//       child: Scaffold(
-//         appBar: AppBar(
-//           backgroundColor: Colors.blue,
-//           title:
-//               const Text('Contact Info', style: TextStyle(color: Colors.white)),
-//         ),
-//         body: SingleChildScrollView(
-//           child: Column(
-//            children: [
-//               const SizedBox(height: 20),
-//               Padding(
-//                 padding: const EdgeInsets.all(20.0),
-//                 child: Form(
-//                   key: formKey,
-//                   child: Column(
-//                     crossAxisAlignment: CrossAxisAlignment.start,
-//                     children: [
-//                       SizedBox(height:height ),
-//                       CommonHeading(title: 'First name'),
-//                       CommonTextformfield(
-//                         labelText: 'First Name',
-//                         controller: firstNameController,
-//                         errorText: 'Enter valid name',
-//                       ),
-//                       SizedBox(height:height ),
-//                       CommonTextformfield(
-//                         labelText: 'Last Name',
-//                         controller: lastNameController,
-//                         errorText: 'Enter valid name',
-//                       ),
-//                       SizedBox(height:height ),
-//                       CommonTextformfield(
-//                         labelText: "Email",
-//                         controller: emailController,
-//                         errorText: 'Enter valid Mail',
-//                       ),
-//
-//                       SizedBox(height:height ),
-//
-//                       CommonTextformfield(
-//                         labelText: 'phone',
-//                         controller: phoneController,
-//                         errorText: 'Enter Phone NO',
-//                       ),
-//                       SizedBox(height:height ),
-//                       CommonLonglineTextfield(
-//                           controller: addressController,
-//                           hintText: "Address (Street , Building NO)",
-//                           errorText: 'Enter Address'),
-//                       SizedBox(height:height ),
-//                       Row(
-//                         mainAxisAlignment: MainAxisAlignment.spaceAround,
-//                         children: [
-//                          CommonSaveButton(formKey: formKey, onTap: (){}, name:Strings.saveContinue,),
-//                           CommonResetButton(formKey: formKey)
-//                         ],
-//                       ),
-//                     ],
-//                   ),
-//                 ),
-//               ),
-//
-//             ],
-//           ),
-//         ),
-//       ),
-//     );
-//   }
-// }
+// },
+// name: Strings.saveContinue,
+// )
