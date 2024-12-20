@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
@@ -214,14 +215,13 @@ class _PersonalInfoState extends State<PersonalInfo> {
                             formKey: formKey,
                             onTap: () {
                               if (formKey.currentState!.validate()) {
-
+                                formKey.currentState!.save();
                                 List<Links> allLinks = fieldControllers.map((field) {
                                   return Links(
-                                    name: field['name']?.text ?? 'error',
-                                    link: field['link']?.text ?? 'error',
+                                    name: field['name']?.text ?? '',
+                                    link: field['link']?.text ?? '',
                                   );
                                 }).toList();
-
 
                                 PersonalInfoModel personalInfo = PersonalInfoModel(
                                   firstname: firstNameController.text,
@@ -233,13 +233,14 @@ class _PersonalInfoState extends State<PersonalInfo> {
                                   links: allLinks,
                                 );
 
-                                print("Personal Info Saved: ${personalInfo.firstname}");
-                                print("Links: ${personalInfo.links.map((e) => '${e.name}: ${e.link}').join(", ")}");
-
+                                // Call function to save data to Firebase
+                                saveDataToFirestore(personalInfo);
                               }
                             },
                             name: Strings.saveContinue,
                           ),
+
+
                           CommonResetButton(formKey: formKey)
                         ],
                       ),
@@ -253,6 +254,37 @@ class _PersonalInfoState extends State<PersonalInfo> {
       ),
     );
   }
+
+
+  void saveDataToFirestore(PersonalInfoModel personalInfo) async {
+
+    final CollectionReference personalInfoCollection =
+    FirebaseFirestore.instance.collection('personalInfo');
+
+    try {
+
+      await personalInfoCollection.add({
+        'firstname': personalInfo.firstname,
+        'lastname': personalInfo.lastname,
+        'email': personalInfo.email,
+        'phone': personalInfo.phone,
+        'jobTitle': personalInfo.jobTitle,
+        'address': personalInfo.address,
+        'links': personalInfo.links
+            .map((link) => {'name': link.name, 'link': link.link})
+            .toList(),
+      });
+
+
+      const snackBar = SnackBar(content: Text('Data submitted successfully to Firestore.'));
+      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+    } catch (e) {
+
+      final snackBar = SnackBar(content: Text('Error saving data: $e'));
+      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+    }
+  }
+
 }
 
 
