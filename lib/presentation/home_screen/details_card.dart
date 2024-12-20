@@ -1,17 +1,19 @@
+
+
+
 import 'package:flutter/material.dart';
 import 'package:resume/core/constant/extension.dart';
 import 'package:resume/core/constant/theme_colors.dart';
 import 'package:resume/domain/workspace_model.dart';
 import 'package:resume/presentation/Declaration.dart';
-import 'package:resume/presentation/Education.dart';
-import 'package:resume/presentation/Experiences.dart';
 import 'package:resume/presentation/Project.dart';
 import 'package:resume/presentation/skill_sets_screen.dart';
 import 'package:resume/presentation/carrier_objectibve.dart';
-import 'package:resume/presentation/personal_details.dart';
 
 import '../../core/constant/strings.dart';
 import '../Achievements.dart';
+import '../Education.dart';
+import '../Experiences.dart';
 import '../References.dart';
 import '../contact_info.dart';
 

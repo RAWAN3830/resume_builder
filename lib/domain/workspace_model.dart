@@ -20,7 +20,7 @@ List<WorkSpaceModel> workSpaceModelList = [
 
   // WorkSpaceModel(icon: SvgPicture.asset(AssetsSvgImage.carrierObjective) , title: Strings.carrierObjective,),
   // WorkSpaceModel(icon: SvgPicture.asset(AssetsSvgImage.personalDetails) , title: Strings.personalDetails),
-  // WorkSpaceModel(icon: SvgPicture.asset(AssetsSvgImage.hobbies) , title:  Strings.hobbies),
+  // WorkSpaceModel(icon: SvgPic-ture.asset(AssetsSvgImage.hobbies) , title:  Strings.hobbies),
   // WorkSpaceModel(icon: SvgPicture.asset(AssetsSvgImage.references) , title:  Strings.references),
 
 
