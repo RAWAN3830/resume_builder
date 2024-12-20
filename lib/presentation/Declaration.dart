@@ -24,9 +24,7 @@ class _DeclarationState extends State<Declaration> {
   @override
   void initState() {
     // TODO: implement initState
-    // DeclarationController.text = Declarations!;
-    // dateController.text = date1!;
-    // placeController.text = place!;
+
     super.initState();
   }
   @override
@@ -41,31 +39,33 @@ class _DeclarationState extends State<Declaration> {
           const SizedBox(height: 10),
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Container(
-              height: 60,
-              width: 375,
-              decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(20)),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  const Padding(
-                    padding: EdgeInsets.all(20.0),
-                    child: Text(
-                      'Declaration',
-                      style:
-                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            child: Center(
+              child: Container(
+                height: 60,
+                width: 375,
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(20)),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    const Padding(
+                      padding: EdgeInsets.all(20.0),
+                      child: Text(
+                        'Declaration',
+                        style:
+                            TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                      ),
                     ),
-                  ),
-                  Switch(
-                      value: isSwitch,
-                      onChanged: (value) {
-                        setState(() {
-                          isSwitch = value;
-                        });
-                      }),
-                ],
+                    Switch(
+                        value: isSwitch,
+                        onChanged: (value) {
+                          setState(() {
+                            isSwitch = value;
+                          });
+                        }),
+                  ],
+                ),
               ),
             ),
           ),

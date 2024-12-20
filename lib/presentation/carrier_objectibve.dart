@@ -1,6 +1,3 @@
-
-
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_framework/responsive_framework.dart';
@@ -43,6 +40,7 @@ class ResponsiveScreen extends StatelessWidget {
       ),
       body: LayoutBuilder(
         builder: (context, constraints) {
+
           // Determine size category
           double containerWidth = constraints.maxWidth * 0.6;
           double containerHeight = constraints.maxHeight * 0.3;

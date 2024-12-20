@@ -46,6 +46,9 @@ dependencies:
   cloud_firestore:
   google_sign_in:
   flutter_bloc:
+  freezed:
+  freezed_annotation:
+  json_annotation:
 
 
 
@@ -61,6 +64,8 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^2.0.0
+  build_runner:
+  json_serializable:
 
 
 # For information on the generic Dart part of this file, see the

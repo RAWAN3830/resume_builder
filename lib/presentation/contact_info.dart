@@ -94,7 +94,7 @@ class _PersonalInfoState extends State<PersonalInfo> {
         FocusManager.instance.primaryFocus?.unfocus();
       },
       child: Scaffold(
-        appBar: const CustomAppBar(title: 'Contact info',
+        appBar:  CustomAppBar(title: 'Contact info',
 
         ),
 
@@ -207,60 +207,35 @@ class _PersonalInfoState extends State<PersonalInfo> {
                       ),
 
                       SizedBox(height: height),
-                      GestureDetector(
-                         onTap: (){
-                           if (formKey.currentState!.validate()) {
-// Extract links from fieldControllers
-                             List<Links> allLinks = fieldControllers.map((field) {
-                               return Links(
-                                 name: field['name']?.text ?? 'error',
-                                 link: field['link']?.text ?? 'error',
-                               );
-                             }).toList();
-
-// Create the PersonalInfo object
-                             PersonalInfoModel personalInfo = PersonalInfoModel(
-                               firstname: firstNameController.text,
-                               lastname: lastNameController.text,
-                               email: emailController.text,
-                               phone: phoneController.text,
-                               jobTitle: jobTitleController.text,
-                               address: addressController.text,
-                               links: allLinks,
-                             );
-
-// For demonstration purposes, print the PersonalInfo object
-                             print("Personal Info Saved: ${personalInfo.firstname}");
-                             print("Links: ${personalInfo.links.map((e) => '${e.name}: ${e.link}').join(", ")}");
-
-// Here you can handle further actions, like saving to database or navigation
-                           }
-                         },
-                        child: Container(
-                          height: context.height(context) * 0.05,
-                          width: double.infinity,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(5),
-                              border: Border.all(color: Colors.black, width: 2)),
-                          child: const Center(child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Icon(CupertinoIcons.plus,color: Colors.black,size: 30),
-                              // Text('ADD LINK',style: TextStyle(fontWeight: FontWeight.w500,fontSize: 18),)
-                            ],
-                          ),),
-                        ),
-                      ),
-                      SizedBox(height: height),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
                           CommonSaveButton(
                             formKey: formKey,
                             onTap: () {
-                              List<Links> allLinks = [];
-                              for(int i=0;i<fieldControllers.length;i++){
-                                 // allLinks.add(Links(name: name, link: link));
+                              if (formKey.currentState!.validate()) {
+
+                                List<Links> allLinks = fieldControllers.map((field) {
+                                  return Links(
+                                    name: field['name']?.text ?? 'error',
+                                    link: field['link']?.text ?? 'error',
+                                  );
+                                }).toList();
+
+
+                                PersonalInfoModel personalInfo = PersonalInfoModel(
+                                  firstname: firstNameController.text,
+                                  lastname: lastNameController.text,
+                                  email: emailController.text,
+                                  phone: phoneController.text,
+                                  jobTitle: jobTitleController.text,
+                                  address: addressController.text,
+                                  links: allLinks,
+                                );
+
+                                print("Personal Info Saved: ${personalInfo.firstname}");
+                                print("Links: ${personalInfo.links.map((e) => '${e.name}: ${e.link}').join(", ")}");
+
                               }
                             },
                             name: Strings.saveContinue,
@@ -282,57 +257,3 @@ class _PersonalInfoState extends State<PersonalInfo> {
 
 
 
-// class _DynamicTextFieldsState extends State<DynamicTextFields> {
-//   List<Map<String, TextEditingController>> fieldControllers = [];
-//
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         title: Text('Dynamic TextFields'),
-//       ),
-//       body: Padding(
-//         padding: const EdgeInsets.all(8.0),
-//         child: Column(
-//           children: [
-//           ],
-//         ),
-//       ),
-//     );
-//   }
-// }
-//
-
-// CommonSaveButton(
-// formKey: formKey,
-// onTap: () {
-// if (formKey.currentState!.validate()) {
-// // Extract links from fieldControllers
-// List<Links> allLinks = fieldControllers.map((field) {
-// return Links(
-// name: field['name']!.text,
-// link: field['link']!.text,
-// );
-// }).toList();
-//
-// // Create the PersonalInfo object
-// PersonalInfo personalInfo = PersonalInfo(
-// firstname: firstNameController.text,
-// lastname: lastNameController.text,
-// email: emailController.text,
-// phone: phoneController.text,
-// jobTitle: jobTitleController.text,
-// address: addressController.text,
-// links: allLinks,
-// );
-//
-// // For demonstration purposes, print the PersonalInfo object
-// print("Personal Info Saved: ${personalInfo.firstname}");
-// print("Links: ${personalInfo.links.map((e) => '${e.name}: ${e.link}').join(", ")}");
-//
-// // Here you can handle further actions, like saving to database or navigation
-// }
-// },
-// name: Strings.saveContinue,
-// )

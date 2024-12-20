@@ -4,6 +4,8 @@ import 'package:resume/presentation/common_widgets/common_textfields/comman_text
 
 import 'package:flutter/material.dart';
 
+import 'common_widgets/common_appbar/custome_appbar.dart';
+
 class SkillSetsScreen extends StatefulWidget {
   const SkillSetsScreen({super.key});
 
@@ -20,9 +22,10 @@ class _SkillSetsScreenState extends State<SkillSetsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Technical Skills'),
-      ),
+        appBar:const CustomAppBar(title: 'Skill Set',),
+      // appBar: AppBar(
+      //   title: const Text('Technical Skills'),
+      // ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
