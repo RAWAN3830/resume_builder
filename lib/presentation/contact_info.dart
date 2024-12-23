@@ -178,7 +178,7 @@ class _PersonalInfoState extends State<PersonalInfo> {
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
                                   Text('Link ${index + 1}',
-                                      style: Theme.of(context).textTheme.subtitle1?.copyWith(fontWeight: FontWeight.bold)),
+                                      style: Theme.of(context).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold)),
                                   IconButton(
                                     icon: const Icon(Icons.delete, color: Colors.red),
                                     onPressed: () => removeFields(index),

@@ -12,12 +12,13 @@ class CommonHeading extends StatelessWidget {
   Widget build(BuildContext context) {
     return RichText(
       text:  TextSpan(
-        style:  TextStyle(
-          fontFamily: Strings.uberFont,
-          color: ThemeColors.black,
-          fontSize: context.width(context) * 0.045,
-          fontWeight: FontWeight.w600,
-        ),
+        style: Theme.of(context).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold),
+        // style:  TextStyle(
+        //   fontFamily: Strings.uberFont,
+        //   color: ThemeColors.black,
+        //   fontSize: context.width(context) * 0.045,
+        //   fontWeight: FontWeight.w600,
+        // ),
         children: <TextSpan>[
           TextSpan(text: title),
           const TextSpan(text: '.', style: TextStyle(fontFamily: 'CustomFont',
