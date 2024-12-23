@@ -81,18 +81,29 @@ class _EducationInfoState extends State<EducationInfo> {
           child: Form(
             key: formKey,
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.start,
+              // mainAxisAlignment: MainAxisAlignment.start,
+             crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 ...List.generate(controllersList.length, (index) {
                   var controllers = controllersList[index];
                   return ExpansionTile(
                     initiallyExpanded: expansionStates[index],
-                    title: Text(
-                      controllers['institution']!.text.isEmpty
-                          ? 'Education Details ${index + 1}'
-                          : controllers['institution']!.text,
-                      style: const TextStyle(fontWeight: FontWeight.bold),
+                    title: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          controllers['institution']!.text.isEmpty
+                              ? 'Education Details ${index + 1}'
+                              : controllers['institution']!.text,
+                          style: const TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                        if (controllersList.length > 1)
+                          IconButton(
+                            onPressed: () => _deleteEducationFields(index),
+                            icon: const Icon(Icons.delete, color: Colors.red),
+                          ),
+
+                      ],
                     ),
                     onExpansionChanged: (isExpanded) {
                       setState(() {
@@ -100,17 +111,7 @@ class _EducationInfoState extends State<EducationInfo> {
                       });
                     },
                     children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          CommonHeading(title: 'Institution (${index + 1})'),
-                          if (controllersList.length > 1)
-                            IconButton(
-                              onPressed: () => _deleteEducationFields(index),
-                              icon: const Icon(Icons.delete, color: Colors.red),
-                            ),
-                        ],
-                      ),
+                      CommonHeading(title: 'Institution (${index + 1})'),
                       CommonTextformfield(
                           controller: controllers['institution']!,
                           labelText: 'xyz University',

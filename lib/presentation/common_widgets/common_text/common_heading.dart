@@ -21,20 +21,12 @@ class CommonHeading extends StatelessWidget {
         children: <TextSpan>[
           TextSpan(text: title),
           const TextSpan(text: '.', style: TextStyle(fontFamily: 'CustomFont',
-              // fontSize: context.height(context) * 0.03,
               fontSize:35,
               color: Colors.lightGreen,
               fontWeight: FontWeight.w500)),
         ],
       ),
     );
-    // return   Text(
-    //  '${title} .',
-    //   style:  TextStyle(
-    //       color:Colors.black,
-    //       fontFamily: Strings.uberFont,
-    //       fontSize: context.width(context) * 0.040,
-    //       fontWeight: FontWeight.bold),
-    // );
+
   }
 }
