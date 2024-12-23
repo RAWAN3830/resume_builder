@@ -6,6 +6,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:resume/core/constant/extension.dart';
 import 'package:resume/core/constant/strings.dart';
 import 'package:resume/core/constant/theme_colors.dart';
+import 'package:resume/presentation/common_widgets/common_buttons/common_add_field_button.dart';
 import 'package:resume/presentation/common_widgets/common_buttons/common_reset_button.dart';
 import 'package:resume/presentation/common_widgets/common_text/common_heading.dart';
 import 'package:resume/presentation/common_widgets/common_textfields/comman_textformfield.dart';
@@ -45,18 +46,13 @@ class _PersonalInfoState extends State<PersonalInfo> {
   @override
   void initState() {
     super.initState();
-    if (firstname != null &&
-        lastname != null &&
-        email != null &&
-        phone != null &&
-        jobTitle != null &&
-        address != null) {
+    if (firstname != null && lastname != null && email != null && phone != null && jobTitle != null && address != null) {
       firstNameController.text = firstname ?? '';
-      lastNameController.text = lastname!;
-      emailController.text = email!;
-      phoneController.text = phone!;
-      jobTitleController.text = jobTitle!;
-      addressController.text = address!;
+      lastNameController.text = lastname  ?? '';
+      emailController.text = email  ?? '';
+      phoneController.text = phone  ?? '';
+      jobTitleController.text = jobTitle  ?? '';
+      addressController.text = address  ?? '';
     }
   }
 
@@ -170,42 +166,89 @@ class _PersonalInfoState extends State<PersonalInfo> {
                           errorText: 'Enter Address'),
                       SizedBox(height: height),
                       const CommonHeading(title: 'Links'),
-                      Container(
-                        decoration: BoxDecoration(
-                          border: Border.all(color: ThemeColors.black,width: 2)
-                        ),
-                        height: context.height(context) * 0.25,
-                        width: double.infinity,
-                        child: ListView.builder(
-                          itemCount: fieldControllers.length,
-                          itemBuilder: (context, index) {
-                            return Card(
-                              child: Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Column(
-                                  children: [
-                                    CommonTextformfield(labelText: 'Link', controller: fieldControllers[index]['link'] as TextEditingController, errorText: 'addData'),
-                                    const SizedBox(height: 8),
-                                    CommonTextformfield(labelText: 'LinkName', controller: fieldControllers[index]['name'] as TextEditingController, errorText: 'addData'),
-                                    const SizedBox(height: 8),
-                                    Align(
-                                      alignment: Alignment.centerRight,
-                                      child: IconButton(
-                                        icon: const Icon(Icons.delete, color: Colors.red),
-                                        onPressed: () => removeFields(index),
-                                      ),
-                                    ),
-                                  ],
-                                ),
+                      ListView.builder(
+                        shrinkWrap: true, // Allows ListView to be rendered inside a scrollable parent
+                        physics: const NeverScrollableScrollPhysics(), // Prevents ListView from scrolling separately
+                        itemCount: fieldControllers.length,
+                        itemBuilder: (context, index) {
+                          return Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text('Link ${index + 1}',
+                                      style: Theme.of(context).textTheme.subtitle1?.copyWith(fontWeight: FontWeight.bold)),
+                                  IconButton(
+                                    icon: const Icon(Icons.delete, color: Colors.red),
+                                    onPressed: () => removeFields(index),
+                                  ),
+                                ],
                               ),
-                            );
-                          },
-                        ),
+
+                              Row(
+                                children: [
+                                  Expanded(
+                                    child: CommonTextformfield(
+                                      labelText: 'Link',
+                                      controller: fieldControllers[index]['link'] as TextEditingController,
+                                      errorText: 'Enter valid link',
+                                    ),
+                                  ),
+                                   SizedBox(width: context.width(context) * 0.03),
+                                  Expanded(
+                                    child: CommonTextformfield(
+                                      labelText: 'Link Name',
+                                      controller: fieldControllers[index]['name'] as TextEditingController,
+                                      errorText: 'Enter valid name',
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          );
+                        },
                       ),
-                      ElevatedButton(
-                        onPressed: addFields,
-                        child: const Text('Add Fields'),
+                      SizedBox(height: height,),
+                      CommonAddFieldButton(
+                        onTap: addFields,
+                        name: 'Add Field',
                       ),
+
+                      // Container(
+                      //   decoration: BoxDecoration(
+                      //     border: Border.all(color: ThemeColors.black,width: 2)
+                      //   ),
+                      //   height: context.height(context) * 0.25,
+                      //   width: double.infinity,
+                      //   child: ListView.builder(
+                      //     itemCount: fieldControllers.length,
+                      //     itemBuilder: (context, index) {
+                      //       return Card(
+                      //         child: Padding(
+                      //           padding: const EdgeInsets.all(8.0),
+                      //           child: Column(
+                      //             children: [
+                      //               CommonTextformfield(labelText: 'Link', controller: fieldControllers[index]['link'] as TextEditingController, errorText: 'addData'),
+                      //               const SizedBox(height: 8),
+                      //               CommonTextformfield(labelText: 'LinkName', controller: fieldControllers[index]['name'] as TextEditingController, errorText: 'addData'),
+                      //               const SizedBox(height: 8),
+                      //               Align(
+                      //                 alignment: Alignment.centerRight,
+                      //                 child: IconButton(
+                      //                   icon: const Icon(Icons.delete, color: Colors.red),
+                      //                   onPressed: () => removeFields(index),
+                      //                 ),
+                      //               ),
+                      //             ],
+                      //           ),
+                      //         ),
+                      //       );
+                      //     },
+                      //   ),
+                      // ),
+                      //
+                      // CommonAddFieldButton(onTap:  (){addFields();}, name: 'Add Fields'),
 
                       SizedBox(height: height),
                       Row(

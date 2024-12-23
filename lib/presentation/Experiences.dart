@@ -204,7 +204,7 @@ class _ExperienceInfoState extends State<ExperienceInfo> {
                 const CommonHeading(title: 'Location'),
                 CommonTextformfield(
                   labelText: 'Ahmedabad , india',
-                  controller: _jobTitleController,
+                  controller: _locationController,
                   errorText: 'Please valid location',
                 ),
                 SizedBox(height: height),

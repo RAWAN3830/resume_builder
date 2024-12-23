@@ -1,13 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:resume/core/constant/extension.dart';
-import 'package:resume/presentation/common_widgets/common_buttons/common_reset_button.dart';
 import 'package:resume/presentation/common_widgets/common_buttons/common_save_button.dart';
 import 'package:resume/presentation/common_widgets/common_text/common_heading.dart';
 import 'package:resume/presentation/common_widgets/common_textfields/common_years_textfield.dart';
 import '../core/constant/strings.dart';
 import '../domain/education_model.dart';
 import 'common_widgets/common_appbar/custome_appbar.dart';
+import 'common_widgets/common_buttons/common_add_field_button.dart';
+import 'common_widgets/common_buttons/common_reset_button.dart';
 import 'common_widgets/common_textfields/comman_textformfield.dart';
 
 class EducationInfo extends StatefulWidget {
@@ -66,7 +67,8 @@ class _EducationInfoState extends State<EducationInfo> {
           endDate: controllers['endDate']?.text,
         ));
       }
-      debugPrint('Education Details: ${educationList.map((e) => e.toString()).toList()}');
+      debugPrint(
+          'Education Details: ${educationList.map((e) => e.toString()).toList()}');
     }
   }
 
@@ -81,8 +83,6 @@ class _EducationInfoState extends State<EducationInfo> {
           child: Form(
             key: formKey,
             child: Column(
-              // mainAxisAlignment: MainAxisAlignment.start,
-             crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 ...List.generate(controllersList.length, (index) {
                   var controllers = controllersList[index];
@@ -102,7 +102,6 @@ class _EducationInfoState extends State<EducationInfo> {
                             onPressed: () => _deleteEducationFields(index),
                             icon: const Icon(Icons.delete, color: Colors.red),
                           ),
-
                       ],
                     ),
                     onExpansionChanged: (isExpanded) {
@@ -110,6 +109,7 @@ class _EducationInfoState extends State<EducationInfo> {
                         expansionStates[index] = isExpanded;
                       });
                     },
+                    expandedCrossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       CommonHeading(title: 'Institution (${index + 1})'),
                       CommonTextformfield(
@@ -117,28 +117,24 @@ class _EducationInfoState extends State<EducationInfo> {
                           labelText: 'xyz University',
                           errorText: 'Enter Institution'),
                       SizedBox(height: height),
-
                       CommonHeading(title: 'Location (${index + 1})'),
                       CommonTextformfield(
                           controller: controllers['location']!,
                           labelText: 'Gujarat, India',
                           errorText: 'Enter Location'),
                       SizedBox(height: height),
-
                       CommonHeading(title: 'Degree Type (${index + 1})'),
                       CommonTextformfield(
                           controller: controllers['degreeType']!,
                           labelText: 'Bachelors/Master',
                           errorText: 'Enter Degree Type'),
                       SizedBox(height: height),
-
                       CommonHeading(title: 'Field of Study (${index + 1})'),
                       CommonTextformfield(
                           controller: controllers['fieldOfStudy']!,
                           labelText: 'Computer Science',
                           errorText: 'Enter Field of Study'),
                       SizedBox(height: height),
-
                       CommonYearsTextfield(
                         startDateController: controllers['startDate']!,
                         endDateController: controllers['endDate']!,
@@ -148,21 +144,29 @@ class _EducationInfoState extends State<EducationInfo> {
                   );
                 }),
                 if (controllersList.length < 4)
-                  Center(
-                    child: ElevatedButton(
-                      onPressed: _addEducationFields,
-                      child: const Text('Add Another Education'),
-                    ),
-                  ),
+                  // Center(
+                  //   child: ElevatedButton(
+                  //     onPressed: _addEducationFields,
+                  //     child: const Text('Add Another Education'),
+                  //   ),
+                  // ),
+                  SizedBox(height: height),
+                CommonAddFieldButton(
+                  onTap: () {
+                    _addEducationFields();
+                  },
+                  name: 'Add Education',
+                ),
                 SizedBox(height: height),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     CommonSaveButton(
                       formKey: formKey,
-                      onTap: _saveEducation,
+                      onTap: () {},
                       name: Strings.saveContinue,
                     ),
+                    CommonResetButton(formKey: formKey)
                   ],
                 ),
               ],
@@ -173,4 +177,3 @@ class _EducationInfoState extends State<EducationInfo> {
     );
   }
 }
-
