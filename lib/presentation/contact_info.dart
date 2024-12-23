@@ -60,14 +60,14 @@ class _PersonalInfoState extends State<PersonalInfo> {
     }
   }
 
-  pickImageFromCamera() async {
-    var imageFile = await ImagePicker().pickImage(source: ImageSource.camera);
-    if (imageFile != null) {
-      setState(() {
-        image = File(imageFile.path);
-      });
-    }
-  }
+  // pickImageFromCamera() async {
+  //   var imageFile = await ImagePicker().pickImage(source: ImageSource.camera);
+  //   if (imageFile != null) {
+  //     setState(() {
+  //       image = File(imageFile.path);
+  //     });
+  //   }
+  // }
 
   void addFields() {
     setState(() {
