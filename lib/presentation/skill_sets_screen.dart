@@ -1,10 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:resume/core/constant/theme_colors.dart';
-import 'package:resume/presentation/common_widgets/common_textfields/comman_textformfield.dart';
-
-import 'package:flutter/material.dart';
-
-import 'common_widgets/common_appbar/custome_appbar.dart';
 
 class SkillSetsScreen extends StatefulWidget {
   const SkillSetsScreen({super.key});
@@ -13,23 +7,38 @@ class SkillSetsScreen extends StatefulWidget {
   State<SkillSetsScreen> createState() => _SkillSetsScreenState();
 }
 
-List<String> chipData = [];
-
 class _SkillSetsScreenState extends State<SkillSetsScreen> {
-  final TextEditingController _skillController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
+  final TextEditingController _skillController = TextEditingController();
+  final Map<String, List<String>> skillCategories = {
+    'Languages': [],
+    'Libraries/Frameworks': [],
+    'Tools/Platforms': [],
+    'Databases': [],
+  };
+  String selectedCategory = 'Languages';
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar:const CustomAppBar(title: 'Skill Set',),
-      // appBar: AppBar(
-      //   title: const Text('Technical Skills'),
-      // ),
+      appBar: AppBar(title: const Text('Skill Set')),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
+            DropdownButtonFormField<String>(
+              value: selectedCategory,
+              decoration: const InputDecoration(
+                labelText: 'Select Category',
+                border: OutlineInputBorder(),
+              ),
+              items: skillCategories.keys.map((category) => DropdownMenuItem(
+                value: category,
+                child: Text(category),
+              )).toList(),
+              onChanged: (value) => setState(() => selectedCategory = value!),
+            ),
+            const SizedBox(height: 16),
             Form(
               key: _formKey,
               child: Row(
@@ -45,8 +54,8 @@ class _SkillSetsScreenState extends State<SkillSetsScreen> {
                         if (value == null || value.trim().isEmpty) {
                           return 'Please enter a skill';
                         }
-                        if (chipData.contains(value.trim())) {
-                          return 'Skill already exists';
+                        if (skillCategories[selectedCategory]!.contains(value.trim())) {
+                          return 'Skill already exists in this category';
                         }
                         return null;
                       },
@@ -54,56 +63,65 @@ class _SkillSetsScreenState extends State<SkillSetsScreen> {
                   ),
                   const SizedBox(width: 10),
                   ElevatedButton(
-                    onPressed: () {
-                      if (_formKey.currentState!.validate()) {
-                        setState(() {
-                          chipData.add(_skillController.text.trim());
-                          _skillController.clear();
-                        });
-                      }
-                    },
+                    onPressed: _addSkill,
                     child: const Text('Add'),
                   ),
                 ],
               ),
             ),
-            const SizedBox(height: 20),
+            const SizedBox(height: 16),
             Expanded(
-              child: Wrap(
-                spacing: 10.0,
-                runSpacing: 10.0,
-                children: List.generate(
-                  chipData.length,
-                      (index) => GestureDetector(
-                    onTap: () {},
-                    child: Chip(
-                      onDeleted: () {
-                        setState(() {
-                          chipData.removeAt(index);
-                        });
-                      },
-                      deleteIcon: const Icon(Icons.close,
-                          size: 18, color: Colors.black),
-                      labelStyle:
-                      const TextStyle(fontWeight: FontWeight.bold),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30),
-                        side: const BorderSide(color: Colors.black),
+              child: ListView.builder(
+                itemCount: skillCategories.length,
+                itemBuilder: (context, index) {
+                  final category = skillCategories.keys.elementAt(index);
+                  final skills = skillCategories[category]!;
+                  return Card(
+                    margin: const EdgeInsets.only(bottom: 8.0),
+                    child: ExpansionTile(
+                      title: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(category),
+                          Text('${skills.length} skills', style: Theme.of(context).textTheme.bodySmall),
+                        ],
                       ),
-                      label: Text(
-                        chipData[index],
-                        style: const TextStyle(color: Colors.black),
-                      ),
-                      backgroundColor: ThemeColors.mainGreenColor,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(16.0),
+                          child: Wrap(
+                            spacing: 8.0,
+                            runSpacing: 8.0,
+                            children: skills.map((skill) => Chip(
+                              label: Text(skill),
+                              deleteIcon: const Icon(Icons.close, size: 18),
+                              onDeleted: () => _removeSkill(skill, category),
+                            )).toList(),
+                          ),
+                        ),
+                      ],
                     ),
-                  ),
-                ),
+                  );
+                },
               ),
             ),
           ],
         ),
       ),
     );
+  }
+
+  void _addSkill() {
+    if (_formKey.currentState!.validate()) {
+      setState(() {
+        skillCategories[selectedCategory]!.add(_skillController.text.trim());
+        _skillController.clear();
+      });
+    }
+  }
+
+  void _removeSkill(String skill, String category) {
+    setState(() => skillCategories[category]!.remove(skill));
   }
 
   @override
