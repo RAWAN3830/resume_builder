@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:responsive_framework/responsive_framework.dart';
+import 'package:resume/core/theme_data/breakpoint_enum.dart';
 import 'package:resume/infra/bloc/auth_bloc/email_login/login_bloc.dart';
 import 'package:resume/presentation/home_screen/home_screen.dart';
 import 'package:resume/presentation/skill_sets_screen.dart';
@@ -26,27 +28,33 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider(create: (context) => RegistrationBloc(),),
-        BlocProvider(create: (context) => LoginBloc(),),
-        BlocProvider(create: (context) => AuthBloc(),),
-        // BlocProvider(create: (context) => DynamicTextFieldsBloc(),)
-      ],
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          fontFamily: Strings.uberFont,
+    return ResponsiveBreakpoints.builder(
+      child: MultiBlocProvider(
+        providers: [
+          BlocProvider(create: (context) => RegistrationBloc(),),
+          BlocProvider(create: (context) => LoginBloc(),),
+          BlocProvider(create: (context) => AuthBloc(),),
+          // BlocProvider(create: (context) => DynamicTextFieldsBloc(),)
+        ],
+        child: MaterialApp(
+          debugShowCheckedModeBanner: false,
+          theme: ThemeData(
+            fontFamily: Strings.uberFont,
 
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.lightGreen),
-          useMaterial3: true,
+            colorScheme: ColorScheme.fromSeed(seedColor: Colors.lightGreen),
+            useMaterial3: true,
+          ),
+           // home: const SkillSetsScreen(),
+           home: const HomeScreen(),
+           // home:  DynamicTextFields(),
+          // home: const LoginScreen(),
+          // home: const RegistrationScreen(),
         ),
-         // home: const SkillSetsScreen(),
-         home: const HomeScreen(),
-         // home:  DynamicTextFields(),
-        // home: const LoginScreen(),
-        // home: const RegistrationScreen(),
-      ),
+      ), breakpoints: [
+        BreakpointEnum.mobile.point,
+        BreakpointEnum.tablet.point,
+        BreakpointEnum.desktop.point,
+    ],
     );
   }
 }
