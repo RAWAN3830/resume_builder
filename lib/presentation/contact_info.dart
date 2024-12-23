@@ -6,11 +6,13 @@ import 'package:image_picker/image_picker.dart';
 import 'package:resume/core/constant/extension.dart';
 import 'package:resume/core/constant/strings.dart';
 import 'package:resume/core/constant/theme_colors.dart';
+import 'package:resume/infra/services/firebase_service/get_personal_info_to_firebase.dart';
 import 'package:resume/presentation/common_widgets/common_buttons/common_add_field_button.dart';
 import 'package:resume/presentation/common_widgets/common_buttons/common_reset_button.dart';
 import 'package:resume/presentation/common_widgets/common_text/common_heading.dart';
 import 'package:resume/presentation/common_widgets/common_textfields/comman_textformfield.dart';
 import 'package:resume/presentation/common_widgets/common_textfields/common_longlinetextfield.dart';
+import 'package:resume/presentation/home_screen/example.dart';
 import '../domain/personal_info.dart';
 import 'common_widgets/common_appbar/custome_appbar.dart';
 import 'common_widgets/common_buttons/common_save_button.dart';
@@ -21,7 +23,6 @@ String? email;
 String? phone;
 String? jobTitle;
 String? address;
-
 
 class PersonalInfo extends StatefulWidget {
   const PersonalInfo({super.key});
@@ -46,13 +47,18 @@ class _PersonalInfoState extends State<PersonalInfo> {
   @override
   void initState() {
     super.initState();
-    if (firstname != null && lastname != null && email != null && phone != null && jobTitle != null && address != null) {
+    if (firstname != null &&
+        lastname != null &&
+        email != null &&
+        phone != null &&
+        jobTitle != null &&
+        address != null) {
       firstNameController.text = firstname ?? '';
-      lastNameController.text = lastname  ?? '';
-      emailController.text = email  ?? '';
-      phoneController.text = phone  ?? '';
-      jobTitleController.text = jobTitle  ?? '';
-      addressController.text = address  ?? '';
+      lastNameController.text = lastname ?? '';
+      emailController.text = email ?? '';
+      phoneController.text = phone ?? '';
+      jobTitleController.text = jobTitle ?? '';
+      addressController.text = address ?? '';
     }
   }
 
@@ -80,7 +86,6 @@ class _PersonalInfoState extends State<PersonalInfo> {
     });
   }
 
-
   @override
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height * 0.02;
@@ -91,10 +96,9 @@ class _PersonalInfoState extends State<PersonalInfo> {
         FocusManager.instance.primaryFocus?.unfocus();
       },
       child: Scaffold(
-        appBar:  CustomAppBar(title: 'Contact info',
-
+        appBar: CustomAppBar(
+          title: 'Contact info',
         ),
-
         body: SingleChildScrollView(
           child: Column(
             children: [
@@ -167,39 +171,49 @@ class _PersonalInfoState extends State<PersonalInfo> {
                       SizedBox(height: height),
                       const CommonHeading(title: 'Links'),
                       ListView.builder(
-                        shrinkWrap: true, // Allows ListView to be rendered inside a scrollable parent
-                        physics: const NeverScrollableScrollPhysics(), // Prevents ListView from scrolling separately
+                        shrinkWrap: true,
+                        // Allows ListView to be rendered inside a scrollable parent
+                        physics: const NeverScrollableScrollPhysics(),
+                        // Prevents ListView from scrolling separately
                         itemCount: fieldControllers.length,
                         itemBuilder: (context, index) {
                           return Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
                                   Text('Link ${index + 1}',
-                                      style: Theme.of(context).textTheme.subtitle1?.copyWith(fontWeight: FontWeight.bold)),
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .titleMedium
+                                          ?.copyWith(
+                                              fontWeight: FontWeight.bold)),
                                   IconButton(
-                                    icon: const Icon(Icons.delete, color: Colors.red),
+                                    icon: const Icon(Icons.delete,
+                                        color: Colors.red),
                                     onPressed: () => removeFields(index),
                                   ),
                                 ],
                               ),
-
                               Row(
                                 children: [
                                   Expanded(
                                     child: CommonTextformfield(
                                       labelText: 'Link',
-                                      controller: fieldControllers[index]['link'] as TextEditingController,
+                                      controller: fieldControllers[index]
+                                          ['link'] as TextEditingController,
                                       errorText: 'Enter valid link',
                                     ),
                                   ),
-                                   SizedBox(width: context.width(context) * 0.03),
+                                  SizedBox(
+                                      width: context.width(context) * 0.03),
                                   Expanded(
                                     child: CommonTextformfield(
                                       labelText: 'Link Name',
-                                      controller: fieldControllers[index]['name'] as TextEditingController,
+                                      controller: fieldControllers[index]
+                                          ['name'] as TextEditingController,
                                       errorText: 'Enter valid name',
                                     ),
                                   ),
@@ -209,7 +223,9 @@ class _PersonalInfoState extends State<PersonalInfo> {
                           );
                         },
                       ),
-                      SizedBox(height: height,),
+                      SizedBox(
+                        height: height,
+                      ),
                       CommonAddFieldButton(
                         onTap: addFields,
                         name: 'Add Field',
@@ -259,14 +275,16 @@ class _PersonalInfoState extends State<PersonalInfo> {
                             onTap: () {
                               if (formKey.currentState!.validate()) {
                                 formKey.currentState!.save();
-                                List<Links> allLinks = fieldControllers.map((field) {
+                                List<Links> allLinks =
+                                    fieldControllers.map((field) {
                                   return Links(
                                     name: field['name']?.text ?? '',
                                     link: field['link']?.text ?? '',
                                   );
                                 }).toList();
 
-                                PersonalInfoModel personalInfo = PersonalInfoModel(
+                                PersonalInfoModel personalInfo =
+                                    PersonalInfoModel(
                                   firstname: firstNameController.text,
                                   lastname: lastNameController.text,
                                   email: emailController.text,
@@ -278,12 +296,11 @@ class _PersonalInfoState extends State<PersonalInfo> {
 
                                 // Call function to save data to Firebase
                                 saveDataToFirestore(personalInfo);
+                                context.push(context, target: PersonalInfoList());
                               }
                             },
                             name: Strings.saveContinue,
                           ),
-
-
                           CommonResetButton(formKey: formKey)
                         ],
                       ),
@@ -298,14 +315,11 @@ class _PersonalInfoState extends State<PersonalInfo> {
     );
   }
 
-
   void saveDataToFirestore(PersonalInfoModel personalInfo) async {
-
     final CollectionReference personalInfoCollection =
-    FirebaseFirestore.instance.collection('personalInfo');
+        FirebaseFirestore.instance.collection('personalInfo');
 
     try {
-
       await personalInfoCollection.add({
         'firstname': personalInfo.firstname,
         'lastname': personalInfo.lastname,
@@ -318,17 +332,12 @@ class _PersonalInfoState extends State<PersonalInfo> {
             .toList(),
       });
 
-
-      const snackBar = SnackBar(content: Text('Data submitted successfully to Firestore.'));
+      const snackBar =
+          SnackBar(content: Text('Data submitted successfully to Firestore.'));
       ScaffoldMessenger.of(context).showSnackBar(snackBar);
     } catch (e) {
-
       final snackBar = SnackBar(content: Text('Error saving data: $e'));
       ScaffoldMessenger.of(context).showSnackBar(snackBar);
     }
   }
-
 }
-
-
-
