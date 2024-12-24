@@ -83,8 +83,8 @@ class DetailsCard extends StatelessWidget {
                 padding: const EdgeInsets.all(8.0)
                     .copyWith(top: context.height(context) * 0.02),
                 child: Container(
-                  height: context.height(context) * .08,
-                  width: context.width(context) * .23,
+                  // height: context.height(context) * .08,
+                  // width: context.width(context) * .23,
                   decoration: const BoxDecoration(color: Colors.transparent),
                   child: workmodel.icon,
                 ),
@@ -96,11 +96,8 @@ class DetailsCard extends StatelessWidget {
             Expanded(
               child: Text(
                 workmodel.title,
-                style: const TextStyle(
-                    // color: Colors.white,
-                    fontFamily: Strings.uberFont,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 22),
+                style:  Theme.of(context).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w500),
+
               ),
             )
           ]),

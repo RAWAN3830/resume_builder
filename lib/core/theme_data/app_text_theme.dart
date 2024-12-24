@@ -20,13 +20,13 @@ class AppTextTheme {
   static final headline4 = [
     _headlineBaseTextStyle.copyWith(height: 32 / 40, fontSize: 32), // Mobile
     _headlineBaseTextStyle.copyWith(height: 34 / 42, fontSize: 34), // Tablet
-    _headlineBaseTextStyle.copyWith(height: 36 / 44, fontSize: 36), // Desktop
+    _headlineBaseTextStyle.copyWith(height: 36 / 44, fontSize: 38), // Desktop
   ];
 
   static final headline5 = [
     _headlineBaseTextStyle.copyWith(height: 24 / 32, fontSize: 24), // Mobile
     _headlineBaseTextStyle.copyWith(height: 26 / 34, fontSize: 26), // Tablet
-    _headlineBaseTextStyle.copyWith(height: 28 / 36, fontSize: 28), // Desktop
+    _headlineBaseTextStyle.copyWith(height: 28 / 36, fontSize: 30), // Desktop
   ];
 
   static final bodyLarge = [
@@ -35,7 +35,7 @@ class AppTextTheme {
     _bodyBaseTextStyle.copyWith(
         fontSize: 18, fontWeight: FontWeight.w400), // Tablet
     _bodyBaseTextStyle.copyWith(
-        fontSize: 20, fontWeight: FontWeight.w400), // Desktop
+        fontSize: 22, fontWeight: FontWeight.w400), // Desktop
   ];
 
   static final bodyMedium = [
@@ -44,7 +44,7 @@ class AppTextTheme {
     _bodyBaseTextStyle.copyWith(
         fontSize: 16, fontWeight: FontWeight.w400), // Tablet
     _bodyBaseTextStyle.copyWith(
-        fontSize: 18, fontWeight: FontWeight.w400), // Desktop
+        fontSize: 20, fontWeight: FontWeight.w400), // Desktop
   ];
 
   static final bodySmall = [
@@ -53,7 +53,7 @@ class AppTextTheme {
     _bodyBaseTextStyle.copyWith(
         fontSize: 14, fontWeight: FontWeight.w400), // Tablet
     _bodyBaseTextStyle.copyWith(
-        fontSize: 16, fontWeight: FontWeight.w400), // Desktop
+        fontSize: 18, fontWeight: FontWeight.w400), // Desktop
   ];
 
   static final titleLarge = [
@@ -62,7 +62,7 @@ class AppTextTheme {
     _bodyBaseTextStyle.copyWith(
         fontSize: 18, fontWeight: FontWeight.w600), // Tablet
     _bodyBaseTextStyle.copyWith(
-        fontSize: 20, fontWeight: FontWeight.w600), // Desktop
+        fontSize: 22, fontWeight: FontWeight.w600), // Desktop
   ];
 
   static final titleMedium = [
@@ -71,7 +71,7 @@ class AppTextTheme {
     _bodyBaseTextStyle.copyWith(
         fontSize: 16, fontWeight: FontWeight.w600), // Tablet
     _bodyBaseTextStyle.copyWith(
-        fontSize: 18, fontWeight: FontWeight.w600), // Desktop
+        fontSize: 20, fontWeight: FontWeight.w600), // Desktop
   ];
 
   static final titleSmall = [
@@ -80,7 +80,7 @@ class AppTextTheme {
     _bodyBaseTextStyle.copyWith(
         fontSize: 14, fontWeight: FontWeight.w600), // Tablet
     _bodyBaseTextStyle.copyWith(
-        fontSize: 16, fontWeight: FontWeight.w600), // Desktop
+        fontSize: 18, fontWeight: FontWeight.w600), // Desktop
   ];
 
   static const _headlineBaseTextStyle = TextStyle(
