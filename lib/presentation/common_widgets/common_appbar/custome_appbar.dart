@@ -15,11 +15,12 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       // toolbarHeight: 90,
       title: Text(title,
-          style:  TextStyle(
-              color: ThemeColors.black,
-              fontFamily: Strings.uberFont,
-              fontSize: 24,
-              fontWeight: FontWeight.w500)),
+        style: Theme.of(context).textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.w500),),
+    // style:  TextStyle(
+          //     color: ThemeColors.black,
+          //     fontFamily: Strings.uberFont,
+          //     fontSize: 24,
+          //     fontWeight: FontWeight.w500)),
       leading: InkWell(
         onTap: () {
           Navigator.of(context).pop();

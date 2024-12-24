@@ -116,6 +116,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:resume/core/constant/extension.dart';
+import 'package:resume/domain/experience_model.dart';
 import 'package:resume/presentation/common_widgets/common_buttons/common_save_button.dart';
 import 'package:resume/presentation/common_widgets/common_text/common_heading.dart';
 import 'package:resume/presentation/common_widgets/common_textfields/comman_textformfield.dart';
@@ -139,36 +140,82 @@ class ExperienceInfo extends StatefulWidget {
 
 class _ExperienceInfoState extends State<ExperienceInfo> {
   final _formKey = GlobalKey<FormState>();
-  final _employerController = TextEditingController();
-  final _jobTitleController = TextEditingController();
-  final _startDateController = TextEditingController();
-  final _endDateController = TextEditingController();
-  final _locationController = TextEditingController();
-  final _descriptionController = TextEditingController();
+  final List<ExperienceModel> educationList = [];
+  final List<Map<String, TextEditingController>> controllersList = [];
+  final List<bool> expansionStates = [];
 
+  void _addEducationFields() {
+    if (controllersList.length < 3) {
+      controllersList.add({
+        'employer': TextEditingController(),
+        'jobTitle': TextEditingController(),
+        'description': TextEditingController(),
+        'location': TextEditingController(),
+        'startDate': TextEditingController(),
+        'endDate': TextEditingController(),
+      });
+      expansionStates.add(true); // Start with expanded state
+      setState(() {});
+    }
+  }
+  // final _employerController = TextEditingController();
+  // final _jobTitleController = TextEditingController();
+  // final _startDateController = TextEditingController();
+  // final _endDateController = TextEditingController();
+  // final _locationController = TextEditingController();
+  // final _descriptionController = TextEditingController();
+  //
 
   @override
   void initState() {
     super.initState();
-    if (employer != null) _employerController.text = employer ?? "employer error";
-    if (jobTitle != null) _jobTitleController.text = jobTitle ?? "job title error";
-    if (location != null) _locationController.text = location ?? "location error";
-    if (startDate != null) _startDateController.text = startDate ?? "StartDate error";
-    if (endDate != null) _endDateController.text = endDate ?? "endDate error";
-    if (description != null) _descriptionController.text = description ?? "description error";
+    _addEducationFields();
+    // if (employer != null) _employerController.text = employer ?? "employer error";
+    // if (jobTitle != null) _jobTitleController.text = jobTitle ?? "job title error";
+    // if (location != null) _locationController.text = location ?? "location error";
+    // if (startDate != null) _startDateController.text = startDate ?? "StartDate error";
+    // if (endDate != null) _endDateController.text = endDate ?? "endDate error";
+    // if (description != null) _descriptionController.text = description ?? "description error";
 
   }
+
+  void _deleteExperiencesFields(int index) {
+    if (index >= 0 && index < controllersList.length) {
+      controllersList.removeAt(index);
+      expansionStates.removeAt(index);
+      setState(() {});
+    }
+  }
+
+  void _saveExperiences() {
+    if (_formKey.currentState!.validate()) {
+      educationList.clear();
+      for (var controllers in controllersList) {
+        educationList.add(ExperienceModel(
+          jobTitle: controllers['jobTitle']?.text,
+          location: controllers['location']?.text,
+          description: controllers['description']?.text,
+          employer: controllers['employer']?.text,
+          startDate: controllers['startDate']?.text,
+          endDate: controllers['endDate']?.text,
+        ));
+      }
+      debugPrint(
+          'Education Details: ${educationList.map((e) => e.toString()).toList()}');
+    }
+  }
+
 
   @override
   void dispose() {
     // Clean up controllers
-    _employerController.dispose();
-    _jobTitleController.dispose();
-    _locationController.dispose();
-    _startDateController.dispose();
-    _endDateController.dispose();
-    _descriptionController.dispose();
-    super.dispose();
+    // _employerController.dispose();
+    // _jobTitleController.dispose();
+    // _locationController.dispose();
+    // _startDateController.dispose();
+    // _endDateController.dispose();
+    // _descriptionController.dispose();
+    // super.dispose();
   }
 
   @override
@@ -188,35 +235,35 @@ class _ExperienceInfoState extends State<ExperienceInfo> {
               children: [
                 SizedBox(height: height),
                 const CommonHeading(title: 'Employer'),
-                CommonTextformfield(
-                  labelText: 'ex. TCS',
-                  controller: _employerController,
-                  errorText: 'Please enter a valid company name',
-                ),
-                SizedBox(height: height),
-                const CommonHeading(title: 'Job Title'),
-                CommonTextformfield(
-                  labelText: 'Full Stack dev.',
-                  controller: _jobTitleController,
-                  errorText: 'Please enter a valid value',
-                ),
-                SizedBox(height: height),
-                const CommonHeading(title: 'Location'),
-                CommonTextformfield(
-                  labelText: 'Ahmedabad , india',
-                  controller: _locationController,
-                  errorText: 'Please valid location',
-                ),
-                SizedBox(height: height),
-                CommonYearsTextfield(startDateController: _startDateController, endDateController: _endDateController),
-                SizedBox(height: height),
-                const CommonHeading(title: 'Description'),
-                CommonLonglineTextfield(
-                  controller: _descriptionController,
-                  hintText:
-                  'Describe your role (e.g., working with team members to develop new concepts)',
-                  errorText: 'Please describe your role',
-                ),
+                // CommonTextformfield(
+                //   labelText: 'ex. TCS',
+                //   controller: controllers['jobTitle'],
+                //   errorText: 'Please enter a valid company name',
+                // ),
+                // SizedBox(height: height),
+                // const CommonHeading(title: 'Job Title'),
+                // CommonTextformfield(
+                //   labelText: 'Full Stack dev.',
+                //   controller: _jobTitleController,
+                //   errorText: 'Please enter a valid value',
+                // ),
+                // SizedBox(height: height),
+                // const CommonHeading(title: 'Location'),
+                // CommonTextformfield(
+                //   labelText: 'Ahmedabad , india',
+                //   controller: _locationController,
+                //   errorText: 'Please valid location',
+                // ),
+                // SizedBox(height: height),
+                // CommonYearsTextfield(startDateController: _startDateController, endDateController: _endDateController),
+                // SizedBox(height: height),
+                // const CommonHeading(title: 'Description'),
+                // CommonLonglineTextfield(
+                //   controller: _descriptionController,
+                //   hintText:
+                //   'Describe your role (e.g., working with team members to develop new concepts)',
+                //   errorText: 'Please describe your role',
+                // ),
 
 
                 SizedBox(height: height),

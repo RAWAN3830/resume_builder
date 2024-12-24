@@ -7,13 +7,12 @@ import 'app_text_theme.dart';
 class AppTheme {
   static ThemeData mobileThemeData = ThemeData(
     fontFamily: Strings.uberFont,
+
     textTheme: AppTextTheme.mobileTextTheme,
     colorScheme: ColorScheme.fromSeed(seedColor:ThemeColors.mainGreenColor),
     scaffoldBackgroundColor: ThemeColors.white,
-    // actionIconTheme: ActionIconThemeData(
-    //   backButtonIconBuilder: (context) => const CustomBackButton(),
-    // ),
-    // bottomNavigationBarTheme: const BottomNavigationBarThemeData(),
+
+    bottomNavigationBarTheme: const BottomNavigationBarThemeData(),
     appBarTheme: AppBarTheme(
       // backgroundColor: ThemeColor.white,
       // centerTitle: true,
@@ -29,9 +28,7 @@ class AppTheme {
     colorScheme: ColorScheme.fromSeed(seedColor:ThemeColors.mainGreenColor),
     scaffoldBackgroundColor: ThemeColors.white,
     useMaterial3: true,
-    // actionIconTheme: ActionIconThemeData(
-    //   backButtonIconBuilder: (context) => const CustomBackButton(),
-    // ),
+
     bottomNavigationBarTheme: const BottomNavigationBarThemeData(),
     appBarTheme: AppBarTheme(
       backgroundColor: ThemeColors.white,
@@ -48,9 +45,7 @@ class AppTheme {
     colorScheme: ColorScheme.fromSeed(seedColor: ThemeColors.mainGreenColor),
     scaffoldBackgroundColor: ThemeColors.white,
     useMaterial3: true,
-    // actionIconTheme: ActionIconThemeData(
-    //   backButtonIconBuilder: (context) => const CustomBackButton(),
-    // ),
+
     bottomNavigationBarTheme: const BottomNavigationBarThemeData(),
     appBarTheme: AppBarTheme(
       backgroundColor: ThemeColors.white,

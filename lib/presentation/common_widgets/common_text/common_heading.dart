@@ -12,7 +12,8 @@ class CommonHeading extends StatelessWidget {
   Widget build(BuildContext context) {
     return RichText(
       text:  TextSpan(
-        style: Theme.of(context).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold),
+        style: Theme.of(context).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w500),
+
         // style:  TextStyle(
         //   fontFamily: Strings.uberFont,
         //   color: ThemeColors.black,

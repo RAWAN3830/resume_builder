@@ -91,10 +91,7 @@ class _PersonalInfoState extends State<PersonalInfo> {
         FocusManager.instance.primaryFocus?.unfocus();
       },
       child: Scaffold(
-        appBar:  CustomAppBar(title: 'Contact info',
-
-        ),
-
+         appBar:  CustomAppBar(title: 'Contact info',),
         body: SingleChildScrollView(
           child: Column(
             children: [

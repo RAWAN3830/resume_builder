@@ -40,12 +40,13 @@ class CommonSaveButton extends StatelessWidget {
         child: Center(
           child: Text(
             name,
-            style: TextStyle(
-              color: ThemeColors.white,
-              fontFamily: Strings.uberFont,
-              fontSize: context.width(context) * 0.05,
-              fontWeight: FontWeight.w500,
-            ),
+            style: Theme.of(context).textTheme.titleLarge?.copyWith(color: Colors.white),
+            // style: TextStyle(
+            //   color: ThemeColors.white,
+            //   fontFamily: Strings.uberFont,
+            //   fontSize: context.width(context) * 0.05,
+            //   fontWeight: FontWeight.w500,
+            // ),
           ),
         ),
       ),
