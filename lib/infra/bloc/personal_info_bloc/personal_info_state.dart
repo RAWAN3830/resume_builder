@@ -2,7 +2,7 @@ abstract class PersonalInfoState {}
 
 class PersonalInfoInitial extends PersonalInfoState {}
 
-class PersonalInfoSubmitting extends PersonalInfoState {}
+class PersonalInfoLoading extends PersonalInfoState {}
 
 class PersonalInfoSuccess extends PersonalInfoState {}
 

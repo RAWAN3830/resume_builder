@@ -1,12 +1,12 @@
 import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:resume/core/constant/extension.dart';
 import 'package:resume/core/constant/strings.dart';
-import 'package:resume/core/constant/theme_colors.dart';
-import 'package:resume/infra/services/firebase_service/get_personal_info_to_firebase.dart';
+import 'package:resume/infra/bloc/personal_info_bloc/personal_info_bloc.dart';
+import 'package:resume/infra/bloc/personal_info_bloc/personal_info_state.dart';
+import 'package:resume/infra/services/firebase_service/personal_info_repository.dart';
 import 'package:resume/presentation/common_widgets/common_buttons/common_add_field_button.dart';
 import 'package:resume/presentation/common_widgets/common_buttons/common_reset_button.dart';
 import 'package:resume/presentation/common_widgets/common_text/common_heading.dart';
@@ -14,6 +14,7 @@ import 'package:resume/presentation/common_widgets/common_textfields/comman_text
 import 'package:resume/presentation/common_widgets/common_textfields/common_longlinetextfield.dart';
 import 'package:resume/presentation/home_screen/example.dart';
 import '../domain/personal_info.dart';
+import '../infra/bloc/personal_info_bloc/personal_info_event.dart';
 import 'common_widgets/common_appbar/custome_appbar.dart';
 import 'common_widgets/common_buttons/common_save_button.dart';
 
@@ -34,6 +35,7 @@ class PersonalInfo extends StatefulWidget {
 class _PersonalInfoState extends State<PersonalInfo> {
   int indexCount = 0;
 
+//  final PersonalInfoModel personalInfoModel = PersonalInfoModel();
   TextEditingController firstNameController = TextEditingController();
   TextEditingController lastNameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
@@ -270,36 +272,55 @@ class _PersonalInfoState extends State<PersonalInfo> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
-                          CommonSaveButton(
-                            formKey: formKey,
-                            onTap: () {
-                              if (formKey.currentState!.validate()) {
-                                formKey.currentState!.save();
-                                List<Links> allLinks =
-                                    fieldControllers.map((field) {
-                                  return Links(
-                                    name: field['name']?.text ?? '',
-                                    link: field['link']?.text ?? '',
+                          BlocConsumer<PersonalInfoBloc, PersonalInfoState>(
+                              listener: (context, state) {
+                                if (state is PersonalInfoSuccess) {
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    const SnackBar(content: Text('Personal Info Added Successfully!')),
                                   );
-                                }).toList();
+                                } else if (state is PersonalInfoFailure) {
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(content: Text('Error: ${state.error}')),
+                                  );
+                                }
+                              },
+                              builder: (context, state) {
+                                if (state is PersonalInfoLoading) {
+                                  return const Center(child: CircularProgressIndicator());
+                                }
 
-                                PersonalInfoModel personalInfo =
-                                    PersonalInfoModel(
-                                  firstname: firstNameController.text,
-                                  lastname: lastNameController.text,
-                                  email: emailController.text,
-                                  phone: phoneController.text,
-                                  jobTitle: jobTitleController.text,
-                                  address: addressController.text,
-                                  links: allLinks,
-                                );
+                                return CommonSaveButton(
+                                      formKey: formKey,
+                                      onTap: () {
+                                        if (formKey.currentState!.validate()) {
+                                          formKey.currentState!.save();
+                                          List<Links> allLinks =
+                                              fieldControllers.map((field) {
+                                            return Links(
+                                              name: field['name']?.text ?? '',
+                                              link: field['link']?.text ?? '',
+                                            );
+                                          }).toList();
 
-                                // Call function to save data to Firebase
-                                saveDataToFirestore(personalInfo);
-                                context.push(context, target: PersonalInfoList());
-                              }
-                            },
-                            name: Strings.saveContinue,
+                                          PersonalInfoModel personalInfoModel =
+                                              PersonalInfoModel(
+                                            firstname: firstNameController.text,
+                                            lastname: lastNameController.text,
+                                            email: emailController.text,
+                                            phone: phoneController.text,
+                                            jobTitle: jobTitleController.text,
+                                            address: addressController.text,
+                                            links: allLinks,
+                                          );
+                                          context.read<PersonalInfoBloc>().add(
+                                            AddPersonalInfoEvent(personalInfoModel, context),
+                                          );
+                                          context.push(context, target: PersonalInfoList());
+                                        }
+                                      },
+                                      name: Strings.saveContinue,
+                                    );
+                            }
                           ),
                           CommonResetButton(formKey: formKey)
                         ],
@@ -313,31 +334,5 @@ class _PersonalInfoState extends State<PersonalInfo> {
         ),
       ),
     );
-  }
-
-  void saveDataToFirestore(PersonalInfoModel personalInfo) async {
-    final CollectionReference personalInfoCollection =
-        FirebaseFirestore.instance.collection('personalInfo');
-
-    try {
-      await personalInfoCollection.add({
-        'firstname': personalInfo.firstname,
-        'lastname': personalInfo.lastname,
-        'email': personalInfo.email,
-        'phone': personalInfo.phone,
-        'jobTitle': personalInfo.jobTitle,
-        'address': personalInfo.address,
-        'links': personalInfo.links
-            .map((link) => {'name': link.name, 'link': link.link})
-            .toList(),
-      });
-
-      const snackBar =
-          SnackBar(content: Text('Data submitted successfully to Firestore.'));
-      ScaffoldMessenger.of(context).showSnackBar(snackBar);
-    } catch (e) {
-      final snackBar = SnackBar(content: Text('Error saving data: $e'));
-      ScaffoldMessenger.of(context).showSnackBar(snackBar);
-    }
   }
 }
