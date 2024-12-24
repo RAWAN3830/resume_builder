@@ -51,6 +51,7 @@ dependencies:
   freezed:
   freezed_annotation:
   json_annotation:
+  open_file:
 
 
 dev_dependencies:
@@ -83,6 +84,7 @@ flutter:
   assets:
     - assets/icons/
     - assets/illustrator/
+    - assets/fonts/
     #- images/pngwing.png
 
 
@@ -108,10 +110,10 @@ flutter:
     #         style: italic
     - family: Roboto
       fonts:
-        - asset: assets/fonts/roboto_fonts/Roboto-Light.ttf
-        - asset: assets/fonts/roboto_fonts/Roboto-Regular.ttf
-        - asset: assets/fonts/roboto_fonts/Roboto-Bold.ttf
-        - asset: assets/fonts/roboto_fonts/Roboto-Thin.ttf
+        - asset: assets/fonts/Roboto-Light.ttf
+        - asset: assets/fonts/Roboto-Regular.ttf
+        - asset: assets/fonts/Roboto-Bold.ttf
+        - asset: assets/fonts/Roboto-Thin.ttf
   #   - family: Trajan Pro
   #     fonts:
   #       - asset: fonts/TrajanPro.ttf
