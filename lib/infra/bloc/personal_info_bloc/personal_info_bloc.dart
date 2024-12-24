@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:resume/infra/bloc/personal_info_bloc/personal_info_event.dart';
 import 'package:resume/infra/bloc/personal_info_bloc/personal_info_state.dart';
-import 'package:resume/infra/services/personal_info_repository.dart';
+import 'package:resume/infra/services/firebase_service/personal_info_repository.dart';
 
 class PersonalInfoBloc extends Bloc<PersonalInfoEvent, PersonalInfoState> {
 
