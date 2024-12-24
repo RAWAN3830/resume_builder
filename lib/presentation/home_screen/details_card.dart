@@ -7,6 +7,7 @@ import 'package:resume/core/constant/theme_colors.dart';
 import 'package:resume/domain/workspace_model.dart';
 import 'package:resume/presentation/Declaration.dart';
 import 'package:resume/presentation/Project.dart';
+import 'package:resume/presentation/pdf_generator.dart';
 import 'package:resume/presentation/skill_sets_screen.dart';
 import 'package:resume/presentation/carrier_objectibve.dart';
 
@@ -44,7 +45,8 @@ class DetailsCard extends StatelessWidget {
               context.push(context, target: const ProjectInfo());
               // context.push(context, target: const ExperienceInfo());
             case 5:
-              context.push(context, target: const Achievement());
+              context.push(context, target:  ResumeCreator());
+              // context.push(context, target: const Achievement());
               // context.push(context, target: const TechSkills());
             case 6:
               context.push(context, target: const Declaration());
@@ -83,8 +85,8 @@ class DetailsCard extends StatelessWidget {
                 padding: const EdgeInsets.all(8.0)
                     .copyWith(top: context.height(context) * 0.02),
                 child: Container(
-                  // height: context.height(context) * .08,
-                  // width: context.width(context) * .23,
+                  height: context.height(context) * .08,
+                  width: context.width(context) * .20,
                   decoration: const BoxDecoration(color: Colors.transparent),
                   child: workmodel.icon,
                 ),
