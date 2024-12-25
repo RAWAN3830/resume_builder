@@ -8,7 +8,7 @@ import 'package:resume/domain/workspace_model.dart';
 import 'package:resume/presentation/Declaration.dart';
 import 'package:resume/presentation/Project.dart';
 import 'package:resume/presentation/pdf_generator.dart';
-import 'package:resume/presentation/skill_sets_screen.dart';
+import 'package:resume/presentation/home_screen/skill_sets_screen.dart/skill_sets_screen.dart';
 import 'package:resume/presentation/carrier_objectibve.dart';
 
 import '../../core/constant/strings.dart';
