@@ -6,6 +6,8 @@ import 'package:flutter/services.dart' show rootBundle;
 import 'package:pdf/widgets.dart' as pwd;
 
 class ResumeCreator extends StatefulWidget {
+  const ResumeCreator({super.key});
+
   @override
   _ResumeCreatorState createState() => _ResumeCreatorState();
 }
@@ -46,7 +48,7 @@ class _ResumeCreatorState extends State<ResumeCreator> {
               'Education:',
               style: pw.TextStyle(font: ttf, fontSize: 18, fontWeight: pw.FontWeight.bold),
             ),
-            pw.Text('$education', style: pw.TextStyle(font: myFonts, fontSize: 16)),
+            pw.Text(education, style: pw.TextStyle(font: myFonts, fontSize: 16)),
           ],
         ),
       ),
@@ -67,24 +69,24 @@ class _ResumeCreatorState extends State<ResumeCreator> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Create Resume')),
+      appBar: AppBar(title: const Text('Create Resume')),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
             TextField(
               controller: nameController,
-              decoration: InputDecoration(labelText: 'Name'),
+              decoration: const InputDecoration(labelText: 'Name'),
             ),
             TextField(
               controller: emailController,
-              decoration: InputDecoration(labelText: 'Email'),
+              decoration: const InputDecoration(labelText: 'Email'),
             ),
             TextField(
               controller: educationController,
-              decoration: InputDecoration(labelText: 'Education'),
+              decoration: const InputDecoration(labelText: 'Education'),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
                 final name = nameController.text;
@@ -94,11 +96,11 @@ class _ResumeCreatorState extends State<ResumeCreator> {
                   createPdf(name, email, education);
                 } else {
                   ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(content: Text('Please fill all fields')),
+                    const SnackBar(content: Text('Please fill all fields')),
                   );
                 }
               },
-              child: Text('Generate PDF'),
+              child: const Text('Generate PDF'),
             ),
           ],
         ),

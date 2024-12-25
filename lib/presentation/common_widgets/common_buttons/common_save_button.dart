@@ -1,10 +1,8 @@
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:resume/core/constant/extension.dart';
 import 'package:resume/core/constant/theme_colors.dart';
 
-import '../../../core/constant/strings.dart';
 class CommonSaveButton extends StatelessWidget {
   final Function onTap;
   final String name;

@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
@@ -16,9 +15,9 @@ class MyApp extends StatelessWidget {
         child: BouncingScrollWrapper.builder(context, widget!),
         breakpoints: [
           // ResponsiveBreakpoints(child: child, breakpoints: breakpoints)
-          Breakpoint(name: MOBILE, start: 0, end: 350),
-          Breakpoint(name: TABLET, start: 351, end: 600),
-          Breakpoint(name: DESKTOP, start: 601, end: 800),
+          const Breakpoint(name: MOBILE, start: 0, end: 350),
+          const Breakpoint(name: TABLET, start: 351, end: 600),
+          const Breakpoint(name: DESKTOP, start: 601, end: 800),
           // ResponsiveBreakpoint.resize(350, name: MOBILE),
           // ResponsiveBreakpoint.resize(600, name: TABLET),
           // ResponsiveBreakpoint.resize(800, name: DESKTOP),

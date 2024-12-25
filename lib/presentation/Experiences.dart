@@ -1,122 +1,7 @@
-// import 'package:flutter/material.dart';
-// import 'package:resume/core/constant/extension.dart';
-// import 'package:resume/presentation/common_widgets/common_buttons/common_save_button.dart';
-// import 'package:resume/presentation/common_widgets/common_text/common_heading.dart';
-// import 'package:resume/presentation/common_widgets/common_textfields/comman_textformfield.dart';
-// import 'package:resume/presentation/common_widgets/common_textfields/common_longlinetextfield.dart';
-//
-// import '../core/constant/strings.dart';
-//
-// String? company;
-// String? institute;
-// String? roles;
-//
-// class ExperienceInfo extends StatefulWidget {
-//   const ExperienceInfo({super.key});
-//
-//   @override
-//   State<ExperienceInfo> createState() => _ExperienceInfoState();
-// }
-//
-// enum EmpStatus { previously, currently }
-//
-// final formkey = GlobalKey<FormState>();
-//
-// class _ExperienceInfoState extends State<ExperienceInfo> {
-//   int indexCount = 0;
-//   EmpStatus m = EmpStatus.previously;
-//   TextEditingController companyController = TextEditingController();
-//   TextEditingController instituteController = TextEditingController();
-//   TextEditingController roleController = TextEditingController();
-//
-//   @override
-//   void setState(VoidCallback fn) {
-//     // TODO: implement setState
-//     companyController.text = company!;
-//     instituteController.text = institute!;
-//     roleController.text = roles!;
-//     super.initState();
-//   }
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     var height = context.height(context) * 0.02;
-//
-//     return Scaffold(
-//       appBar: AppBar(
-//         backgroundColor: Colors.blue,
-//         title: const Text('Experiences',
-//             style: TextStyle(color: Colors.white, fontSize: 25)),
-//       ),
-//       body: SingleChildScrollView(
-//         child: Form(
-//             key: formkey,
-//             child: Padding(
-//               padding: const EdgeInsets.all(8.0),
-//               child: Column(
-//                 crossAxisAlignment: CrossAxisAlignment.start,
-//                 children: [
-//                   SizedBox(height: height),
-//                   const CommonHeading(title: 'Company Name'),
-//                   CommonTextformfield(
-//                       labelText: 'Infosys',
-//                       controller: companyController,
-//                       errorText: 'enter value'),
-//                   SizedBox(height: height),
-//                   const CommonHeading(title: 'Institute / Collage'),
-//                   CommonTextformfield(
-//                       labelText: 'Mobile Devloper',
-//                       controller: instituteController,
-//                       errorText: 'enter valid value'),
-//                   SizedBox(height: height),
-//                   const CommonHeading(title: 'Roles (optional)'),
-//                   CommonLonglineTextfield(
-//                       controller: roleController,
-//                       hintText:
-//                           'working with team members to come up with new concepts end product analysis',
-//                       errorText: 'role in Company'),
-//                   SizedBox(height: height),
-//                   const CommonHeading(title: 'Employed Status'),
-//                   Row(children: [
-//                     const CommonHeading(title: 'Previously Employed'),
-//                     Radio(
-//                         value: EmpStatus.previously,
-//                         groupValue: m,
-//                         onChanged: (EmpStatus? value) {
-//                           setState(() {
-//                             m = value!;
-//                           });
-//                         }),
-//                   ]),
-//                   Row(children: [
-//                     Row(children: [
-//                       const CommonHeading(title: 'Currently Employed'),
-//                       Radio(
-//                           value: EmpStatus.currently,
-//                           groupValue: m,
-//                           onChanged: (EmpStatus? value) {
-//                             setState(() {
-//                               m = value!;
-//                             });
-//                           }),
-//                     ])
-//                   ]),
-//                   // CommonButton(onTap: (){}, title: 'Submit')
-//                   CommonSaveButton(
-//                       formKey: formkey,
-//                     onTap: (){},
-//                     name: Strings.saveContinue,)
-//                 ],
-//               ),
-//             )),
-//       ),
-//     );
-//   }
-// }
-
 import 'package:flutter/material.dart';
 import 'package:resume/core/constant/extension.dart';
 import 'package:resume/domain/experience_model.dart';
+import 'package:resume/presentation/common_widgets/common_buttons/common_add_field_button.dart';
 import 'package:resume/presentation/common_widgets/common_buttons/common_save_button.dart';
 import 'package:resume/presentation/common_widgets/common_text/common_heading.dart';
 import 'package:resume/presentation/common_widgets/common_textfields/comman_textformfield.dart';
@@ -131,56 +16,40 @@ class ExperienceInfo extends StatefulWidget {
   @override
   State<ExperienceInfo> createState() => _ExperienceInfoState();
 }
-  String? employer;
-  String? jobTitle;
-  String? startDate;
-  String? endDate;
-  String? location;
-  String? description;
 
 class _ExperienceInfoState extends State<ExperienceInfo> {
   final _formKey = GlobalKey<FormState>();
-  final List<ExperienceModel> educationList = [];
+  final List<ExperienceModel> experienceList = [];
   final List<Map<String, TextEditingController>> controllersList = [];
   final List<bool> expansionStates = [];
-
-  void _addEducationFields() {
-    if (controllersList.length < 3) {
-      controllersList.add({
-        'employer': TextEditingController(),
-        'jobTitle': TextEditingController(),
-        'description': TextEditingController(),
-        'location': TextEditingController(),
-        'startDate': TextEditingController(),
-        'endDate': TextEditingController(),
-      });
-      expansionStates.add(true); // Start with expanded state
-      setState(() {});
-    }
-  }
-  // final _employerController = TextEditingController();
-  // final _jobTitleController = TextEditingController();
-  // final _startDateController = TextEditingController();
-  // final _endDateController = TextEditingController();
-  // final _locationController = TextEditingController();
-  // final _descriptionController = TextEditingController();
-  //
 
   @override
   void initState() {
     super.initState();
-    _addEducationFields();
-    // if (employer != null) _employerController.text = employer ?? "employer error";
-    // if (jobTitle != null) _jobTitleController.text = jobTitle ?? "job title error";
-    // if (location != null) _locationController.text = location ?? "location error";
-    // if (startDate != null) _startDateController.text = startDate ?? "StartDate error";
-    // if (endDate != null) _endDateController.text = endDate ?? "endDate error";
-    // if (description != null) _descriptionController.text = description ?? "description error";
-
+    _addExperienceFields();
   }
 
-  void _deleteExperiencesFields(int index) {
+  void _addExperienceFields() {
+    if (controllersList.length < 4) {
+      controllersList.add({
+        'employer': TextEditingController(),
+        'jobTitle': TextEditingController(),
+        'location': TextEditingController(),
+        'startDate': TextEditingController(),
+        'endDate': TextEditingController(),
+        'description': TextEditingController(),
+      });
+      expansionStates.add(true);
+      setState(() {});
+    }
+  }
+
+  void _deleteExperienceFields(int index) {
     if (index >= 0 && index < controllersList.length) {
+      // Dispose controllers to prevent memory leaks
+      for (var controller in controllersList[index].values) {
+        controller.dispose();
+      }
       controllersList.removeAt(index);
       expansionStates.removeAt(index);
       setState(() {});
@@ -189,87 +58,140 @@ class _ExperienceInfoState extends State<ExperienceInfo> {
 
   void _saveExperiences() {
     if (_formKey.currentState!.validate()) {
-      educationList.clear();
+      experienceList.clear();
       for (var controllers in controllersList) {
-        educationList.add(ExperienceModel(
+        experienceList.add(ExperienceModel(
+          employer: controllers['employer']?.text,
           jobTitle: controllers['jobTitle']?.text,
           location: controllers['location']?.text,
-          description: controllers['description']?.text,
-          employer: controllers['employer']?.text,
           startDate: controllers['startDate']?.text,
           endDate: controllers['endDate']?.text,
+          description: controllers['description']?.text,
         ));
       }
-      debugPrint(
-          'Education Details: ${educationList.map((e) => e.toString()).toList()}');
+      debugPrint('Experience Details: ${experienceList.map((e) => e.toString()).toList()}');
     }
   }
 
-
   @override
   void dispose() {
-    // Clean up controllers
-    // _employerController.dispose();
-    // _jobTitleController.dispose();
-    // _locationController.dispose();
-    // _startDateController.dispose();
-    // _endDateController.dispose();
-    // _descriptionController.dispose();
-    // super.dispose();
+    // Clean up all controllers
+    for (var controllers in controllersList) {
+      for (var controller in controllers.values) {
+        controller.dispose();
+      }
+    }
+    super.dispose();
+  }
+
+  Widget _buildExperienceForm(Map<String, TextEditingController> controllers, int index) {
+    final height = context.height(context) * 0.02;
+
+    return ExpansionTile(
+      initiallyExpanded: expansionStates[index],
+      onExpansionChanged: (expanded) {
+        setState(() {
+          expansionStates[index] = expanded;
+        });
+      },
+      title: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text(
+            controllers['employer']!.text.isEmpty
+                ? 'Experiences Details ${index + 1}'
+                : controllers['employer']!.text,
+            style: Theme.of(context).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold)
+          ),
+          if (controllersList.length > 1)
+            IconButton(
+              onPressed: () => _deleteExperienceFields(index),
+              icon: const Icon(Icons.delete, color: Colors.red),
+            ),
+        ],
+      ),
+      // title: Text('Experience ${index + 1}'),
+      // trailing: Row(
+      //   mainAxisSize: MainAxisSize.min,
+      //   children: [
+      //     if (controllersList.length > 1)
+      //     IconButton(
+      //       icon: const Icon(Icons.delete, color: Colors.red),
+      //       onPressed: () => _deleteExperienceFields(index),
+      //     ),
+      //     const Icon(Icons.expand_more),
+      //   ],
+      // ),
+      children: [
+        Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const CommonHeading(title: 'Employer'),
+              CommonTextformfield(
+                labelText: 'ex. TCS',
+                controller: controllers['employer']!,
+                errorText: 'Please enter a valid company name',
+              ),
+              SizedBox(height: height),
+
+              const CommonHeading(title: 'Job Title'),
+              CommonTextformfield(
+                labelText: 'Full Stack dev.',
+                controller: controllers['jobTitle']!,
+                errorText: 'Please enter a valid job title',
+              ),
+              SizedBox(height: height),
+
+              const CommonHeading(title: 'Location'),
+              CommonTextformfield(
+                labelText: 'Ahmedabad, India',
+                controller: controllers['location']!,
+                errorText: 'Please enter a valid location',
+              ),
+              SizedBox(height: height),
+
+              CommonYearsTextfield(
+                startDateController: controllers['startDate']!,
+                endDateController: controllers['endDate']!,
+              ),
+              SizedBox(height: height),
+
+              const CommonHeading(title: 'Description'),
+              CommonLonglineTextfield(
+                controller: controllers['description']!,
+                hintText: 'Describe your role and responsibilities',
+                errorText: 'Please describe your role',
+              ),
+            ],
+          ),
+        ),
+      ],
+    );
   }
 
   @override
   Widget build(BuildContext context) {
-    final height = context.height(context) * 0.02;
-
     return Scaffold(
-
-      appBar: const CustomAppBar(title:'Experiences'),
+      appBar: const CustomAppBar(title: 'Experiences'),
       body: SingleChildScrollView(
         child: Form(
           key: _formKey,
           child: Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(16.0),
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(height: height),
-                const CommonHeading(title: 'Employer'),
-                // CommonTextformfield(
-                //   labelText: 'ex. TCS',
-                //   controller: controllers['jobTitle'],
-                //   errorText: 'Please enter a valid company name',
-                // ),
-                // SizedBox(height: height),
-                // const CommonHeading(title: 'Job Title'),
-                // CommonTextformfield(
-                //   labelText: 'Full Stack dev.',
-                //   controller: _jobTitleController,
-                //   errorText: 'Please enter a valid value',
-                // ),
-                // SizedBox(height: height),
-                // const CommonHeading(title: 'Location'),
-                // CommonTextformfield(
-                //   labelText: 'Ahmedabad , india',
-                //   controller: _locationController,
-                //   errorText: 'Please valid location',
-                // ),
-                // SizedBox(height: height),
-                // CommonYearsTextfield(startDateController: _startDateController, endDateController: _endDateController),
-                // SizedBox(height: height),
-                // const CommonHeading(title: 'Description'),
-                // CommonLonglineTextfield(
-                //   controller: _descriptionController,
-                //   hintText:
-                //   'Describe your role (e.g., working with team members to develop new concepts)',
-                //   errorText: 'Please describe your role',
-                // ),
-
-
-                SizedBox(height: height),
+                ...List.generate(
+                  controllersList.length,
+                      (index) => _buildExperienceForm(controllersList[index], index),
+                ),
+                if (controllersList.length < 4)
+                  CommonAddFieldButton(onTap: (){_addExperienceFields();}, name: 'Add Experience'),
+                const SizedBox(height: 16),
                 CommonSaveButton(
                   formKey: _formKey,
-                  onTap: _onSave,
+                  onTap: _saveExperiences,
                   name: Strings.saveContinue,
                 ),
               ],
@@ -279,14 +201,4 @@ class _ExperienceInfoState extends State<ExperienceInfo> {
       ),
     );
   }
-
-
-  void _onSave() {
-    if (_formKey.currentState?.validate() ?? false) {
-      // Handle save logic
-    }
-  }
 }
-
-
-
