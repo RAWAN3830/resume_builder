@@ -5,7 +5,7 @@ import 'package:responsive_framework/responsive_framework.dart';
 import 'package:resume/core/theme_data/breakpoint_enum.dart';
 import 'package:resume/infra/bloc/auth_bloc/email_login/login_bloc.dart';
 import 'package:resume/infra/bloc/personal_info_bloc/personal_info_bloc.dart';
-import 'package:resume/infra/services/firebase_service/personal_info_repository.dart';
+import 'package:resume/infra/services/firebase_service/set_personal_info_to_firebase.dart';
 import 'package:resume/presentation/home_screen/home_screen.dart';
 import 'package:resume/presentation/skill_sets_screen.dart';
 import '../core/constant/strings.dart';

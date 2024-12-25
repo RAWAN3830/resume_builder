@@ -6,7 +6,7 @@ import 'package:resume/core/constant/extension.dart';
 import 'package:resume/core/constant/strings.dart';
 import 'package:resume/infra/bloc/personal_info_bloc/personal_info_bloc.dart';
 import 'package:resume/infra/bloc/personal_info_bloc/personal_info_state.dart';
-import 'package:resume/infra/services/firebase_service/personal_info_repository.dart';
+import 'package:resume/infra/services/firebase_service/set_personal_info_to_firebase.dart';
 import 'package:resume/presentation/common_widgets/common_buttons/common_add_field_button.dart';
 import 'package:resume/presentation/common_widgets/common_buttons/common_reset_button.dart';
 import 'package:resume/presentation/common_widgets/common_text/common_heading.dart';
