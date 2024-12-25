@@ -10,3 +10,5 @@ class AddPersonalInfoEvent extends PersonalInfoEvent {
 
   AddPersonalInfoEvent(this.personalInfoModel, this.context);
 }
+
+class GetPersonalInfoEvent extends PersonalInfoEvent {}
