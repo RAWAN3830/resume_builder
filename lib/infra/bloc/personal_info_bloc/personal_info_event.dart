@@ -1,9 +1,12 @@
+import 'package:flutter/material.dart';
+
 import '../../../domain/personal_info.dart';
 
 abstract class PersonalInfoEvent {}
 
-class SubmitPersonalInfo extends PersonalInfoEvent {
-  final PersonalInfoModel personalInfo;
+class AddPersonalInfoEvent extends PersonalInfoEvent {
+  final PersonalInfoModel personalInfoModel;
+  final BuildContext context;
 
-  SubmitPersonalInfo(this.personalInfo);
+  AddPersonalInfoEvent(this.personalInfoModel, this.context);
 }
