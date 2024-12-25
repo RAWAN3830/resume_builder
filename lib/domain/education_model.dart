@@ -7,11 +7,22 @@ class EducationModel {
   final String? endDate;
 
   EducationModel({
-    required this.location,
-    required this.degreeType,
-    required this.fieldOfStudy,
-    required this.startDate,
-    required this.endDate,
-    required this.institution,
+    this.institution,
+    this.location,
+    this.degreeType,
+    this.fieldOfStudy,
+    this.startDate,
+    this.endDate,
   });
+
+  Map<String, dynamic> toJson() {
+    return {
+      'institution': institution,
+      'location': location,
+      'degreeType': degreeType,
+      'fieldOfStudy': fieldOfStudy,
+      'startDate': startDate,
+      'endDate': endDate,
+    };
+  }
 }

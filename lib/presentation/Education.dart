@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:resume/core/constant/extension.dart';
@@ -46,15 +48,8 @@ class _EducationInfoState extends State<EducationInfo> {
     }
   }
 
-  void _deleteEducationFields(int index) {
-    if (index >= 0 && index < controllersList.length) {
-      controllersList.removeAt(index);
-      expansionStates.removeAt(index);
-      setState(() {});
-    }
-  }
 
-  void _saveEducation() {
+  void _saveEducation() async {
     if (formKey.currentState!.validate()) {
       educationList.clear();
       for (var controllers in controllersList) {
@@ -67,8 +62,77 @@ class _EducationInfoState extends State<EducationInfo> {
           endDate: controllers['endDate']?.text,
         ));
       }
-      debugPrint(
-          'Education Details: ${educationList.map((e) => e.toString()).toList()}');
+
+      try {
+        // Reference to Firestore
+        final collectionRef = FirebaseFirestore.instance.collection('education');
+
+        // Save each education detail to Firestore
+        for (var education in educationList) {
+          await collectionRef.add(education.toJson());
+        }
+
+        // Show a success message
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Education details saved successfully!')),
+        );
+      } catch (e) {
+        debugPrint('Error saving education details: $e');
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Failed to save: $e')),
+        );
+      }
+    }
+  }
+
+
+  void _deleteEducationFields(int index) {
+    if (index >= 0 && index < controllersList.length) {
+      controllersList.removeAt(index);
+      expansionStates.removeAt(index);
+      setState(() {});
+    }
+  }
+
+  Future<void> _saveEducationFirebase() async {
+    if (formKey.currentState!.validate()) {
+      // Clear and populate the education list
+      educationList.clear();
+      for (var controllers in controllersList) {
+        educationList.add(EducationModel(
+          institution: controllers['institution']?.text ?? '',
+          location: controllers['location']?.text ?? '',
+          degreeType: controllers['degreeType']?.text ?? '',
+          fieldOfStudy: controllers['fieldOfStudy']?.text ?? '',
+          startDate: controllers['startDate']?.text ?? '',
+          endDate: controllers['endDate']?.text ?? '',
+        ));
+      }
+
+      try {
+        final userId = FirebaseAuth.instance.currentUser?.uid;
+        if (userId == null) {
+          throw Exception("User not authenticated");
+        }
+
+        // Create a single document for all education details
+        final userEducationRef = FirebaseFirestore.instance.collection('userEducation').doc(userId);
+
+        await userEducationRef.set({
+          'userId': userId,
+          'educationDetails': educationList.map((e) => e.toJson()).toList(),
+          'lastUpdated': FieldValue.serverTimestamp(),
+        });
+
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Education details saved successfully!')),
+        );
+      } catch (e) {
+        debugPrint('Error saving education details: $e');
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Failed to save: $e')),
+        );
+      }
     }
   }
 
@@ -165,6 +229,7 @@ class _EducationInfoState extends State<EducationInfo> {
                       formKey: formKey,
                       onTap: () {
                         _saveEducation();
+                        _saveEducationFirebase();
                       },
                       name: Strings.saveContinue,
                     ),
