@@ -5,6 +5,8 @@ import 'package:resume/infra/bloc/personal_info_bloc/personal_info_event.dart';
 import 'package:resume/infra/bloc/personal_info_bloc/personal_info_state.dart';
 
 class PersonalInfoList extends StatelessWidget {
+  const PersonalInfoList({super.key});
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
