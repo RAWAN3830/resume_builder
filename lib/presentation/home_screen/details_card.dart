@@ -9,13 +9,9 @@ import 'package:resume/presentation/Declaration.dart';
 import 'package:resume/presentation/Project.dart';
 import 'package:resume/presentation/pdf_generator.dart';
 import 'package:resume/presentation/skill_sets_screen.dart';
-import 'package:resume/presentation/carrier_objectibve.dart';
 
-import '../../core/constant/strings.dart';
-import '../Achievements.dart';
 import '../Education.dart';
 import '../Experiences.dart';
-import '../References.dart';
 import '../contact_info.dart';
 
 class DetailsCard extends StatelessWidget {
@@ -45,7 +41,7 @@ class DetailsCard extends StatelessWidget {
               context.push(context, target: const ProjectInfo());
               // context.push(context, target: const ExperienceInfo());
             case 5:
-              context.push(context, target:  ResumeCreator());
+              context.push(context, target:  const ResumeCreator());
               // context.push(context, target: const Achievement());
               // context.push(context, target: const TechSkills());
             case 6:
