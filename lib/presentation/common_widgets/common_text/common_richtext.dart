@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:resume/core/constant/extension.dart';
-import 'package:resume/core/constant/theme_colors.dart';
 
-import '../../../core/constant/strings.dart';
 
 class CommonRichText extends StatelessWidget {
   final String title;

@@ -19,7 +19,7 @@ class CommonAddFieldButton extends StatelessWidget {
                 border: Border.all(color: CupertinoColors.black,width: 1)
             ),
             child: Center(
-              child: Text(' + ${name}',style:TextStyle(fontSize: 20,fontWeight: FontWeight.w600)),
+              child: Text(' + $name',style:const TextStyle(fontSize: 20,fontWeight: FontWeight.w600)),
             )));
   }
 }
