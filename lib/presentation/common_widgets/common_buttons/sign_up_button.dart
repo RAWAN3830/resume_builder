@@ -45,7 +45,7 @@ class SignUpButton extends StatelessWidget {
                   //     width: context.width(context) * 0.003, color: ThemeColors.black),
                 ),
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     CircleAvatar(
                       backgroundColor: Colors.transparent,
@@ -55,10 +55,7 @@ class SignUpButton extends StatelessWidget {
                     ),
                     Text(
                       buttonTitle,
-                      style: TextStyle(
-                          fontFamily: Strings.uberFont,
-                          fontSize: context.width(context) * 0.045,
-                          fontWeight: FontWeight.w600),
+                      style: Theme.of(context).textTheme.titleLarge,
                     ),
                   ],
                 ),

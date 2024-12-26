@@ -103,11 +103,9 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                             ),
                               Text(
                               Strings.or,
-                              style: TextStyle(
-                                fontFamily: Strings.uberFont,
-                                fontSize: context.width(context) * 0.030,
+                                style: Theme.of(context).textTheme.titleLarge,
+
                               ),
-                            ),
                             Expanded(
                               child: Divider(
                                 color: ThemeColors.black,
@@ -124,33 +122,19 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                       buttonImage: AssetsSvgImage.googleImage,
                       buttonTitle: Strings.googleLogin,
                     ),
+                    SizedBox(height: varHeight),
                     CommonSaveButton(formKey: formKey, onTap: (){
-
+                      if (formKey.currentState?.validate() ?? false) {
+                        context.read<RegistrationBloc>().add(
+                          RegisterUserEvent(
+                            email: emailController.text,
+                            password: passwordController.text,
+                            name: nameController.text,
+                          ),
+                        );
+                      }
                     }, name: Strings.saveContinue),
-                    // SizedBox(height: context.height(context) * 0.03),
-                    // CommonButton(onTap: (){
-                    //   context.push(context, target: const LoginScreen());
-                    // },title: 'continue',),
-                    // CommonSaveButton(formKey: formKey, buttonTitle: Strings.login,),
-
-                    SizedBox(
-                      width: double.infinity,
-                      child: ElevatedButton(
-                        onPressed: () {
-                          if (formKey.currentState?.validate() ?? false) {
-                            context.read<RegistrationBloc>().add(
-                              RegisterUserEvent(
-                                email: emailController.text,
-                                password: passwordController.text,
-                                name: nameController.text,
-                              ),
-                            );
-                          }
-                        },
-                        child: const Text(Strings.registration),
-                      ),
-                    ),
-                  ],
+                          ],
                 ),
               ),
             ),
