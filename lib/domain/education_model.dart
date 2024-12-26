@@ -7,11 +7,11 @@ class EducationModel {
   final String? endDate;
 
   EducationModel({
-    required this.location,
-    required this.degreeType,
-    required this.fieldOfStudy,
-    required this.startDate,
-    required this.endDate,
-    required this.institution,
+     this.location,
+     this.degreeType,
+     this.fieldOfStudy,
+     this.startDate,
+     this.endDate,
+     this.institution,
   });
 }

@@ -101,7 +101,7 @@ class _ProjectInfoState extends State<ProjectInfo> {
                       onTap: (){},
                       name: Strings.saveContinue,
                     ),
-                    CommonResetButton(formKey: formKey)
+                    CommonResetButton(formKey: formKey, onTap: (){},)
                   ],
                 ),
               ],
