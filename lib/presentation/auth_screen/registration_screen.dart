@@ -9,6 +9,7 @@ import 'package:resume/infra/bloc/auth_bloc/email_auth/email_auth_bloc.dart';
 import 'package:resume/infra/bloc/auth_bloc/email_auth/email_auth_state.dart';
 import 'package:resume/presentation/common_widgets/common_buttons/common_save_button.dart';
 import 'package:resume/presentation/common_widgets/common_buttons/sign_up_button.dart';
+import 'package:resume/presentation/home_screen/home_screen.dart';
 import '../../infra/bloc/auth_bloc/email_auth/email_auth_event.dart';
 import '../common_widgets/common_text/common_richtext.dart';
 import '../common_widgets/common_textfields/comman_textformfield.dart';
@@ -36,6 +37,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
             ScaffoldMessenger.of(context).showSnackBar(
               const SnackBar(content: Text('Registration Successful!')),
             );
+            context.pushAndRemoveUntil(context, target: const HomeScreen());
           }
           else if (state is RegistrationFailure) {
             ScaffoldMessenger.of(context).showSnackBar(

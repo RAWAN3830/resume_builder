@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:resume/core/constant/extension.dart';
 import 'package:resume/presentation/common_widgets/common_buttons/common_save_button.dart';
+import 'package:resume/presentation/home_screen/home_screen.dart';
 import '../../core/constant/assets_svg_image.dart';
 import '../../core/constant/strings.dart';
 import '../../core/constant/theme_colors.dart';
@@ -84,7 +85,6 @@ class _LoginScreenState extends State<LoginScreen> {
                           Text(
                             Strings.or,
                             style: Theme.of(context).textTheme.titleLarge,
-
                           ),
                           Expanded(
                               child: Divider(
@@ -99,31 +99,34 @@ class _LoginScreenState extends State<LoginScreen> {
                       buttonTitle: Strings.googleLogin,
                     ),
                     SizedBox(height: context.height(context) * 0.05),
-                     CommonSaveButton(formKey: formKey, onTap: (){
-                       if (formKey.currentState?.validate() ?? false) {
-                         context.read<LoginBloc>().add(LoginUserEvent(
-                           email: emailController.text,
-                           password: passwordController.text,
-                         ));
-                         // context.push(context, target: HomeScreen());
-                       }
-
-                     }, name: 'Login')
-
+                    CommonSaveButton(
+                        formKey: formKey,
+                        onTap: () {
+                          if (formKey.currentState?.validate() ?? false) {
+                            context.read<LoginBloc>().add(LoginUserEvent(
+                                  email: emailController.text,
+                                  password: passwordController.text,
+                                ));
+                            // context.push(context, target: HomeScreen());
+                          }
+                        },
+                        name: 'Login')
                   ],
                 );
-              }, listener: (context, state) {
-                if(state is LoginSuccess){
+              },
+              listener: (context, state) {
+                if (state is LoginSuccess) {
                   ScaffoldMessenger.of(context).showSnackBar(
                     const SnackBar(content: Text(' Successful!')),
                   );
-                }
-                else if (state is LoginFailure) {
+                  context.pushAndRemoveUntil(context,
+                      target: const HomeScreen());
+                } else if (state is LoginFailure) {
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(content: Text('Error: ${state.error}')),
                   );
                 }
-            },
+              },
             ),
           ),
         ),
