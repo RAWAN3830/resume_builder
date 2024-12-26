@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:resume/core/constant/extension.dart';
+import 'package:resume/presentation/common_widgets/common_buttons/common_save_button.dart';
 import '../../core/constant/assets_svg_image.dart';
 import '../../core/constant/strings.dart';
 import '../../core/constant/theme_colors.dart';
@@ -82,10 +83,8 @@ class _LoginScreenState extends State<LoginScreen> {
                                   endIndent: context.width(context) * 0.03)),
                           Text(
                             Strings.or,
-                            style: TextStyle(
-                              fontFamily: Strings.uberFont,
-                              fontSize: context.width(context) * 0.045,
-                            ),
+                            style: Theme.of(context).textTheme.titleLarge,
+
                           ),
                           Expanded(
                               child: Divider(
@@ -100,7 +99,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       buttonTitle: Strings.googleLogin,
                     ),
                     SizedBox(height: context.height(context) * 0.05),
-                     ElevatedButton(onPressed: (){
+                     CommonSaveButton(formKey: formKey, onTap: (){
                        if (formKey.currentState?.validate() ?? false) {
                          context.read<LoginBloc>().add(LoginUserEvent(
                            email: emailController.text,
@@ -109,7 +108,7 @@ class _LoginScreenState extends State<LoginScreen> {
                          // context.push(context, target: HomeScreen());
                        }
 
-                     }, child: const Text('Login'))
+                     }, name: 'Login')
 
                   ],
                 );

@@ -91,7 +91,7 @@ class DetailsCard extends StatelessWidget {
             Expanded(
               child: Text(
                 workmodel.title,
-                style:  Theme.of(context).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w500),
+                style:  Theme.of(context).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w500),
 
               ),
             )
