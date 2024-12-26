@@ -5,13 +5,15 @@ import '../../../core/constant/theme_colors.dart';
 
 class CommonResetButton extends StatelessWidget {
   final GlobalKey<FormState> formKey;
-  const CommonResetButton({super.key, required this.formKey});
+  final Function onTap;
+  const CommonResetButton({super.key, required this.formKey, required this.onTap,});
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        formKey.currentState!.reset(); // Ensure form is reset
+        onTap();
+        // formKey.currentState!.reset(); // Ensure form is reset
       },
       child: Container(
         height: context.width(context) * 0.14,

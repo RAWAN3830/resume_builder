@@ -51,14 +51,7 @@ class DetailsCard extends StatelessWidget {
             case 6:
               context.push(context, target: const Declaration());
             //   context.push(context, target:Hobboies());
-            // case 7:
-              // context.push(context, target: const ProjectInfo());
-            // case 8:
-            //   context.push(context, target: const Achievement());
-            // case 9:
-            //   context.push(context, target: const Reference());
-            // case 10:
-            //   context.push(context, target: const Declaration());
+
           }
         },
         child: Container(

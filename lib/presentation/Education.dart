@@ -167,7 +167,7 @@ class _EducationInfoState extends State<EducationInfo> {
                       },
                       name: Strings.saveContinue,
                     ),
-                    CommonResetButton(formKey: formKey)
+                    CommonResetButton(formKey: formKey,onTap: (){},)
                   ],
                 ),
               ],

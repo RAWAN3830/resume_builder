@@ -322,7 +322,7 @@ class _PersonalInfoState extends State<PersonalInfo> {
                                     );
                             }
                           ),
-                          CommonResetButton(formKey: formKey)
+                          CommonResetButton(formKey: formKey, onTap: (){},)
                         ],
                       ),
                     ],

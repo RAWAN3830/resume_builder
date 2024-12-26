@@ -5,8 +5,6 @@
 
 abstract class RegistrationEvent {
   const RegistrationEvent();
-
-  // List<Object> get props => [];
 }
 
 class RegisterUserEvent extends RegistrationEvent {
@@ -20,6 +18,4 @@ class RegisterUserEvent extends RegistrationEvent {
     required this.name,
   });
 
-  // @override
-  // List<Object> get props => [email, password, name];
 }
