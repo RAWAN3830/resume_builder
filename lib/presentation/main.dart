@@ -61,8 +61,8 @@ class MyApp extends StatelessWidget {
           // home: const SkillSetsScreen(),
           //home: const HomeScreen(),
           // home:  DynamicTextFields(),
-           home: const LoginScreen(),
-           //home: const RegistrationScreen(),
+          //  home: const LoginScreen(),
+           home: const RegistrationScreen(),
         ),
       ),
       breakpoints: [
