@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:resume/core/constant/extension.dart';
 import 'package:resume/presentation/common_widgets/common_buttons/common_save_button.dart';
@@ -53,23 +54,37 @@ class _EducationInfoState extends State<EducationInfo> {
     }
   }
 
-  void _saveEducation() {
+
+  void _saveEducation() async {
     if (formKey.currentState!.validate()) {
-      educationList.clear();
-      for (var controllers in controllersList) {
-        educationList.add(EducationModel(
-          institution: controllers['institution']?.text,
-          location: controllers['location']?.text,
-          degreeType: controllers['degreeType']?.text,
-          fieldOfStudy: controllers['fieldOfStudy']?.text,
-          startDate: controllers['startDate']?.text,
-          endDate: controllers['endDate']?.text,
-        ));
+      // Collecting all the education data in a list of maps
+      List<Map<String, dynamic>> educationData = controllersList.map((controllers) {
+        return {
+          'institution': controllers['institution']?.text ?? '',
+          'location': controllers['location']?.text ?? '',
+          'degreeType': controllers['degreeType']?.text ?? '',
+          'fieldOfStudy': controllers['fieldOfStudy']?.text ?? '',
+          'startDate': controllers['startDate']?.text ?? '',
+          'endDate': controllers['endDate']?.text ?? '',
+        };
+      }).toList();
+
+      try {
+        // Saving the list of education data in a single Firebase document
+        await FirebaseFirestore.instance
+            .collection('users') // Replace with your collection name
+            .doc('uniqueUserId') // Use a single unique document ID
+            .set({
+          'education': educationData, // Storing the list of education maps
+        });
+
+        debugPrint('Education details saved successfully!');
+      } catch (e) {
+        debugPrint('Error saving education details: $e');
       }
-      debugPrint(
-          'Education Details: ${educationList.map((e) => e.toString()).toList()}');
     }
   }
+
 
   @override
   Widget build(BuildContext context) {
