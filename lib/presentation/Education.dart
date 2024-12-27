@@ -138,7 +138,7 @@ class _EducationInfoState extends State<EducationInfo> {
                         startDateController: controllers['startDate']!,
                         endDateController: controllers['endDate']!,
                       ),
-                      SizedBox(height: height),
+
                     ],
                   );
                 }),
@@ -167,6 +167,7 @@ class _EducationInfoState extends State<EducationInfo> {
                       },
                       name: Strings.saveContinue,
                     ),
+
                     CommonResetButton(formKey: formKey,onTap: (){},)
                   ],
                 ),

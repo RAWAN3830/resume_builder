@@ -23,7 +23,7 @@ class CommonSaveButton extends StatelessWidget {
       },
       child: Container(
         height: context.height(context) * 0.07,
-        width: double.infinity,
+         width:  context.width(context) * 0.7,
         decoration: BoxDecoration(
           color: ThemeColors.black,
           borderRadius: BorderRadius.circular(10),
@@ -32,12 +32,6 @@ class CommonSaveButton extends StatelessWidget {
           child: Text(
             name,
             style: Theme.of(context).textTheme.titleLarge?.copyWith(color: Colors.white),
-            // style: TextStyle(
-            //   color: ThemeColors.white,
-            //   fontFamily: Strings.uberFont,
-            //   fontSize: context.width(context) * 0.05,
-            //   fontWeight: FontWeight.w500,
-            // ),
           ),
         ),
       ),

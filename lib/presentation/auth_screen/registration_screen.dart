@@ -141,7 +141,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                         var snackBar =
                         const SnackBar(content: Text('Submitted successfully.'));
                         ScaffoldMessenger.of(context).showSnackBar(snackBar);
-                        context.push(context, target: const LoginScreen());
+
                       }
 
 
