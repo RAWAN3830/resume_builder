@@ -31,6 +31,7 @@ class RegistrationBloc extends Bloc<RegistrationEvent, RegistrationState> {
       );
 
       emit(RegistrationSuccess(userCredential.user!.uid));
+
     } on FirebaseAuthException catch (authError) {
       emit(RegistrationFailure('Authentication Error: ${authError.message}'));
     } catch (fireStoreError) {
