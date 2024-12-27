@@ -7,6 +7,7 @@ import 'package:resume/core/constant/strings.dart';
 import 'package:resume/core/constant/theme_colors.dart';
 import 'package:resume/infra/bloc/auth_bloc/email_auth/email_auth_bloc.dart';
 import 'package:resume/infra/bloc/auth_bloc/email_auth/email_auth_state.dart';
+import 'package:resume/presentation/auth_screen/login_screen.dart';
 import 'package:resume/presentation/common_widgets/common_buttons/common_save_button.dart';
 import 'package:resume/presentation/common_widgets/common_buttons/sign_up_button.dart';
 import 'package:resume/presentation/home_screen/home_screen.dart';
@@ -126,16 +127,26 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                     ),
                     SizedBox(height: varHeight),
                     CommonSaveButton(formKey: formKey, onTap: (){
-                      if (formKey.currentState?.validate() ?? false) {
-                        context.read<RegistrationBloc>().add(
-                          RegisterUserEvent(
-                            email: emailController.text,
-                            password: passwordController.text,
-                            name: nameController.text,
-                          ),
-                        );
+                      if (formKey.currentState!.validate()) {
+                        formKey.currentState!.save();
+                        if (formKey.currentState?.validate() ?? false) {
+                          context.read<RegistrationBloc>().add(
+                            RegisterUserEvent(
+                              email: emailController.text,
+                              password: passwordController.text,
+                              name: nameController.text,
+                            ),
+                          );
+                        }
+                        var snackBar =
+                        const SnackBar(content: Text('Submitted successfully.'));
+                        ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                        context.push(context, target: const LoginScreen());
                       }
+
+
                     }, name: Strings.saveContinue),
+
                           ],
                 ),
               ),

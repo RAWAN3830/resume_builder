@@ -10,7 +10,6 @@ class PersonalInfoSuccess extends PersonalInfoState {}
 
 class PersonalInfoFailure extends PersonalInfoState {
   final String error;
-
   PersonalInfoFailure(this.error);
 }
 
