@@ -59,10 +59,10 @@ class MyApp extends StatelessWidget {
             useMaterial3: true,
           ),
           // home: const SkillSetsScreen(),
-          //home: const HomeScreen(),
+          home: const HomeScreen(),
           // home:  DynamicTextFields(),
           //  home: const LoginScreen(),
-           home: const RegistrationScreen(),
+          //  home: const RegistrationScreen(),
         ),
       ),
       breakpoints: [

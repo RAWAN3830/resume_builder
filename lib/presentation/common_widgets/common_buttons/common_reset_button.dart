@@ -16,7 +16,7 @@ class CommonResetButton extends StatelessWidget {
         // formKey.currentState!.reset(); // Ensure form is reset
       },
       child: Container(
-        height: context.width(context) * 0.14,
+        height: context.height(context) * 0.067,
         width: context.width(context) * 0.15,
         decoration: BoxDecoration(
           color: ThemeColors.black,
