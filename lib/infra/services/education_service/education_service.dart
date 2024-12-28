@@ -1,28 +1,19 @@
-import '../../../domain/education_model.dart';
-
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class EducationService {
+  final FirebaseFirestore _firestore;
 
-  final List<EducationModel> educationList = [];
+  EducationService(this._firestore);
 
-
-  void addEducation(EducationModel education) {
-    educationList.add(education);
-  }
-
-  void updateEducation(int index, EducationModel updatedEducation) {
-    if (index >= 0 && index < educationList.length) {
-      educationList[index] = updatedEducation;
+  // Method to save education data to Firestore
+  Future<void> saveEducationData(String userId, List<Map<String, dynamic>> educationData) async {
+    try {
+      await _firestore.collection('users').doc(userId).set({
+        'education': educationData,
+      });
+      print('Education details saved successfully!');
+    } catch (e) {
+      print('Error saving education details: $e');
     }
-  }
-
-  void deleteEducation(int index) {
-    if (index >= 0 && index < educationList.length) {
-      educationList.removeAt(index);
-    }
-  }
-
-  void resetEducation() {
-    educationList.clear();
   }
 }

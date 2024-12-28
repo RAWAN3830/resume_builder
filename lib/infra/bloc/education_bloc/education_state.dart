@@ -1,21 +1,18 @@
-import '../../../domain/education_model.dart';
+import 'package:flutter/cupertino.dart';
 
-abstract class EducationState {}
+class EducationState {
+  final List<Map<String, TextEditingController>> controllersList;
+  final List<bool> expansionStates;
 
-class EducationInitial extends EducationState {}
+  EducationState({required this.controllersList, required this.expansionStates});
 
-class  EducationLoading extends EducationState {}
-
-class  EducationSuccess extends EducationState {}
-
-class  EducationFailure extends EducationState {
-  final String error;
-
-  EducationFailure(this.error);
-}
-
-class EducationUpdated extends EducationState {
-  final List<EducationModel> educationList;
-
-  EducationUpdated(this.educationList);
+  EducationState copyWith({
+    List<Map<String, TextEditingController>>? controllersList,
+    List<bool>? expansionStates,
+  }) {
+    return EducationState(
+      controllersList: controllersList ?? this.controllersList,
+      expansionStates: expansionStates ?? this.expansionStates,
+    );
+  }
 }
