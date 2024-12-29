@@ -17,6 +17,8 @@ import '../core/constant/strings.dart';
 class EducationInfo extends StatelessWidget {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
+  EducationInfo({super.key});
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider(

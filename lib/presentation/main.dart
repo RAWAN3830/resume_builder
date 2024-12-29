@@ -1,22 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:provider/provider.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'package:resume/core/theme_data/breakpoint_enum.dart';
 import 'package:resume/infra/bloc/auth_bloc/email_login/login_bloc.dart';
 import 'package:resume/infra/bloc/personal_info_bloc/personal_info_bloc.dart';
 import 'package:resume/infra/bloc/skills_set_bloc/skills_set_bloc.dart';
-import 'package:resume/infra/services/firebase_service/set_personal_info_to_firebase.dart';
 import 'package:resume/presentation/home_screen/home_screen.dart';
-import 'package:resume/presentation/home_screen/skill_sets_screen.dart/skill_sets_screen.dart';
 import '../core/constant/strings.dart';
 import '../firebase_options.dart';
 import '../infra/bloc/auth_bloc/email_auth/email_auth_bloc.dart';
 import '../infra/bloc/auth_bloc/google_auth/google_auth_bloc.dart';
 import 'package:firebase_core/firebase_core.dart';
 
-import 'auth_screen/login_screen.dart';
-import 'auth_screen/registration_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

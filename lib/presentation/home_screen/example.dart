@@ -12,7 +12,7 @@ class PersonalInfoList extends StatelessWidget {
     return BlocProvider(
       create: (context) => PersonalInfoBloc()..add(GetPersonalInfoEvent()),
       child: Scaffold(
-        appBar: AppBar(title: Text('Personal Info')),
+        appBar: AppBar(title: const Text('Personal Info')),
         body: BlocBuilder<PersonalInfoBloc, PersonalInfoState>(
           builder: (context, state) {
             if (state is PersonalInfoLoading) {
@@ -22,7 +22,7 @@ class PersonalInfoList extends StatelessWidget {
             } else if (state is PersonalInfoLoaded) {
               final data = state.personalInfoList;
               if (data.isEmpty) {
-                return Center(child: Text('No data available.'));
+                return const Center(child: Text('No data available.'));
               } else {
                 return ListView.builder(
                   itemCount: data.length,
