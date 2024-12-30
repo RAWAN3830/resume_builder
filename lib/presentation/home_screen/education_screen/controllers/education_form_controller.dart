@@ -13,6 +13,8 @@ class EducationFormController {
   }
 
   static void disposeControllers(Map<String, TextEditingController> controllers) {
-    controllers.values.forEach((controller) => controller.dispose());
+    for (var controller in controllers.values) {
+      controller.dispose();
+    }
   }
 }

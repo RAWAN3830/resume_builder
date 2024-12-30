@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:resume/core/constant/extension.dart';
-import 'package:resume/core/constant/strings.dart';
 
 import '../../../infra/bloc/auth_bloc/google_auth/google_auth_bloc.dart';
 import '../../../infra/bloc/auth_bloc/google_auth/google_auth_event.dart';

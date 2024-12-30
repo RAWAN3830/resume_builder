@@ -7,7 +7,6 @@ import 'package:resume/core/constant/strings.dart';
 import 'package:resume/core/constant/theme_colors.dart';
 import 'package:resume/infra/bloc/auth_bloc/email_auth/email_auth_bloc.dart';
 import 'package:resume/infra/bloc/auth_bloc/email_auth/email_auth_state.dart';
-import 'package:resume/presentation/auth_screen/login_screen.dart';
 import 'package:resume/presentation/common_widgets/common_buttons/common_save_button.dart';
 import 'package:resume/presentation/common_widgets/common_buttons/sign_up_button.dart';
 import 'package:resume/presentation/home_screen/home_screen.dart';

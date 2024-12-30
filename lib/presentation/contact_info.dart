@@ -1,12 +1,10 @@
 import 'dart:io';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:resume/core/constant/extension.dart';
 import 'package:resume/core/constant/strings.dart';
 import 'package:resume/infra/bloc/personal_info_bloc/personal_info_bloc.dart';
 import 'package:resume/infra/bloc/personal_info_bloc/personal_info_state.dart';
-import 'package:resume/infra/services/firebase_service/set_personal_info_to_firebase.dart';
 import 'package:resume/presentation/common_widgets/common_buttons/common_add_field_button.dart';
 import 'package:resume/presentation/common_widgets/common_buttons/common_reset_button.dart';
 import 'package:resume/presentation/common_widgets/common_text/common_heading.dart';
@@ -98,7 +96,7 @@ class _PersonalInfoState extends State<PersonalInfo> {
         FocusManager.instance.primaryFocus?.unfocus();
       },
       child: Scaffold(
-        appBar: CustomAppBar(
+        appBar: const CustomAppBar(
           title: 'Contact info',
         ),
         body: SingleChildScrollView(
@@ -315,7 +313,7 @@ class _PersonalInfoState extends State<PersonalInfo> {
                                           context.read<PersonalInfoBloc>().add(
                                             AddPersonalInfoEvent(personalInfoModel, context),
                                           );
-                                          context.push(context, target: PersonalInfoList());
+                                          context.push(context, target: const PersonalInfoList());
                                         }
                                       },
                                       name: Strings.saveContinue,
