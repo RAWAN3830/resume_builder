@@ -88,7 +88,7 @@ class _PersonalInfoState extends State<PersonalInfo> {
 
   @override
   Widget build(BuildContext context) {
-    var height = MediaQuery.of(context).size.height * 0.02;
+    var height = MediaQuery.of(context).size.height * 0.01;
     var width = MediaQuery.of(context).size.width;
 
     return GestureDetector(
@@ -141,34 +141,34 @@ class _PersonalInfoState extends State<PersonalInfo> {
                           ),
                         ],
                       ),
-                      SizedBox(height: height),
+
                       const CommonHeading(title: "Email"),
                       CommonTextformfield(
                         labelText: "Email",
                         controller: emailController,
                         errorText: 'Enter valid Mail',
                       ),
-                      SizedBox(height: height),
+
                       const CommonHeading(title: "Phone"),
                       CommonTextformfield(
                         labelText: 'Phone',
                         controller: phoneController,
                         errorText: 'Enter Phone NO',
                       ),
-                      SizedBox(height: height),
+
                       const CommonHeading(title: "Job Title"),
                       CommonTextformfield(
                         labelText: 'Full Stack Devloper',
                         controller: jobTitleController,
                         errorText: 'Enter Job Title',
                       ),
-                      SizedBox(height: height),
+
                       const CommonHeading(title: "Address"),
                       CommonLonglineTextfield(
                           controller: addressController,
                           hintText: "Address (Street , Building NO)",
                           errorText: 'Enter Address'),
-                      SizedBox(height: height),
+
                       const CommonHeading(title: 'Links'),
                       ListView.builder(
                         shrinkWrap: true,

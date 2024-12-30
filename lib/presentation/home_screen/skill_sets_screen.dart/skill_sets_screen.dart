@@ -67,8 +67,8 @@ class SkillsView extends StatelessWidget {
         padding: EdgeInsets.all(16.0),
         child: Column(
           children: [
-            SkillInputForm(),
-            SizedBox(height: 16),
+            // SkillInputForm(),
+            // SizedBox(height: 16),
             Expanded(child: SkillCategoryList()),
           ],
         ),

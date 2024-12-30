@@ -258,7 +258,7 @@ class ExperienceScreen extends StatelessWidget {
       ),
       children: [
         Padding(
-          padding: const EdgeInsets.all(16.0),
+          padding: const EdgeInsets.all(8.0).copyWith(top: 0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -268,7 +268,6 @@ class ExperienceScreen extends StatelessWidget {
                 controller: controllers['employer']!,
                 errorText: 'Please enter a valid company name',
               ),
-              SizedBox(height: height),
 
               const CommonHeading(title: 'Job Title'),
               CommonTextformfield(
@@ -276,7 +275,6 @@ class ExperienceScreen extends StatelessWidget {
                 controller: controllers['jobTitle']!,
                 errorText: 'Please enter a valid job title',
               ),
-              SizedBox(height: height),
 
               const CommonHeading(title: 'Location'),
               CommonTextformfield(
@@ -284,13 +282,11 @@ class ExperienceScreen extends StatelessWidget {
                 controller: controllers['location']!,
                 errorText: 'Please enter a valid location',
               ),
-              SizedBox(height: height),
 
               CommonYearsTextfield(
                 startDateController: controllers['startDate']!,
                 endDateController: controllers['endDate']!,
               ),
-              SizedBox(height: height),
 
               const CommonHeading(title: 'Description'),
               CommonLonglineTextfield(

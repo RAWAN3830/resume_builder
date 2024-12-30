@@ -64,25 +64,25 @@ class EducationInfo extends StatelessWidget {
                                 controller: controllers['institution']!,
                                 labelText: 'xyz University',
                                 errorText: 'Enter Institution'),
-                            SizedBox(height: context.height(context) * 0.02),
+
                             CommonHeading(title: 'Location (${index + 1})'),
                             CommonTextformfield(
                                 controller: controllers['location']!,
                                 labelText: 'Gujarat, India',
                                 errorText: 'Enter Location'),
-                            SizedBox(height: context.height(context) * 0.02),
+
                             CommonHeading(title: 'Degree Type (${index + 1})'),
                             CommonTextformfield(
                                 controller: controllers['degreeType']!,
                                 labelText: 'Bachelors/Master',
                                 errorText: 'Enter Degree Type'),
-                            SizedBox(height: context.height(context) * 0.02),
+
                             CommonHeading(title: 'Field of Study (${index + 1})'),
                             CommonTextformfield(
                                 controller: controllers['fieldOfStudy']!,
                                 labelText: 'Computer Science',
                                 errorText: 'Enter Field of Study'),
-                            SizedBox(height: context.height(context) * 0.02),
+
                             CommonYearsTextfield(
                               startDateController: controllers['startDate']!,
                               endDateController: controllers['endDate']!,

@@ -30,6 +30,10 @@ class CommonTextformfield extends StatelessWidget {
       decoration: InputDecoration(
         labelText: labelText,
         labelStyle: const TextStyle(color: Colors.grey),
+        contentPadding: const EdgeInsets.symmetric(
+          vertical: 15.0,
+          horizontal: 10.0,
+        ),
         border: const OutlineInputBorder(
           borderSide: BorderSide(color: Colors.black, width: 2),
         ),

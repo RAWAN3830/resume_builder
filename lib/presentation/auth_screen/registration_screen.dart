@@ -7,6 +7,7 @@ import 'package:resume/core/constant/strings.dart';
 import 'package:resume/core/constant/theme_colors.dart';
 import 'package:resume/infra/bloc/auth_bloc/email_auth/email_auth_bloc.dart';
 import 'package:resume/infra/bloc/auth_bloc/email_auth/email_auth_state.dart';
+import 'package:resume/presentation/auth_screen/login_screen.dart';
 import 'package:resume/presentation/common_widgets/common_buttons/common_save_button.dart';
 import 'package:resume/presentation/common_widgets/common_buttons/sign_up_button.dart';
 import 'package:resume/presentation/home_screen/home_screen.dart';
@@ -63,7 +64,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const CommonRichText(title: Strings.registration),
+
                     Center(
                       child: Padding(
                         padding: EdgeInsets.all(context.height(context) * 0.015),
@@ -74,6 +75,8 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                         ),
                       ),
                     ),
+                    const CommonRichText(title: Strings.registration),
+                    SizedBox(height: context.height(context) * 0.02,),
                     CommonTextformfield(
                         controller: nameController,
                         labelText: Strings.labelTextForUserName,
@@ -88,6 +91,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                         controller: passwordController,
                         labelText: Strings.labelTextForPassword,
                         errorText: Strings.errorTextForPassword),
+                    SizedBox(height: varHeight),
                     Padding(
                       padding: EdgeInsets.only(
                           top: context.height(context) * 0.01,
@@ -105,7 +109,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                             ),
                               Text(
                               Strings.or,
-                                style: Theme.of(context).textTheme.titleLarge,
+                                style: Theme.of(context).textTheme.titleSmall,
 
                               ),
                             Expanded(
@@ -125,26 +129,38 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                       buttonTitle: Strings.googleLogin,
                     ),
                     SizedBox(height: varHeight),
-                    CommonSaveButton(formKey: formKey, onTap: (){
-                      if (formKey.currentState!.validate()) {
-                        formKey.currentState!.save();
-                        if (formKey.currentState?.validate() ?? false) {
-                          context.read<RegistrationBloc>().add(
-                            RegisterUserEvent(
-                              email: emailController.text,
-                              password: passwordController.text,
-                              name: nameController.text,
-                            ),
-                          );
+                    Center(
+                      child: CommonSaveButton(formKey: formKey, onTap: (){
+                        if (formKey.currentState!.validate()) {
+                          formKey.currentState!.save();
+                          if (formKey.currentState?.validate() ?? false) {
+                            context.read<RegistrationBloc>().add(
+                              RegisterUserEvent(
+                                email: emailController.text,
+                                password: passwordController.text,
+                                name: nameController.text,
+                              ),
+                            );
+                          }
+                          var snackBar =
+                          const SnackBar(content: Text('Submitted successfully.'));
+                          ScaffoldMessenger.of(context).showSnackBar(snackBar);
+
                         }
-                        var snackBar =
-                        const SnackBar(content: Text('Submitted successfully.'));
-                        ScaffoldMessenger.of(context).showSnackBar(snackBar);
-
-                      }
 
 
-                    }, name: Strings.saveContinue),
+                      }, name: Strings.saveContinue),
+                    ),
+                     SizedBox(height: context.height(context) * 0.04),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text('Already Have Account ? ', style: Theme.of(context).textTheme.bodyLarge),
+                        GestureDetector(onTap:(){
+                          context.push(context, target: LoginScreen());
+                        },child: Text(' Login Hear', style: Theme.of(context).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w500,color: ThemeColors.mainGreenColor),))
+                      ],
+                    )
 
                           ],
                 ),
