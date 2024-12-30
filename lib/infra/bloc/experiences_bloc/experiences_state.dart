@@ -1,22 +1,41 @@
-import '../../../domain/experience_model.dart';
+// import '../../../domain/experience_model.dart';
+//
+// abstract class ExperienceState{}
+//
+// class ExperienceInitial extends ExperienceState {}
+//
+// class ExperiencesLoading extends ExperienceState{}
+//
+// class ExperiencesSuccess extends ExperienceState{
+//   final List<ExperienceModel> experienceModel;
+//   ExperiencesSuccess(this.experienceModel);
+// }
+//
+// class ExperiencesFailure extends ExperienceState{
+//   final String error;
+//   ExperiencesFailure(this.error);
+// }
+//
+// class ExperiencesUpdated extends ExperienceState{
+//   final List<ExperienceModel> experienceList;
+//   ExperiencesUpdated(this.experienceList);
+// }
 
-abstract class ExperienceState{}
+import 'package:flutter/cupertino.dart';
 
-class ExperienceInitial extends ExperienceState {}
+class ExperienceState {
+  final List<Map<String, TextEditingController>> controllersList;
+  final List<bool> expansionStates;
 
-class ExperiencesLoading extends ExperienceState{}
+  ExperienceState({required this.controllersList, required this.expansionStates});
 
-class ExperiencesSuccess extends ExperienceState{
-  final List<ExperienceModel> experienceModel;
-  ExperiencesSuccess(this.experienceModel);
-}
-
-class ExperiencesFailure extends ExperienceState{
-  final String error;
-  ExperiencesFailure(this.error);
-}
-
-class ExperiencesUpdated extends ExperienceState{
-  final List<ExperienceModel> experienceList;
-  ExperiencesUpdated(this.experienceList);
+  ExperienceState copyWith({
+    List<Map<String, TextEditingController>>? controllersList,
+    List<bool>? expansionStates,
+  }) {
+    return ExperienceState(
+      controllersList: controllersList ?? this.controllersList,
+      expansionStates: expansionStates ?? this.expansionStates,
+    );
+  }
 }

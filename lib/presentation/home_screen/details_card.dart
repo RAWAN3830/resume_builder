@@ -36,7 +36,7 @@ class DetailsCard extends StatelessWidget {
               context.push(context, target:  EducationInfo());
               // context.push(context, target: const CarrierObjective());
             case 2:
-              context.push(context, target: const ExperienceInfo());
+               context.push(context, target:  ExperienceScreen());
               // context.push(context, target: const PersonalDetails());
             case 3:
               context.push(context, target: const SkillSetsScreen());
@@ -55,7 +55,7 @@ class DetailsCard extends StatelessWidget {
           }
         },
         child: Container(
-          height: context.height(context) * .10,
+          height: context.height(context) * .03,
           width: context.width(context) * .4,
           decoration: BoxDecoration(
             boxShadow: [
