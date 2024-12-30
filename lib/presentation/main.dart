@@ -11,6 +11,8 @@ import '../firebase_options.dart';
 import '../infra/bloc/auth_bloc/email_auth/email_auth_bloc.dart';
 import '../infra/bloc/auth_bloc/google_auth/google_auth_bloc.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/services.dart';
+
 
 import 'auth_screen/registration_screen.dart';
 
