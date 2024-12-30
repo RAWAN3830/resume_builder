@@ -46,7 +46,8 @@ class SkillChip extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Chip(
-      label: Text(skill),
+      backgroundColor: Colors.white,
+      label: Text(skill ,style: Theme.of(context).textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.w500),),
       deleteIcon: const Icon(Icons.close, size: 18),
       onDeleted: () {
         context.read<SkillsSetBloc>().add(RemoveSkill(
