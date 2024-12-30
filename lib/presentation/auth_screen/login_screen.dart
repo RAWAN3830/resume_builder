@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:resume/core/constant/extension.dart';
+import 'package:resume/presentation/auth_screen/registration_screen.dart';
 import 'package:resume/presentation/common_widgets/common_buttons/common_save_button.dart';
 import 'package:resume/presentation/home_screen/home_screen.dart';
 import '../../core/constant/assets_svg_image.dart';
@@ -51,7 +52,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         "Error: ${state.error}",
                         style: const TextStyle(color: Colors.red),
                       ),
-                    const CommonRichText(title: Strings.login),
+                    SizedBox(height: varHeight),
                     Center(
                       child: Padding(
                         padding:
@@ -63,6 +64,8 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                       ),
                     ),
+                    const CommonRichText(title: Strings.login),
+                    SizedBox(height: varHeight),
                     CommonTextformfield(
                         controller: emailController,
                         labelText: Strings.labelTextForEmail,
@@ -84,7 +87,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   endIndent: context.width(context) * 0.03)),
                           Text(
                             Strings.or,
-                            style: Theme.of(context).textTheme.titleLarge,
+                            style: Theme.of(context).textTheme.titleSmall,
                           ),
                           Expanded(
                               child: Divider(
@@ -98,19 +101,32 @@ class _LoginScreenState extends State<LoginScreen> {
                       buttonImage: AssetsSvgImage.googleImage,
                       buttonTitle: Strings.googleLogin,
                     ),
-                    SizedBox(height: context.height(context) * 0.05),
-                    CommonSaveButton(
-                        formKey: formKey,
-                        onTap: () {
-                          if (formKey.currentState?.validate() ?? false) {
-                            context.read<LoginBloc>().add(LoginUserEvent(
-                                  email: emailController.text,
-                                  password: passwordController.text,
-                                ));
+                    // SizedBox(height: context.height(context) * 0.05),
+                    SizedBox(height: varHeight),
+                    Center(
+                      child: CommonSaveButton(
+                          formKey: formKey,
+                          onTap: () {
+                            if (formKey.currentState?.validate() ?? false) {
+                              context.read<LoginBloc>().add(LoginUserEvent(
+                                    email: emailController.text,
+                                    password: passwordController.text,
+                                  ));
 
-                          }
-                        },
-                        name: 'Login')
+                            }
+                          },
+                          name: 'Login'),
+                    ),
+                    SizedBox(height: varHeight),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text('Dont Have Account ? ', style: Theme.of(context).textTheme.bodyLarge),
+                        GestureDetector(onTap:(){
+                          context.push(context, target: RegistrationScreen());
+                        },child: Text(' Register Hear', style: Theme.of(context).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w500,color: ThemeColors.mainGreenColor),))
+                      ],
+                    )
                   ],
                 );
               },
