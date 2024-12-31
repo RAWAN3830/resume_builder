@@ -30,6 +30,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:resume/core/constant/theme_colors.dart';
 import 'package:resume/infra/bloc/skills_set_bloc/skills_set_bloc.dart';
 import 'package:resume/infra/bloc/skills_set_bloc/skills_set_event.dart';
 
@@ -46,8 +47,8 @@ class SkillChip extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Chip(
-      backgroundColor: Colors.white,
-      label: Text(skill ,style: Theme.of(context).textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.w500),),
+      // backgroundColor: Colors.white,
+      label: Text(skill ,style: Theme.of(context).textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.w500,color: ThemeColors.mainGreenColor),),
       deleteIcon: const Icon(Icons.close, size: 18),
       onDeleted: () {
         context.read<SkillsSetBloc>().add(RemoveSkill(

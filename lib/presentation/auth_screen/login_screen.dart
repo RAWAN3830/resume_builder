@@ -121,9 +121,9 @@ class _LoginScreenState extends State<LoginScreen> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text('Dont Have Account ? ', style: Theme.of(context).textTheme.bodyLarge),
+                        Text('Don\'t Have Account ? ', style: Theme.of(context).textTheme.bodyLarge),
                         GestureDetector(onTap:(){
-                          context.push(context, target: RegistrationScreen());
+                          context.push(context, target: const RegistrationScreen());
                         },child: Text(' Register Hear', style: Theme.of(context).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w500,color: ThemeColors.mainGreenColor),))
                       ],
                     )
