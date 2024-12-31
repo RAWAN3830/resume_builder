@@ -67,7 +67,6 @@ class SkillCategoryList extends StatelessWidget {
     return BlocBuilder<SkillsSetBloc, SkillsSetState>(
       builder: (context, state) {
         return ListView.builder(
-          padding: const EdgeInsets.all(16.0),
           itemCount: state.categories.length,
           itemBuilder: (context, index) {
             final category = state.categories.keys.elementAt(index);

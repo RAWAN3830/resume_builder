@@ -1,51 +1,3 @@
-// import 'package:flutter/material.dart';
-// import 'skill_chip.dart';
-//
-// class SkillCategoryTile extends StatelessWidget {
-//   final String category;
-//   final List<String> skills;
-//
-//   const SkillCategoryTile({
-//     super.key,
-//     required this.category,
-//     required this.skills,
-//   });
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return Card(
-//       margin: const EdgeInsets.only(bottom: 8.0),
-//       child: ExpansionTile(
-//         title: Row(
-//           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//           children: [
-//             Text(category),
-//             Text(
-//               '${skills.length} skills',
-//               style: Theme.of(context).textTheme.bodySmall,
-//             ),
-//           ],
-//         ),
-//         children: [
-//           Padding(
-//             padding: const EdgeInsets.all(16.0),
-//             child: Wrap(
-//               spacing: 8.0,
-//               runSpacing: 8.0,
-//               children: skills
-//                   .map((skill) => SkillChip(
-//                 skill: skill,
-//                 category: category,
-//               ))
-//                   .toList(),
-//             ),
-//           ),
-//         ],
-//       ),
-//     );
-//   }
-// }
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:resume/core/constant/theme_colors.dart';
@@ -115,13 +67,6 @@ class _SkillCategoryTileState extends State<SkillCategoryTile> {
                 children: [
                   Row(
                     children: [
-                      Icon(
-                        Icons.category,
-                        color: _isExpanded
-                            ? ThemeColors.mainGreenColor
-                            : Colors.green,
-                      ),
-                      const SizedBox(width: 10),
                       Text(
                         widget.category,
                         style: TextStyle(
@@ -144,11 +89,8 @@ class _SkillCategoryTileState extends State<SkillCategoryTile> {
                     ),
                     child: Text(
                       '${widget.skills.length} skills',
-                      style: TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.bold,
-                        color: ThemeColors.mainGreenColor,
-                      ),
+                      style: Theme.of(context).textTheme.titleSmall?.copyWith(color: ThemeColors.mainGreenColor),
+
                     ),
                   ),
                 ],
@@ -172,31 +114,28 @@ class _SkillCategoryTileState extends State<SkillCategoryTile> {
                               labelText: 'Add a skill',
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(12.0),
-                                borderSide:
-                                const BorderSide(color: Colors.grey),
+                                borderSide: const BorderSide(color: Colors.grey),
                               ),
                               focusedBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(12.0),
-                                borderSide: BorderSide(
-                                    color: ThemeColors.mainGreenColor),
+                                borderSide: BorderSide(color: ThemeColors.mainGreenColor),
                               ),
                               contentPadding: const EdgeInsets.symmetric(
                                 vertical: 12.0,
                                 horizontal: 16.0,
                               ),
+                              suffixIcon: IconButton(
+                                icon: const Icon(Icons.add,size:25),
+                                color: ThemeColors.black,
+                                onPressed: () => _addSkill(context),
+                              ),
                             ),
                             validator: _validateSkill,
-                          ),
+                          )
+
                         ),
-                        const SizedBox(width: 10),
-                        ElevatedButton(
-                          onPressed: () => _addSkill(context),
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: ThemeColors.mainGreenColor,
-                            foregroundColor: Colors.white,
-                          ),
-                          child: const Text('Add'),
-                        ),
+
+
                       ],
                     ),
                   ),
@@ -208,8 +147,9 @@ class _SkillCategoryTileState extends State<SkillCategoryTile> {
                   children: widget.skills
                       .map(
                         (skill) => Chip(
-                      label: Text(skill),
-                      backgroundColor: Colors.lightGreenAccent.shade200,
+                      label: Text(skill, style: Theme.of(context).textTheme.titleSmall?.copyWith(color: ThemeColors.black,fontWeight: FontWeight.w500), ),
+
+                      backgroundColor: ThemeColors.mainGreenColor.withOpacity(0.1),
                       deleteIcon: const Icon(Icons.close),
                       onDeleted: () {
                         context.read<SkillsSetBloc>().add(RemoveSkill(
@@ -221,16 +161,12 @@ class _SkillCategoryTileState extends State<SkillCategoryTile> {
                   )
                       .toList(),
                 ),
-                const SizedBox(height: 10),
+
               ],
             ),
           ),
         ),
-        const Divider(
-          color: Colors.grey,
-          thickness: 1.0,
-          height: 20,
-        ),
+
       ],
     );
   }

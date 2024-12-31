@@ -102,9 +102,9 @@ class _PersonalInfoState extends State<PersonalInfo> {
         body: SingleChildScrollView(
           child: Column(
             children: [
-              const SizedBox(height: 20),
+
               Padding(
-                padding: const EdgeInsets.all(20.0),
+                padding: const EdgeInsets.all(20.0).copyWith(top: 0),
                 child: Form(
                   key: formKey,
                   child: Column(
